@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.YzkMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.Yzk" >
+    <result column="flbm" property="flbm" jdbcType="VARCHAR" />
+    <result column="wdbm" property="wdbm" jdbcType="VARCHAR" />
+    <result column="yzbm" property="yzbm" jdbcType="INTEGER" />
+    <result column="yz" property="yz" jdbcType="VARCHAR" />
+    <result column="rjfs" property="rjfs" jdbcType="INTEGER" />
+    <result column="rcfs" property="rcfs" jdbcType="INTEGER" />
+    <result column="zqfs" property="zqfs" jdbcType="INTEGER" />
+    <result column="cjfs" property="cjfs" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.Yzk" >
+    insert into yzk (flbm, wdbm, yzbm, 
+      yz, rjfs, rcfs, zqfs, 
+      cjfs)
+    values (#{flbm,jdbcType=VARCHAR}, #{wdbm,jdbcType=VARCHAR}, #{yzbm,jdbcType=INTEGER}, 
+      #{yz,jdbcType=VARCHAR}, #{rjfs,jdbcType=INTEGER}, #{rcfs,jdbcType=INTEGER}, #{zqfs,jdbcType=INTEGER}, 
+      #{cjfs,jdbcType=INTEGER})
+  </insert>
+  
+  <select id="getAllYzk" resultMap="BaseResultMap">
+  	select flbm, wdbm, yzbm, yz, rjfs, rcfs, zqfs, cjfs from yzk order by yzbm
+  </select>
+  
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.Yzk" >
+    insert into yzk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="flbm != null" >
+        flbm,
+      </if>
+      <if test="wdbm != null" >
+        wdbm,
+      </if>
+      <if test="yzbm != null" >
+        yzbm,
+      </if>
+      <if test="yz != null" >
+        yz,
+      </if>
+      <if test="rjfs != null" >
+        rjfs,
+      </if>
+      <if test="rcfs != null" >
+        rcfs,
+      </if>
+      <if test="zqfs != null" >
+        zqfs,
+      </if>
+      <if test="cjfs != null" >
+        cjfs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="flbm != null" >
+        #{flbm,jdbcType=VARCHAR},
+      </if>
+      <if test="wdbm != null" >
+        #{wdbm,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        #{yzbm,jdbcType=INTEGER},
+      </if>
+      <if test="yz != null" >
+        #{yz,jdbcType=VARCHAR},
+      </if>
+      <if test="rjfs != null" >
+        #{rjfs,jdbcType=INTEGER},
+      </if>
+      <if test="rcfs != null" >
+        #{rcfs,jdbcType=INTEGER},
+      </if>
+      <if test="zqfs != null" >
+        #{zqfs,jdbcType=INTEGER},
+      </if>
+      <if test="cjfs != null" >
+        #{cjfs,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

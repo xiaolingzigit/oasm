@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.LbdafxMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.Lbdafx" >
+    <id column="xh" property="xh" jdbcType="INTEGER" />
+    <result column="sjxmc" property="sjxmc" jdbcType="VARCHAR" />
+    <result column="yz" property="yz" jdbcType="VARCHAR" />
+    <result column="yzfz" property="yzfz" jdbcType="NUMERIC" />
+    <result column="sjxbm" property="sjxbm" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    xh, sjxmc, yz, yzfz, sjxbm
+  </sql>
+  
+  <select id="selectYz" resultType="com.hd.jy.oasm.domain.Lbdafx" parameterType="java.lang.String">
+       select yz,yzfz from LB_dafx where sjxbm = #{sjxbm,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LB_dafx
+    where xh = #{xh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LB_dafx
+    where xh = #{xh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.Lbdafx" >
+    insert into LB_dafx (xh, sjxmc, yz, 
+      yzfz, sjxbm)
+    values (#{xh,jdbcType=INTEGER}, #{sjxmc,jdbcType=VARCHAR}, #{yz,jdbcType=VARCHAR}, 
+      #{yzfz,jdbcType=NUMERIC}, #{sjxbm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.Lbdafx" >
+    insert into LB_dafx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xh != null" >
+        xh,
+      </if>
+      <if test="sjxmc != null" >
+        sjxmc,
+      </if>
+      <if test="yz != null" >
+        yz,
+      </if>
+      <if test="yzfz != null" >
+        yzfz,
+      </if>
+      <if test="sjxbm != null" >
+        sjxbm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xh != null" >
+        #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="sjxmc != null" >
+        #{sjxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="yz != null" >
+        #{yz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzfz != null" >
+        #{yzfz,jdbcType=NUMERIC},
+      </if>
+      <if test="sjxbm != null" >
+        #{sjxbm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.Lbdafx" >
+    update LB_dafx
+    <set >
+      <if test="sjxmc != null" >
+        sjxmc = #{sjxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="yz != null" >
+        yz = #{yz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzfz != null" >
+        yzfz = #{yzfz,jdbcType=NUMERIC},
+      </if>
+      <if test="sjxbm != null" >
+        sjxbm = #{sjxbm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where xh = #{xh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.Lbdafx" >
+    update LB_dafx
+    set sjxmc = #{sjxmc,jdbcType=VARCHAR},
+      yz = #{yz,jdbcType=VARCHAR},
+      yzfz = #{yzfz,jdbcType=NUMERIC},
+      sjxbm = #{sjxbm,jdbcType=VARCHAR}
+    where xh = #{xh,jdbcType=INTEGER}
+  </update>
+</mapper>

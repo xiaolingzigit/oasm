@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.LbBzMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.LbBz" >
+    <id column="pzid" property="pzid" jdbcType="INTEGER" />
+    <result column="rjlbid" property="rjlbid" jdbcType="VARCHAR" />
+    <result column="rclbid" property="rclbid" jdbcType="VARCHAR" />
+    <result column="zqlbid" property="zqlbid" jdbcType="VARCHAR" />
+    <result column="cjlbid" property="cjlbid" jdbcType="VARCHAR" />
+    <result column="qysj" property="qysj" jdbcType="DATE" />
+    <result column="qyr" property="qyr" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pzid, rjlbid, rclbid, zqlbid, cjlbid, qysj, qyr, zt
+  </sql>
+  
+  <select id="getAllLbBz" resultMap="BaseResultMap" >
+ 	 select 
+    <include refid="Base_Column_List" />
+    from lb_bz
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lb_bz
+    where pzid = #{pzid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lb_bz
+    where pzid = #{pzid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.LbBz" >
+    insert into lb_bz (pzid, rjlbid, rclbid, 
+      zqlbid, cjlbid, qysj, 
+      qyr, zt)
+    values (#{pzid,jdbcType=INTEGER}, #{rjlbid,jdbcType=VARCHAR}, #{rclbid,jdbcType=VARCHAR}, 
+      #{zqlbid,jdbcType=VARCHAR}, #{cjlbid,jdbcType=VARCHAR}, #{qysj,jdbcType=DATE}, 
+      #{qyr,jdbcType=VARCHAR}, #{zt,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.LbBz" >
+    insert into lb_bz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pzid != null" >
+        pzid,
+      </if>
+      <if test="rjlbid != null" >
+        rjlbid,
+      </if>
+      <if test="rclbid != null" >
+        rclbid,
+      </if>
+      <if test="zqlbid != null" >
+        zqlbid,
+      </if>
+      <if test="cjlbid != null" >
+        cjlbid,
+      </if>
+      <if test="qysj != null" >
+        qysj,
+      </if>
+      <if test="qyr != null" >
+        qyr,
+      </if>
+      <if test="zt != null" >
+        zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pzid != null" >
+        #{pzid,jdbcType=INTEGER},
+      </if>
+      <if test="rjlbid != null" >
+        #{rjlbid,jdbcType=VARCHAR},
+      </if>
+      <if test="rclbid != null" >
+        #{rclbid,jdbcType=VARCHAR},
+      </if>
+      <if test="zqlbid != null" >
+        #{zqlbid,jdbcType=VARCHAR},
+      </if>
+      <if test="cjlbid != null" >
+        #{cjlbid,jdbcType=VARCHAR},
+      </if>
+      <if test="qysj != null" >
+        #{qysj,jdbcType=DATE},
+      </if>
+      <if test="qyr != null" >
+        #{qyr,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.LbBz" >
+    update lb_bz
+    <set >
+      <if test="rjlbid != null" >
+        rjlbid = #{rjlbid,jdbcType=VARCHAR},
+      </if>
+      <if test="rclbid != null" >
+        rclbid = #{rclbid,jdbcType=VARCHAR},
+      </if>
+      <if test="zqlbid != null" >
+        zqlbid = #{zqlbid,jdbcType=VARCHAR},
+      </if>
+      <if test="cjlbid != null" >
+        cjlbid = #{cjlbid,jdbcType=VARCHAR},
+      </if>
+      <if test="qysj != null" >
+        qysj = #{qysj,jdbcType=DATE},
+      </if>
+      <if test="qyr != null" >
+        qyr = #{qyr,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        zt = #{zt,jdbcType=CHAR},
+      </if>
+    </set>
+    where pzid = #{pzid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.LbBz" >
+    update lb_bz
+    set rjlbid = #{rjlbid,jdbcType=VARCHAR},
+      rclbid = #{rclbid,jdbcType=VARCHAR},
+      zqlbid = #{zqlbid,jdbcType=VARCHAR},
+      cjlbid = #{cjlbid,jdbcType=VARCHAR},
+      qysj = #{qysj,jdbcType=DATE},
+      qyr = #{qyr,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=CHAR}
+    where pzid = #{pzid,jdbcType=INTEGER}
+  </update>
+</mapper>

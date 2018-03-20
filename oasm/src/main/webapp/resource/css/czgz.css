@@ -1,0 +1,38 @@
+/* CSS Document */
+
+.czgz div{
+	height: 40px;
+	text-align: right;
+	line-height: 40px;
+	padding: 7px;
+	margin-right: 57px;
+}
+
+.sousuo{
+	float: right;
+	margin-top: -10px;
+	margin-right: 10px;
+}
+.base_table{
+    width: 97%;
+    height: auto;
+    margin:0 auto;
+    
+}
+.base_table th{
+    height: 27px;
+    background: #65bbed;
+}
+.base_table td{
+    height: 27px;
+    background: #fff;
+    border-bottom: 1px solid #65bbed;
+    font-family: "Î¢ÈíÑÅºÚ";
+    text-align: center;
+}
+.fenye{clear:both;overflow:hidden;}
+.ul05{width: 470px;text-align: center;line-height: 50px;float: right;}
+.ul05 li{float: left;margin-right: 8px;}
+.ul05 li input{width: 28px;height: 24px;border:1px solid #0d6ccd;outline:none;padding-left: 5px;line-height: 24px;}
+.fenye-li01{width: 18px;height: 18px;background: #ff5000;line-height: 18px;text-align: center;margin-top: 16px;color:#fff;}
+.fenye-li02{width: 18px;height: 18px;border:1px solid #ff5000;line-height: 18px;text-align: center;margin-top: 16px;color:#000;}

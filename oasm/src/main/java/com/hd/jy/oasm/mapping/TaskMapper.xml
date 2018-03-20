@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.TaskMapper">
+	<resultMap id="taskResultMap" type="com.hd.jy.oasm.domain.Task">
+		<id column="task_id" property="taskId" jdbcType="VARCHAR" />
+		<result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="basis" property="taskBasis" jdbcType="VARCHAR" />
+		<result column="describ" property="taskDescrib" jdbcType="VARCHAR" />
+		<result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+		<result column="cop1_no" property="copNo1" jdbcType="VARCHAR" />
+		<result column="cop2_no" property="copNo2" jdbcType="VARCHAR" />
+		<result column="creator" property="creator" jdbcType="VARCHAR" />
+		<result column="cr_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+		<result column="modifier" property="modifier" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+	</resultMap>
+	<resultMap id="taskRelatResultMap" type="com.hd.jy.oasm.domain.TaskRelat">
+		<id column="child_id" property="childId" jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+		<result column="child_type" property="childType" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="crimCopInfo" type="com.hd.jy.oasm.domain.CrimCopInfo">
+		<id column="qh" property="crimNo" jdbcType="VARCHAR" />
+		<result column="xm" property="crimName" jdbcType="VARCHAR" />
+		<result column="sj" property="inTime" jdbcType="VARCHAR" />
+		<result column="gyjq" property="prison" jdbcType="VARCHAR" />
+		<result column="fjq" property="subPrison" jdbcType="VARCHAR" />
+		<result column="jd" property="stage" jdbcType="VARCHAR" />
+		<result column="jh" property="cop1No" jdbcType="VARCHAR" />
+		<result column="jhxm" property="cop1Name" jdbcType="VARCHAR" />
+		<result column="xjbh" property="cop2No" jdbcType="VARCHAR" />
+		<result column="xjxm" property="cop2Name" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 通过总任务编号获取status为4的子任务的总分数 -->
+	
+	<!-- 通过发布总任务的id获取子任务编号getChildTaskIdByParent -->
+	<select id="getChildTaskIdByParent" resultMap="taskRelatResultMap" parameterType="java.lang.String">
+	    select child_id,child_type from t_task_group where parent_id=#{parentId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getCrimCopInfo"  resultMap="crimCopInfo" parameterType="com.hd.jy.oasm.domain.SearchElement">
+		select A.qh, A.xm, A.sj, A.gyjq, A.fjq,A.jd,B.jh,B.jhxm,B.xjbh,B.xjxm from t_zyrymd A left join t_jczjdx B on A.qh=B.qh
+		<where>
+			<if test="prison != null" >and A.gyjq=#{prison}</if>
+			<if test="crimNo != null" >and A.crim_no=#{crimNo}</if>
+			<if test="crimName != null" >and A.xm like '%${crimName}%'</if>
+			<choose>
+				<when test="copNo != null">
+					<if test='copRange == "all"'>and (B.jh=#{copNo} or B.xjbh=#{copNo})</if>
+					<if test='copRange == "zg"' >and B.jh=#{copNo}</if>
+					<if test='copRange == "xg"' >and B.xjbh=#{copNo}</if>
+				</when >
+			</choose>
+			<choose>
+				<when test="copName != null">
+					<if test='copRange == "all"'>and (B.jhxm like '%${copName}%' or B.xjxm like '%${copName}%')</if>
+					<if test='copRange == "zg"' >and B.jhxm like '%${copName}%'</if>
+					<if test='copRange == "xg"' >and B.xjxm like '%${copName}%'</if>
+				</when >
+			</choose>
+		</where>
+		order by A.qh
+	</select>
+	<insert id="batchAddTaskRelat" parameterType="java.util.List">
+		insert into t_task_group (parent_id,
+		child_type, child_id)
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			<![CDATA[
+			(#{item.parentId,jdbcType=VARCHAR},
+			#{item.childType,jdbcType=VARCHAR},
+			#{item.childId,jdbcType=VARCHAR}
+			)
+			]]>
+		</foreach>
+	</insert>
+	
+	
+	<select id="getChildNullTaskRelat" resultMap="taskRelatResultMap">select * from t_task_group where child_id is null</select>
+	
+	<update id="findChildTaskId" parameterType="java.lang.String">
+		update t_task_group set child_id=(select task_id from t_task
+		<where>
+			crim_no=#{crimNo}
+			<include refid='findChildTaskIdChoose' />
+			and last_modif=(
+			select max(last_modif) from t_task
+			<where>
+				crim_no=#{crimNo}
+				<include refid='findChildTaskIdChoose' />
+			</where>
+			)
+			) where parent_id=#{parentId} and child_type=#{pgType};
+		</where>
+	</update>
+	
+	<sql id='findChildTaskIdChoose'>
+		<choose>
+			<when test='pgType == "DAFX"'>and type = 'fileAnlys'</when >
+			<when test='pgType == "XWGC"'>and (type = 'inAct' or type = 'dyAct' or type = 'mdAct' or type = 'otAct')</when >
+			<when test='pgType == "GTFT"'>and (type = 'inTk' or type = 'dyTk' or type = 'mdTk' or type = 'otTk')</when >
+			<when test='pgType == "JTFT"'>and type = 'inTk2'</when >
+			<when test='pgType == "XLSCL90"'>and type = 'scl90Mt'</when >
+			<when test='pgType == "XLCOPAPI"'>and type = 'copaMt'</when >
+			<when test='pgType == "XLRJ"'>and type = 'inMt'</when >
+			<when test='pgType == "XLCJ"'>and type = 'otMt'</when >
+			<otherwise>and type = #{pgType}</otherwise>
+		</choose>
+	</sql>
+	
+	<insert id="batchAddTask" parameterType="java.util.List">
+
+		insert into t_task (task_id,
+		crim_no, type,
+		basis, describ, deadline,
+		cop1_no, cop2_no, creator,
+		cr_time, last_modif, modifier,
+		status)
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			<![CDATA[
+			(#{item.taskId,jdbcType=VARCHAR},
+			#{item.crimNo,jdbcType=VARCHAR},
+			#{item.type,jdbcType=VARCHAR},
+			#{item.taskBasis,jdbcType=VARCHAR},
+			#{item.taskDescrib,jdbcType=VARCHAR},
+			#{item.deadline,jdbcType=TIMESTAMP},
+			#{item.copNo1,jdbcType=VARCHAR},
+			#{item.copNo2,jdbcType=VARCHAR},
+			#{item.creator,jdbcType=VARCHAR},
+			#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.lastModif,jdbcType=TIMESTAMP},
+			#{item.modifier,jdbcType=VARCHAR},
+			#{item.status,jdbcType=TINYINT})
+			]]>
+		</foreach>
+
+	</insert>
+	<insert id="addTask" parameterType="com.hd.jy.oasm.domain.Task">insert into t_task (task_id,
+		crim_no, type,
+		basis, describ, deadline,
+		cop1_no, cop2_no, creator,
+		cr_time, last_modif, modifier,
+		status)
+		values
+		(#{taskId,jdbcType=VARCHAR},
+		#{crimNo,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{taskBasis,jdbcType=VARCHAR},
+		#{taskDescrib,jdbcType=VARCHAR},
+		#{deadline,jdbcType=TIMESTAMP},
+		#{copNo1,jdbcType=VARCHAR},
+		#{copNo2,jdbcType=VARCHAR},
+		#{creator,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{lastModif,jdbcType=TIMESTAMP},
+		#{modifier,jdbcType=VARCHAR},
+		#{status,jdbcType=TINYINT})</insert>
+	<update id="updateStatus" parameterType="com.hd.jy.oasm.domain.Task">update t_task set
+		status=#{status}, last_modif=#{lastModif}, modifier = #{modifier}
+		where
+		task_id=#{taskId}</update>
+	
+	<select id="currStatus" parameterType="String" resultType="String">select status from t_task where task_id=#{1}</select>
+	<select id="getParentTaskIds" parameterType="String" resultType="String">select parent_id from t_task_group where child_id=#{1}</select>
+	
+	<!-- 根据囚号获取最新的评估报告 -->
+	<select id="getNewReport" resultType="java.lang.String" parameterType="java.lang.String">
+	  <![CDATA[select top 1 task_id from t_task where crim_no=#{crimNo} and status=4 and  type like '%Rep%' ORDER BY deadline desc]]>
+	</select>
+</mapper>

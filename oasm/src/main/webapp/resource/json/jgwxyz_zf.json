@@ -1,0 +1,16 @@
+﻿{
+"children":
+[
+	{ "name": "上学时打架逃课离家出走等", 	"weight": 100 },
+	{ "name": "初犯岁前在25", 	"weight": 110 },
+	{ "name": "离婚或未婚", 	"weight": 100 },
+	{ "name": "团伙犯罪", 	"weight": 130 },
+	{ "name": "小学或初中文化", 	"weight": 80 },
+	{ "name": "自私、拜金", 	"weight": 90 },
+	{ "name": "黑社会性质", 	"weight": 70 },
+	{ "name": "业余爱好不健康", 	"weight": 66 },
+	{ "name": "家庭经济较差", 	"weight": 60 },
+	{ "name": "监禁期间打架", 	"weight": 45 },
+	{ "name": "捕前无业", 	"weight": 30 }
+]
+}

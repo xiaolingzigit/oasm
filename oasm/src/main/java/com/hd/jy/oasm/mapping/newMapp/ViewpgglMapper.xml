@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.newDao.ViewpgglMapper" >
+  <resultMap id="BaseViewpggl" type="com.hd.jy.oasm.domain.newDomain.Viewpggl" >
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="gyjq" property="gyjq" jdbcType="VARCHAR" />
+    <result column="jh" property="jh" jdbcType="VARCHAR" />
+    <result column="jhxm" property="jhxm" jdbcType="VARCHAR" />
+    <result column="xjbh" property="xjbh" jdbcType="VARCHAR" />
+    <result column="xjxm" property="xjxm" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="levl" property="levl" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 业务操作部分 -->
+  <!-- 通用搜索器 -->
+  <sql id="Query">
+       <trim  suffixOverrides="and" >
+       <if test="jh!=null and jh!=''">
+          and jh = #{jh,jdbcType=VARCHAR}
+        </if>
+        <if test="crim_no!=null and crim_no!=''">
+           and crim_no LIKE concat(concat('%',#{crim_no}),'%')
+        </if>
+        <if test="xm!=null and xm!=''">
+           and xm LIKE concat(concat('%',#{xm}),'%')
+        </if>
+        <if test="jhxm!=null and jhxm!=''">
+           and jhxm LIKE concat(concat('%',#{jhxm}),'%')
+        </if>
+        <if test="gyjq!=null and gyjq!=''">
+           and gyjq LIKE concat(concat('%',#{gyjq}),'%')
+        </if>
+        <if test="status!=null and status!=''">
+           and status = #{status,jdbcType=DECIMAL}
+        </if>
+       </trim>
+  </sql>
+  
+  
+  <!-- 入监结构访谈数据视图显示 -->
+  <select id="rjjgftViewpggl" resultMap="BaseViewpggl">
+     SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl
+       FROM v_pggl where type='inTk'
+       <include refid="Query"></include>
+       order by score
+  </select>
+  
+  <!-- 入监行为观察数据视图显示 -->
+  <select id="rjxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
+   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
+      FROM v_pggl where type='inAct'
+        <include refid="Query"></include>
+        order by score
+  </select>
+  
+  <!-- 日常行为观察动态数据视图显示 -->
+  <select id="rcxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
+   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
+      FROM v_pggl where type='dyAct'
+        <include refid="Query"></include>
+        order by score
+  </select>
+  
+  <!-- 中期结构访谈动态视图数据显示 -->
+  <select id="zqjgftViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
+   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
+      FROM v_pggl where type='mdTk'
+        <include refid="Query"></include>
+        order by score
+  </select>
+  
+  <!-- 中期行为观察动态视图数据显示 -->
+  <select id="zqxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
+   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
+      FROM v_pggl where type='mdAct'
+        <include refid="Query"></include>
+        order by score,task_id
+  </select>
+  
+  <!-- 出监访谈动态视图数据显示 -->
+  <select id="cjjgftViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
+   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
+      FROM v_pggl where type='otTk'
+        <include refid="Query"></include>
+        order by score,task_id
+  </select>
+  
+  <!-- 出监行为观察动态视图数据显示 -->
+  <select id="cjxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
+   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
+      FROM v_pggl where type='otAct'
+        <include refid="Query"></include>
+        order by score,task_id
+  </select>
+  
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.newDomain.Viewpggl" >
+    insert into v_pggl (task_id, crim_no, type, 
+      last_modif, status, name, 
+      xm, gyjq, jh, jhxm, 
+      xjbh, xjxm, score, levl
+      )
+    values (#{taskId,jdbcType=VARCHAR}, #{crimNo,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{lastModif,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}, 
+      #{xm,jdbcType=VARCHAR}, #{gyjq,jdbcType=VARCHAR}, #{jh,jdbcType=VARCHAR}, #{jhxm,jdbcType=VARCHAR}, 
+      #{xjbh,jdbcType=VARCHAR}, #{xjxm,jdbcType=VARCHAR}, #{score,jdbcType=DOUBLE}, #{levl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.newDomain.Viewpggl" >
+    insert into v_pggl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="crimNo != null" >
+        crim_no,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="lastModif != null" >
+        last_modif,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="gyjq != null" >
+        gyjq,
+      </if>
+      <if test="jh != null" >
+        jh,
+      </if>
+      <if test="jhxm != null" >
+        jhxm,
+      </if>
+      <if test="xjbh != null" >
+        xjbh,
+      </if>
+      <if test="xjxm != null" >
+        xjxm,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="levl != null" >
+        levl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimNo != null" >
+        #{crimNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModif != null" >
+        #{lastModif,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="gyjq != null" >
+        #{gyjq,jdbcType=VARCHAR},
+      </if>
+      <if test="jh != null" >
+        #{jh,jdbcType=VARCHAR},
+      </if>
+      <if test="jhxm != null" >
+        #{jhxm,jdbcType=VARCHAR},
+      </if>
+      <if test="xjbh != null" >
+        #{xjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="xjxm != null" >
+        #{xjxm,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="levl != null" >
+        #{levl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 根据囚号显示罪犯个人结构访谈 -->
+  <select id="crimInfoGrft" resultMap="BaseViewpggl" parameterType="java.lang.String">
+    <![CDATA[select task_id,crim_no,score,last_modif from v_pggl where crim_no=#{crimNo} and type like '%Tk%' and score is not null]]>
+  </select>
+  
+  <!-- 根据囚号显示罪犯个人行为观察 -->
+  <select id="crimInfoGrgc" resultMap="BaseViewpggl" parameterType="java.lang.String">
+    <![CDATA[select task_id,crim_no,score,last_modif from v_pggl where crim_no=#{crimNo} and type like '%Act%' and score is not null]]>
+  </select>
+</mapper>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.TzyrymdMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.Tzyrymd" >
+    <result column="qh" property="qh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="DATE" />
+    <result column="gyjq" property="gyjq" jdbcType="VARCHAR" />
+    <result column="gyjy" property="gyjy" jdbcType="VARCHAR" />
+    <result column="ftzt" property="ftzt" jdbcType="CHAR" />
+    <result column="xwzt" property="xwzt" jdbcType="CHAR" />
+    <result column="xlzt" property="xlzt" jdbcType="CHAR" />
+    <result column="jd" property="jd" jdbcType="CHAR" />
+    <association property="tjczjdx" javaType="com.hd.jy.oasm.domain.Tjczjdx" resultMap="BaseTjczjdx"></association>
+  </resultMap>
+  
+  <!-- 关联tjczjdx为了找到囚犯绑定的专管警察 -->
+  <resultMap id="BaseTjczjdx" type="com.hd.jy.oasm.domain.Tjczjdx" >
+    <result column="qh" property="qh" jdbcType="NUMERIC" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="jh" property="jh" jdbcType="VARCHAR" />
+    <result column="jhxm" property="jhxm" jdbcType="VARCHAR" />
+    <result column="xjbh" property="xjbh" jdbcType="VARCHAR"/>
+    <result column="xjxm" property="xjxm" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!--  -->
+  
+  <!-- 调用在押人员存储过程 获取囚号-->
+  <select id="useZyyrymdProduce" statementType="CALLABLE" resultMap="BaseResultMap">
+      <![CDATA[
+          { call proc_tjzyxx }
+       ]]>
+  </select>
+  
+  <!-- 根据囚号查出关联的警察d.jd=1 and -->
+  <select id="selectBDJCbyqh" resultMap="BaseResultMap" parameterType="java.lang.Long">
+       select d.qh,d.xm,d.sj,d.gyjq,d.gyjy,j.jhxm,j.jh from t_zyrymd d inner join t_jczjdx j on d.qh=j.qh where  d.qh=#{qh,jdbcType=VARCHAR}
+  </select>
+  
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.Tzyrymd" >
+    insert into t_zyrymd (qh, xm, sj, gyjq, 
+      gyjy, ftzt, xwzt, xlzt, 
+      jd)
+    values (#{qh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{sj,jdbcType=DATE}, #{gyjq,jdbcType=VARCHAR}, 
+      #{gyjy,jdbcType=VARCHAR}, #{ftzt,jdbcType=CHAR}, #{xwzt,jdbcType=CHAR}, #{xlzt,jdbcType=CHAR}, 
+      #{jd,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.Tzyrymd" >
+    insert into t_zyrymd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qh != null" >
+        qh,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="sj != null" >
+        sj,
+      </if>
+      <if test="gyjq != null" >
+        gyjq,
+      </if>
+      <if test="gyjy != null" >
+        gyjy,
+      </if>
+      <if test="ftzt != null" >
+        ftzt,
+      </if>
+      <if test="xwzt != null" >
+        xwzt,
+      </if>
+      <if test="xlzt != null" >
+        xlzt,
+      </if>
+      <if test="jd != null" >
+        jd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qh != null" >
+        #{qh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="sj != null" >
+        #{sj,jdbcType=DATE},
+      </if>
+      <if test="gyjq != null" >
+        #{gyjq,jdbcType=VARCHAR},
+      </if>
+      <if test="gyjy != null" >
+        #{gyjy,jdbcType=VARCHAR},
+      </if>
+      <if test="ftzt != null" >
+        #{ftzt,jdbcType=CHAR},
+      </if>
+      <if test="xwzt != null" >
+        #{xwzt,jdbcType=CHAR},
+      </if>
+      <if test="xlzt != null" >
+        #{xlzt,jdbcType=CHAR},
+      </if>
+      <if test="jd != null" >
+        #{jd,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 更改入监部分状态 -->
+  <update id="updateRjftzt" parameterType="java.lang.Long">
+      update t_zyrymd set ftzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=1
+  </update>
+  
+  <update id="updateGczt" parameterType="java.lang.Long">
+      update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=1
+  </update>
+  
+  <!-- 更改日常部分状态 -->
+  <update id="updateRcgczt" parameterType="java.lang.Long">
+     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=2
+  </update>
+  
+  <!-- 更改中期部分状态 -->
+  <update id="updateZqftzt" parameterType="java.lang.Long">
+     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=3
+  </update>
+  <update id="updateZqGczt" parameterType="java.lang.Long">
+     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=3
+  </update>
+  
+  <!-- 更改出监部分状态 -->
+  <update id="updateCjftzt" parameterType="java.lang.Long">
+     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=4
+  </update>
+  <update id="updateCjgczt" parameterType="java.lang.Long">
+      update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=4
+  </update>
+  
+  <insert id="crimPlaceSaveOrUpdate">
+    <selectKey keyProperty="status" resultType="com.hd.jy.oasm.domain.Tjczjdx" order="BEFORE">
+      select count(*) as status from t_jczjdx where qh = #{qh,jdbcType=NUMERIC}
+    </selectKey>
+    <if test="status==1">
+      update t_jczjdx set qh=#{qh,jdbcType=NUMERIC},xm=#{xm,jdbcType=VARCHAR},jh=#{jh,jdbcType=VARCHAR},
+      jhxm=#{jhxm,jdbcType=VARCHAR},xjbh=#{xjbh,jdbcType=VARCHAR}, xjxm=#{xjxm,jdbcType=VARCHAR} where qh = #{qh,jdbcType=NUMERIC}
+    </if>
+    <if test="status==0">
+       insert into t_jczjdx (qh, xm, jh, jhxm, xjbh,xjxm)
+    values (#{qh,jdbcType=NUMERIC}, #{xm,jdbcType=VARCHAR}, #{jh,jdbcType=VARCHAR}, #{jhxm,jdbcType=VARCHAR}, 
+      #{xjbh,jdbcType=VARCHAR},#{xjxm,jdbcType=VARCHAR})
+    </if>
+  </insert>
+</mapper>

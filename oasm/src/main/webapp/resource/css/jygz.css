@@ -1,0 +1,277 @@
+.zfxx_left{
+	float:left;
+	width:19%;
+	min-height:900px;
+	background:#1c2b36;
+	
+}
+.zfxx_center{
+	float:left;
+	width:53%;
+	margin-left:10px;
+	min-height:500px;
+	background:#fffff5;
+}
+.zfxx_right{
+	float:left;
+	width:27%;
+	min-height:500px;
+
+}
+.zfxx_title{
+	color:#a59501;
+	font-size:25px;
+	letter-spacing:5px;
+	clear:both;
+	
+}
+.divider{
+	size:3px;
+	 width:80%;
+	 color:#34cb34;
+}
+.avatar{
+	width: 100px;
+    height: 130px;
+	margin:5px auto;
+	background: url(../images/criminal.jpg) no-repeat;
+    background-size: contain;
+}
+.zfxx_tb{
+	width:95%;
+	margin:0 auto;
+}
+.zfxx_tb table{
+	width:100%;
+}
+.zfxx_tb table tr{
+	height:20px;
+}
+.zfxx_td01{
+	width:40%;
+	color:#c3c3c3;
+	
+}
+.zfxx_td02{
+	width:60%;
+	color:#fff;
+	
+}
+.zfxx_wxlx{
+	width:100%;
+}
+.zfxx_zs{
+	float:left;
+	width:22%;
+	height:100px;
+	margin:0 auto;
+	color:#fff;
+	background:#8674a6;
+}
+.zfxx_xx{
+	float:left;
+	width:22%;
+	height:100px;
+	margin:0 auto;
+	margin-left:4%;
+	color:#fff;
+	background:#43b5ad;
+}
+.zfxx_tt{
+	float:left;
+	width:22%;
+	height:100px;
+	margin:0 auto;
+	margin-left:4%;
+	color:#fff;
+	background:#578ebe;
+}
+.zfxx_zf{
+	float:left;
+	width:22%;
+	height:100px;
+	margin:0 auto;
+	margin-left:4%;
+	color:#fff;
+	background:#deb948;
+}
+.zfxx_wxqx{
+	width:100%;
+	text-align:right;
+}
+.wxlx_score{
+	font-size:40px;
+}
+.zfsj_tb1{
+	width:98%;
+	margin:0 auto;
+	background:#578ebe;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb1 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb1 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #578ebe;
+}
+.zfsj_tb2{
+	width:98%;
+	margin:0 auto;
+	background:#deb948;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb2 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb2 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #deb948;
+}
+.zfsj_tb3{
+	width:98%;
+	margin:0 auto;
+	background:#43b5ad;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb3 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb3 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #43b5ad;
+}
+.zfsj_tb4{
+	width:98%;
+	margin:0 auto;
+	background:#8674a6;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb4 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb4 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #8674a6;
+}
+.zfsj_tb5{
+	width:98%;
+	margin:0 auto;
+	background:#578ebe;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb5 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb5 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #578ebe;
+}
+.zfsj_tb6{
+	width:98%;
+	margin:0 auto;
+	background:#deb948;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb6 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb6 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #deb948;#deb948;#578ebe;#43b5ad;#8674a6;
+}
+.zfsj_tb7{
+	width:98%;
+	margin:0 auto;
+	background:#43b5ad;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb7 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb7 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #43b5ad;
+}
+.zfsj_tb8{
+	width:98%;
+	margin:0 auto;
+	background:#8674a6;
+	border-radius: 5px;
+	margin-bottom:15px;
+}
+.zfsj_tb8 span{
+	color:#fff;
+	margin-left:5px;
+	font-size:19px;
+}
+.zfsj_tb8 table{
+	width:100%;
+	background:#fff;
+	text-align:center;
+	border-collapse: collapse;
+	border:1px solid #8674a6;
+}
+.zfsj_tr01{
+	font-size:14px;
+}
+.zfsj_tr{
+	border-bottom: 1px dashed #c0c0c0;
+}
+.gzqk_textarea{
+	width:99%;
+	height:150px;
+	margin-top:5px;
+	font-size: 20px;
+}
+.ms_btn{
+background-color: #4CAF50;
+border: 1px solid green;
+color: white;
+padding: 2px 12px;
+}
+.ms_btn:hover{
+    background-color: #3e8e41;
+}

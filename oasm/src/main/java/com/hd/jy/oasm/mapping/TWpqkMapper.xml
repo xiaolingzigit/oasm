@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.TWpqkMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.TWpqk" >
+    <id column="wpid" property="wpid" jdbcType="INTEGER" />
+    <result column="jg" property="jg" jdbcType="INTEGER" />
+    <result column="gd" property="gd" jdbcType="INTEGER" />
+    <result column="zd" property="zd" jdbcType="INTEGER" />
+    <result column="dd" property="dd" jdbcType="INTEGER" />
+    <result column="jq" property="jq" jdbcType="VARCHAR" />
+    <result column="jqrs" property="jqrs" jdbcType="INTEGER" />
+    <result column="sj" property="sj" jdbcType="DATE" />
+  </resultMap>
+  
+  <select id="getDate" resultMap="BaseResultMap" parameterType="java.util.Date" >
+  	select jg, gd, zd, dd, jq, jqrs, sj	from t_wpqk 
+  	<where>
+  		<if test="_parameter != null">
+  			sj =  #{sj,jdbcType=DATE}
+  		</if>
+  	</where>
+  	<![CDATA[order by CHARINDEX (jq,'一监区,二监区,三监区,四监区,五监区,六监区,七监区,八监区,九监区,十监区,十一监区,十二监区,十三监区,十四监区,十五监区')]]>
+  </select>
+  
+  <select id="getTopDate" resultType="java.util.Date">
+  	SELECT top 1 sj from t_wpqk GROUP BY sj
+  </select>
+  
+</mapper>

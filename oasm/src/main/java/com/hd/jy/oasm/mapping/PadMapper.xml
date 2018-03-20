@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.PadMapper">
+	<resultMap id="PoliceInfo" type="com.hd.jy.oasm.model.pad.padmodel.PoliceInfo" >
+		<id column="jh" property="pnumber" jdbcType="VARCHAR" />
+		<result column="xm" property="pname" jdbcType="VARCHAR" />
+		<result column="1" property="sex" jdbcType="VARCHAR" />
+		<result column="2" property="age" jdbcType="VARCHAR" />
+		<result column="jq" property="jqu" jdbcType="VARCHAR" />
+		<result column="ma" property="pswd" jdbcType="VARCHAR" />
+		<result column="3" property="department" jdbcType="VARCHAR" />
+		<result column="4" property="birthday" jdbcType="VARCHAR" />
+		<result column="5" property="telphone" jdbcType="VARCHAR" />
+		<result column="6" property="email" jdbcType="VARCHAR" />
+		<result column="7" property="address" jdbcType="VARCHAR" />
+		<result column="8" property="comment" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="CriminalInfo" type="com.hd.jy.oasm.model.pad.padmodel.CriminalInfo" >
+		<id column="qh" property="cnumber" jdbcType="VARCHAR" />
+		<result column="xm" property="cname" jdbcType="VARCHAR" />
+		<result column="1" property="sex" jdbcType="VARCHAR" />
+		<result column="2" property="age" jdbcType="VARCHAR" />
+		<result column="gyjq" property="jqu" jdbcType="VARCHAR" />
+		<result column="jh" property="zgjc" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getCrimInfo" resultMap="CriminalInfo" parameterType="String">
+		
+		select A.qh,A.xm,A.gyjq,B.jh from t_zyrymd A left join t_jczjdx B on A.qh=B.qh
+		
+	</select>
+	<select id="getCopInfo" resultMap="PoliceInfo" parameterType="String">select * from jyxx</select>
+
+</mapper>

@@ -1,0 +1,86 @@
+.cs-yngb-box .cs-tb-tr {
+    width: 100px;
+}
+
+.cs-yngb-box .cs-tb-tr-1,
+.cs-yngb-box .cs-tb-tr-2 {
+    width: 80px;
+}
+
+.cs-yngb-box .cs-b-o-2 {
+    background: #36acfd;
+    text-align: right;
+}
+
+.cs-yngb-box .cs-b-o-2 {
+    display: none;
+}
+
+.cs-yngb-box .cs-dt-1 {
+    padding-right: 230px;
+}
+
+.cs-yngb-box .cs-dt-2 {
+    padding-right: 129px;
+}
+
+.cs-yngb-box .cs-dt-3 {
+    padding-right: 30px;
+}
+
+.cs-yngb-box .cs-tg-it-box li {
+    float: left;
+    background: #f0f1f2;
+    height: 26px;
+    line-height: 26px;
+}
+
+.cs-yngb-box ul .cs-tg-it-1 {
+    width: 162px;
+    background: #78b9e9;
+    color: white;
+    text-align: center;
+}
+
+.cs-tbb-tb-box {
+    margin: 2px 0;
+}
+
+.cs-yngb-box ul .cs-tg-it-2 {
+    width: 672px;
+}
+
+.cs-yngb-box ul .cs-tg-it-2 input {
+    border: 0;
+    height: 26px;
+    background: #ffffff;
+    width: 100%;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.cs-yngb-box .cs-yi-fs .cs-queren-jainl {
+    text-align: center;
+    background: #78b9e9;
+    margin-top: 9px;
+    margin-left: 161px;
+    width: 176px;
+}
+
+.cs-yngb-box .cs-xx-yy .cs-tb-tr {
+    width: 142px;
+}
+
+.cs-ynbl-it-b-1 {
+    background: #d7dcdf;
+    padding: 8px;
+    width: 850px;
+}
+
+.cs-czgz-tb {
+    margin-top: 20px;
+}
+
+.cs-czgz-tb tr {
+    text-align: center;
+}

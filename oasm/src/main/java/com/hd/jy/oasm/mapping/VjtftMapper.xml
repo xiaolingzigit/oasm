@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.VjtftMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.Vjtft" >
+    <result column="jtftid" property="jtftid" jdbcType="VARCHAR" />
+    <result column="qh" property="qh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="TIMESTAMP" />
+    <result column="jg" property="jg" jdbcType="VARCHAR" />
+    <result column="zfs" property="zfs" jdbcType="INTEGER" />
+    <result column="zt" property="zt" jdbcType="INTEGER" />
+    <result column="gyjq" property="gyjq" jdbcType="VARCHAR" />
+    <result column="fjq" property="fjq" jdbcType="VARCHAR" />
+    <result column="gyjy" property="gyjy" jdbcType="VARCHAR" />
+    <result column="jh" property="jh" jdbcType="VARCHAR" />
+    <result column="jhxm" property="jhxm" jdbcType="VARCHAR" />
+    <result column="xjbh" property="xjbh" jdbcType="VARCHAR" />
+    <result column="xjxm" property="xjxm" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="JtftResultMap" type="com.hd.jy.oasm.domain.Sjjtft" >
+    <id column="jtftid" property="jtftid" jdbcType="VARCHAR" />
+    <result column="qh" property="qh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="TIMESTAMP" />
+    <result column="jg" property="jg" jdbcType="VARCHAR" />
+    <result column="zfs" property="zfs" jdbcType="INTEGER" />
+    <result column="zt" property="zt" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 通用搜索器 -->
+  <sql id="Query">
+    <where>
+       <trim prefix="(" suffix=")" suffixOverrides="and" >
+        <if test="qh!=null">
+            qh LIKE concat(concat('%',#{qh}),'%') and
+        </if>
+        <if test="xm!=null">
+            xm LIKE concat(concat('%',#{xm}),'%') and
+        </if>
+        <if test="jhxm!=null">
+            jhxm LIKE concat(concat('%',#{jhxm}),'%') and
+        </if>
+        <if test="gyjq!=null">
+            gyjq LIKE concat(concat('%',#{gyjq}),'%') and
+        </if>
+        <if test="zt!=null">
+            zt = #{zt}
+        </if>
+       </trim>
+    </where>
+  </sql>
+  
+  
+  <!-- 查询集体访谈列表 ，查询-->
+  <select id="getJtft" resultMap="BaseResultMap" parameterType="com.hd.jy.oasm.domain.Vjtft">
+  	select jtftid,qh,xm,sj,jg,zfs,zt,gyjq,fjq,gyjy,jh,jhxm,xjbh,xjxm from v_jtft 
+  	<include refid="Query"></include>
+  	order by zt asc,zfs desc
+  </select>
+  
+  <!-- 添加集体访谈任务 -->
+  <select id="addJtft" statementType="CALLABLE">
+  	  <![CDATA[ {call  p_jtft}  ]]>  
+  </select>
+  
+  <!-- 保存集体访谈数据 -->
+  <update id="saveJtft" parameterType="com.hd.jy.oasm.domain.Sjjtft" >
+    update sj_jtft
+    set qh = #{qh,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      sj = #{sj,jdbcType=TIMESTAMP},
+      jg = #{jg,jdbcType=VARCHAR},
+      zfs = #{zfs,jdbcType=INTEGER},
+      zt = #{zt,jdbcType=INTEGER}
+    where jtftid = #{jtftid,jdbcType=VARCHAR}
+  </update>
+	
+  <!-- 查询个人访谈数据 -->
+  <select id="getGrjtft" resultMap="JtftResultMap" parameterType="java.lang.String" >
+    select jtftid, qh, xm, sj, jg, zfs, zt
+    from sj_jtft
+    where jtftid = #{jtftid,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

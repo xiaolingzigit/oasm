@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.DafxpgbgViewMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.DafxpgbgView" >
+    <result column="qh" property="qh" jdbcType="NUMERIC" />
+    <result column="zsxm" property="zsxm" jdbcType="VARCHAR" />
+    <result column="csrq" property="csrq" jdbcType="VARCHAR" />
+    <result column="nl" property="nl" jdbcType="VARCHAR" />
+    <result column="xb" property="xb" jdbcType="VARCHAR" />
+    <result column="gj" property="gj" jdbcType="VARCHAR" />
+    <result column="mz" property="mz" jdbcType="VARCHAR" />
+    <result column="bqzw" property="bqzw" jdbcType="VARCHAR" />
+    <result column="bqwhcd" property="bqwhcd" jdbcType="VARCHAR" />
+    <result column="xq" property="xq" jdbcType="VARCHAR" />
+    <result column="ypxq" property="ypxq" jdbcType="VARCHAR" />
+    <result column="fylx" property="fylx" jdbcType="VARCHAR" />
+    <result column="lbc" property="lbc" jdbcType="VARCHAR" />
+    <result column="fzss" property="fzss" jdbcType="VARCHAR" />
+    <result column="fzscnf" property="fzscnf" jdbcType="VARCHAR" />
+    <result column="ypzm" property="ypzm" jdbcType="VARCHAR" />
+    <result column="dafxfz" property="dafxfz" jdbcType="INTEGER" />
+    <result column="bgscsj" property="bgscsj" jdbcType="DATE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.DafxpgbgView" >
+    insert into v_dafxpgbg (qh, zsxm, csrq, 
+      nl, xb, gj, mz, 
+      bqzw, bqwhcd, xq, ypxq, 
+      fylx, lbc, fzss, fzscnf, 
+      ypzm, dafxfz, bgscsj)
+    values (#{qh,jdbcType=NUMERIC}, #{zsxm,jdbcType=VARCHAR}, #{csrq,jdbcType=VARCHAR}, 
+      #{nl,jdbcType=VARCHAR}, #{xb,jdbcType=VARCHAR}, #{gj,jdbcType=VARCHAR}, #{mz,jdbcType=VARCHAR}, 
+      #{bqzw,jdbcType=VARCHAR}, #{bqwhcd,jdbcType=VARCHAR}, #{xq,jdbcType=VARCHAR}, #{ypxq,jdbcType=VARCHAR}, 
+      #{fylx,jdbcType=VARCHAR}, #{lbc,jdbcType=VARCHAR}, #{fzss,jdbcType=VARCHAR}, #{fzscnf,jdbcType=VARCHAR}, 
+      #{ypzm,jdbcType=VARCHAR}, #{dafxfz,jdbcType=INTEGER}, #{bgscsj,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.DafxpgbgView" >
+    insert into v_dafxpgbg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qh != null" >
+        qh,
+      </if>
+      <if test="zsxm != null" >
+        zsxm,
+      </if>
+      <if test="csrq != null" >
+        csrq,
+      </if>
+      <if test="nl != null" >
+        nl,
+      </if>
+      <if test="xb != null" >
+        xb,
+      </if>
+      <if test="gj != null" >
+        gj,
+      </if>
+      <if test="mz != null" >
+        mz,
+      </if>
+      <if test="bqzw != null" >
+        bqzw,
+      </if>
+      <if test="bqwhcd != null" >
+        bqwhcd,
+      </if>
+      <if test="xq != null" >
+        xq,
+      </if>
+      <if test="ypxq != null" >
+        ypxq,
+      </if>
+      <if test="fylx != null" >
+        fylx,
+      </if>
+      <if test="lbc != null" >
+        lbc,
+      </if>
+      <if test="fzss != null" >
+        fzss,
+      </if>
+      <if test="fzscnf != null" >
+        fzscnf,
+      </if>
+      <if test="ypzm != null" >
+        ypzm,
+      </if>
+      <if test="dafxfz != null" >
+        dafxfz,
+      </if>
+      <if test="bgscsj != null" >
+        bgscsj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qh != null" >
+        #{qh,jdbcType=NUMERIC},
+      </if>
+      <if test="zsxm != null" >
+        #{zsxm,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null" >
+        #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="nl != null" >
+        #{nl,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="gj != null" >
+        #{gj,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null" >
+        #{mz,jdbcType=VARCHAR},
+      </if>
+      <if test="bqzw != null" >
+        #{bqzw,jdbcType=VARCHAR},
+      </if>
+      <if test="bqwhcd != null" >
+        #{bqwhcd,jdbcType=VARCHAR},
+      </if>
+      <if test="xq != null" >
+        #{xq,jdbcType=VARCHAR},
+      </if>
+      <if test="ypxq != null" >
+        #{ypxq,jdbcType=VARCHAR},
+      </if>
+      <if test="fylx != null" >
+        #{fylx,jdbcType=VARCHAR},
+      </if>
+      <if test="lbc != null" >
+        #{lbc,jdbcType=VARCHAR},
+      </if>
+      <if test="fzss != null" >
+        #{fzss,jdbcType=VARCHAR},
+      </if>
+      <if test="fzscnf != null" >
+        #{fzscnf,jdbcType=VARCHAR},
+      </if>
+      <if test="ypzm != null" >
+        #{ypzm,jdbcType=VARCHAR},
+      </if>
+      <if test="dafxfz != null" >
+        #{dafxfz,jdbcType=INTEGER},
+      </if>
+      <if test="bgscsj != null" >
+        #{bgscsj,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

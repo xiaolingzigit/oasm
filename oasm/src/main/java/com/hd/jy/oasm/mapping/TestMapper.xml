@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.TestMapper">
+	<resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.TestNote" >
+		<id column="task_id" property="taskId" jdbcType="VARCHAR" />
+		<result column="score" property="score" jdbcType="DOUBLE" />
+		<result column="levl" property="levl" jdbcType="VARCHAR" />
+		<result column="answer" property="answer" jdbcType="LONGVARCHAR" />
+		<result column="result" property="result" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	
+	<!-- 任务详情部分 -->
+    <resultMap id="BaseViewrwxq" type="com.hd.jy.oasm.domain.Viewrwxq" >
+      <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+      <result column="child_id" property="childId" jdbcType="VARCHAR" />
+      <result column="child_type" property="type" jdbcType="VARCHAR" />
+      <result column="name" property="name" jdbcType="VARCHAR" />
+      <result column="score" property="score" jdbcType="DOUBLE" />
+      <result column="levl" property="levl" jdbcType="VARCHAR" />
+      <result column="status" property="status" jdbcType="TINYINT" />
+	  <result column="answer" property="answer" jdbcType="LONGVARCHAR" />
+      <result column="result" property="result" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <!-- 危险程度统计部分 -->
+    <resultMap id="BaseBzpg" type="com.hd.jy.oasm.domain.Bzpg" >
+      <id column="wxdjbm" property="wxdjbm" jdbcType="INTEGER" />
+      <result column="wxdj" property="wxdj" jdbcType="VARCHAR" />
+      <result column="zdf" property="zdf" jdbcType="INTEGER" />
+      <result column="zgf" property="zgf" jdbcType="INTEGER" />
+      <result column="lx" property="lx" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!-- 评估报告部分 -->
+   <resultMap id="BaseTevalReport" type="com.hd.jy.oasm.domain.TevalReport" >
+      <id column="task_id" property="taskId" jdbcType="VARCHAR" />
+      <result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+      <result column="score" property="score" jdbcType="DOUBLE" />
+      <result column="levl" property="levl" jdbcType="VARCHAR" />
+      <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+      <result column="report" property="report" jdbcType="VARCHAR" />
+   </resultMap>
+   
+   <!-- 危险类型部分 -->
+   <resultMap id="BaseBGwxlx" type="com.hd.jy.oasm.domain.BGwxlx" >
+     <id column="RWID" property="rwid" jdbcType="VARCHAR" />
+     <id column="WXLX" property="wxlx" jdbcType="VARCHAR" />
+     <result column="FS" property="fs" jdbcType="NUMERIC" />
+     <result column="DJ" property="dj" jdbcType="VARCHAR" />
+     <result column="BZ" property="bz" jdbcType="VARCHAR" />
+   </resultMap>
+   
+   <!-- 重构结构访谈答题因子部分 -->
+   <resultMap id="BaseBGgtft" type="com.hd.jy.oasm.domain.BGgtft" >
+    <id column="RWID" property="rwid" jdbcType="VARCHAR" />
+    <id column="WD" property="wd" jdbcType="VARCHAR" />
+    <id column="YZ" property="yz" jdbcType="VARCHAR" />
+    <result column="QH" property="qh" jdbcType="VARCHAR" />
+    <result column="FS" property="fs" jdbcType="NUMERIC" />
+  </resultMap>
+  
+  <!-- 重构行为观察答题因子部分 -->
+  <resultMap id="BaseBGxwgc" type="com.hd.jy.oasm.domain.BGxwgc" extends="BaseBGgtft" ></resultMap>
+  
+  <!-- 重构档案分析匹配因子部分 -->
+  <resultMap id="BaseBGjcxxpg" type="com.hd.jy.oasm.domain.BGjcxxpg" extends="BaseBGgtft"></resultMap>
+    
+    <!-- 通过任务编号获取危险等级 -->
+    <select id="evalReportCount" resultMap="BaseTevalReport" parameterType="java.lang.String">
+       select task_id,crim_no,score,levl,cr_time,report from t_eval_report where task_id =#{taskId,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过基础档案分析的子任务编号获取答题内容 -->
+    <select id="getAllJcxxpg" resultMap="BaseBGjcxxpg" parameterType="java.lang.String">
+       select RWID,QH,WD,YZ,FS from BG_JCXXPG where RWID=#{rwid,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过个体访谈任务编号获取个体访谈的答题内容 -->
+    <select id="getAllGtft" resultMap="BaseBGgtft" parameterType="java.lang.String">
+       select RWID,QH,WD,YZ,FS from BG_GTFT where RWID=#{rwid,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过行为观察任务编号获取行为观察答题内容 -->
+    <select id="getAllXwgc" resultMap="BaseBGxwgc" parameterType="java.lang.String">
+       select RWID,QH,WD,YZ,FS from BG_XWGC  where RWID=#{rwid,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过分数和类型获取危险等级-->
+    <select id="getWxdj" resultType="java.lang.String">
+       <![CDATA[select wxdj from BZ_PG where zdf<=#{fs} and #{fs}<zgf and lx=#{lx}]]>
+    </select>
+    
+    <!-- 通过父类任务获取子类任务状态getChildrenStatus -->
+    <select id="getChildrenStatus" resultMap="BaseViewrwxq" parameterType="java.lang.String">
+       select child_id,child_type,status  from v_rwxq where parent_id=#{parentId,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 保存结构访谈答题记录 -->
+    <insert id="saveGtfts" parameterType="com.hd.jy.oasm.domain.BGgtft" >
+    insert into BG_GTFT (RWID, WD, YZ, 
+      QH, FS)
+    values (#{rwid,jdbcType=VARCHAR}, #{wd,jdbcType=VARCHAR}, #{yz,jdbcType=VARCHAR}, 
+      #{qh,jdbcType=VARCHAR}, #{fs,jdbcType=NUMERIC})
+    </insert>
+  
+    <!-- 保存行为观察答题记录 -->
+    <insert id="saveXwgcs" parameterType="com.hd.jy.oasm.domain.BGxwgc" >
+    insert into BG_XWGC (RWID, WD, YZ, 
+      QH, FS)
+    values (#{rwid,jdbcType=VARCHAR}, #{wd,jdbcType=VARCHAR}, #{yz,jdbcType=VARCHAR}, 
+      #{qh,jdbcType=VARCHAR}, #{fs,jdbcType=NUMERIC})
+    </insert>
+    
+    <!-- 保存基础档案分析答题记录 -->
+    <insert id="saveJcdafxs" parameterType="com.hd.jy.oasm.domain.BGjcxxpg" >
+    insert into BG_JCXXPG (RWID, WD, YZ, 
+      QH, FS)
+    values (#{rwid,jdbcType=VARCHAR}, #{wd,jdbcType=VARCHAR}, #{yz,jdbcType=VARCHAR}, 
+      #{qh,jdbcType=VARCHAR}, #{fs,jdbcType=VARCHAR})
+    </insert>
+    
+	<!-- 保存（插入或更新记录） -->
+	<insert id="saveNote" parameterType="com.hd.jy.oasm.domain.TestNote">
+		<selectKey keyProperty="dbStatus"
+		resultType="com.hd.jy.oasm.domain.TestNote" order="BEFORE">select count(*) as dbStatus from t_test_note where task_id = #{taskId}</selectKey>
+		<choose>
+			<when test="dbStatus != 0">update t_test_note set answer = #{answer}, score =
+				#{score}, levl = #{levl}
+				<if test="result != null" >, result=#{result} </if>
+				 where task_id = #{taskId}
+				</when>
+			<otherwise>
+				insert into t_test_note
+				<trim prefix="(" suffix=")" suffixOverrides="," >
+					<if test="taskId != null" >task_id,</if>
+					<if test="score != null" >score,</if>
+					<if test="levl != null" >levl,</if>
+					<if test="answer != null" >answer,</if>
+					<if test="result != null" >result,</if>
+				</trim>
+				<trim prefix="values (" suffix=")" suffixOverrides="," >
+					<if test="taskId != null" >#{taskId,jdbcType=VARCHAR},</if>
+					<if test="score != null" >#{score,jdbcType=DOUBLE},</if>
+					<if test="levl != null" >#{levl,jdbcType=VARCHAR},</if>
+					<if test="answer != null" >#{answer,jdbcType=LONGVARCHAR},</if>
+					<if test="result != null" >#{result,jdbcType=LONGVARCHAR},</if>
+				</trim>
+			</otherwise>
+		</choose>
+	</insert>
+	<!-- 根据任务编号获取答案 -->
+	<select id="getNote" resultType="com.hd.jy.oasm.domain.TestNote" parameterType="java.lang.String">select task_id taskId,answer,score,levl,result from t_test_note where task_id=#{taskId,jdbcType=VARCHAR}</select>
+	
+	<!-- 添加评估报告，方便用于评估报告后续工作 -->
+	<insert id="addEvalReport" parameterType="com.hd.jy.oasm.domain.TevalReport" >
+    insert into t_eval_report (task_id, crim_no, score, 
+      levl, cr_time, report
+      )
+    values (#{taskId,jdbcType=VARCHAR}, #{crimNo,jdbcType=VARCHAR}, #{score,jdbcType=DOUBLE}, 
+      #{levl,jdbcType=VARCHAR}, #{crTime,jdbcType=TIMESTAMP}, #{report,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="addWxlxReport" parameterType="com.hd.jy.oasm.domain.BGwxlx">
+     insert into BG_WXLX (RWID, WXLX, FS, 
+      DJ, BZ)
+    values (#{rwid,jdbcType=VARCHAR}, #{wxlx,jdbcType=VARCHAR}, #{fs,jdbcType=NUMERIC}, 
+      #{dj,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="getWxlxReport" resultMap="BaseBGwxlx" parameterType="java.lang.String">
+     select RWID,WXLX,FS,DJ,BZ from BG_WXLX where RWID = #{rwid,jdbcType=VARCHAR}
+  </select>
+  <!-- 保存危险性评估分析結果 -->
+  <update id="saveWxxpgFs" parameterType="java.lang.String">
+     update t_eval_report set report=#{1} where RWID=#{0}
+  </update>
+  
+  <!-- 根据罪犯囚号显示已有分数的评估报告 -->
+  <select id="crimInfoReport" resultMap="BaseTevalReport" parameterType="java.lang.String">
+    select task_id,crim_no,cr_time,score,levl from t_eval_report where crim_no=#{crimNo} order by cr_time asc
+  </select>
+</mapper>

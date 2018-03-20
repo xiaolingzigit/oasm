@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.ZCYCYQPCMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.ZCYCYQPC" >
+    <result column="GUID" property="guid" jdbcType="VARCHAR" />
+    <result column="YQZTBH" property="yqztbh" jdbcType="VARCHAR" />
+    <result column="YQZTMC" property="yqztmc" jdbcType="VARCHAR" />
+    <result column="FSSJ" property="fssj" jdbcType="DATE" />
+    <result column="ZLJB" property="zljb" jdbcType="VARCHAR" />
+    <result column="ZLMC" property="zlmc" jdbcType="VARCHAR" />
+    <result column="YQJB" property="yqjb" jdbcType="CHAR" />
+    <result column="SFCZ" property="sfcz" jdbcType="VARCHAR" />
+    <result column="GJZLB" property="gjzlb" jdbcType="VARCHAR" />
+    <result column="GJZMC" property="gjzmc" jdbcType="VARCHAR" />
+    <result column="GLYQBS" property="glyqbs" jdbcType="CHAR" />
+    <result column="GLYQ_OID" property="glyqOid" jdbcType="VARCHAR" />
+    <result column="SJJBS" property="sjjbs" jdbcType="CHAR" />
+    <result column="SJJSM" property="sjjsm" jdbcType="VARCHAR" />
+    <result column="YQLX" property="yqlx" jdbcType="CHAR" />
+    <result column="XZYQBS" property="xzyqbs" jdbcType="CHAR" />
+    <result column="XZYQ_OID" property="xzyqOid" jdbcType="VARCHAR" />
+    <result column="GJXM" property="gjxm" jdbcType="VARCHAR" />
+    <result column="JQMC" property="jqmc" jdbcType="VARCHAR" />
+    <result column="FLAG" property="flag" jdbcType="CHAR" />
+    <result column="NEW_FLAG" property="newFlag" jdbcType="CHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="XGSJ" property="xgsj" jdbcType="TIMESTAMP" />
+    <result column="SBSJ" property="sbsj" jdbcType="TIMESTAMP" />
+    <result column="LYDWBM" property="lydwbm" jdbcType="CHAR" />
+    <result column="JCZT" property="jczt" jdbcType="CHAR" />
+    <result column="YQMS" property="yqms" jdbcType="LONGVARCHAR" />
+    <result column="YQFX" property="yqfx" jdbcType="LONGVARCHAR" />
+    <result column="CZQK" property="czqk" jdbcType="LONGVARCHAR" />
+    <result column="CZXG" property="czxg" jdbcType="LONGVARCHAR" />
+    <result column="GLYQSM" property="glyqsm" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <!-- 根据囚号查询他的所有异常狱情 -->
+  <select id="selectYCYQ" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select guid,yqztbh,fssj,zljb,sjjsm,yqms,yqfx from  zc_ycyqpc where yqztbh=#{yqztbh,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.ZCYCYQPC" >
+    insert into ZC_YCYQPC (GUID, YQZTBH, YQZTMC, 
+      FSSJ, ZLJB, ZLMC, YQJB, 
+      SFCZ, GJZLB, GJZMC, 
+      GLYQBS, GLYQ_OID, SJJBS, SJJSM, 
+      YQLX, XZYQBS, XZYQ_OID, GJXM, 
+      JQMC, FLAG, NEW_FLAG, CJSJ, 
+      XGSJ, SBSJ, LYDWBM, 
+      JCZT, YQMS, YQFX, 
+      CZQK, CZXG, GLYQSM
+      )
+    values (#{guid,jdbcType=VARCHAR}, #{yqztbh,jdbcType=VARCHAR}, #{yqztmc,jdbcType=VARCHAR}, 
+      #{fssj,jdbcType=DATE}, #{zljb,jdbcType=VARCHAR}, #{zlmc,jdbcType=VARCHAR}, #{yqjb,jdbcType=CHAR}, 
+      #{sfcz,jdbcType=VARCHAR}, #{gjzlb,jdbcType=VARCHAR}, #{gjzmc,jdbcType=VARCHAR}, 
+      #{glyqbs,jdbcType=CHAR}, #{glyqOid,jdbcType=VARCHAR}, #{sjjbs,jdbcType=CHAR}, #{sjjsm,jdbcType=VARCHAR}, 
+      #{yqlx,jdbcType=CHAR}, #{xzyqbs,jdbcType=CHAR}, #{xzyqOid,jdbcType=VARCHAR}, #{gjxm,jdbcType=VARCHAR}, 
+      #{jqmc,jdbcType=VARCHAR}, #{flag,jdbcType=CHAR}, #{newFlag,jdbcType=CHAR}, #{cjsj,jdbcType=TIMESTAMP}, 
+      #{xgsj,jdbcType=TIMESTAMP}, #{sbsj,jdbcType=TIMESTAMP}, #{lydwbm,jdbcType=CHAR}, 
+      #{jczt,jdbcType=CHAR}, #{yqms,jdbcType=LONGVARCHAR}, #{yqfx,jdbcType=LONGVARCHAR}, 
+      #{czqk,jdbcType=LONGVARCHAR}, #{czxg,jdbcType=LONGVARCHAR}, #{glyqsm,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.ZCYCYQPC" >
+    insert into ZC_YCYQPC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        GUID,
+      </if>
+      <if test="yqztbh != null" >
+        YQZTBH,
+      </if>
+      <if test="yqztmc != null" >
+        YQZTMC,
+      </if>
+      <if test="fssj != null" >
+        FSSJ,
+      </if>
+      <if test="zljb != null" >
+        ZLJB,
+      </if>
+      <if test="zlmc != null" >
+        ZLMC,
+      </if>
+      <if test="yqjb != null" >
+        YQJB,
+      </if>
+      <if test="sfcz != null" >
+        SFCZ,
+      </if>
+      <if test="gjzlb != null" >
+        GJZLB,
+      </if>
+      <if test="gjzmc != null" >
+        GJZMC,
+      </if>
+      <if test="glyqbs != null" >
+        GLYQBS,
+      </if>
+      <if test="glyqOid != null" >
+        GLYQ_OID,
+      </if>
+      <if test="sjjbs != null" >
+        SJJBS,
+      </if>
+      <if test="sjjsm != null" >
+        SJJSM,
+      </if>
+      <if test="yqlx != null" >
+        YQLX,
+      </if>
+      <if test="xzyqbs != null" >
+        XZYQBS,
+      </if>
+      <if test="xzyqOid != null" >
+        XZYQ_OID,
+      </if>
+      <if test="gjxm != null" >
+        GJXM,
+      </if>
+      <if test="jqmc != null" >
+        JQMC,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="newFlag != null" >
+        NEW_FLAG,
+      </if>
+      <if test="cjsj != null" >
+        CJSJ,
+      </if>
+      <if test="xgsj != null" >
+        XGSJ,
+      </if>
+      <if test="sbsj != null" >
+        SBSJ,
+      </if>
+      <if test="lydwbm != null" >
+        LYDWBM,
+      </if>
+      <if test="jczt != null" >
+        JCZT,
+      </if>
+      <if test="yqms != null" >
+        YQMS,
+      </if>
+      <if test="yqfx != null" >
+        YQFX,
+      </if>
+      <if test="czqk != null" >
+        CZQK,
+      </if>
+      <if test="czxg != null" >
+        CZXG,
+      </if>
+      <if test="glyqsm != null" >
+        GLYQSM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guid != null" >
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="yqztbh != null" >
+        #{yqztbh,jdbcType=VARCHAR},
+      </if>
+      <if test="yqztmc != null" >
+        #{yqztmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fssj != null" >
+        #{fssj,jdbcType=DATE},
+      </if>
+      <if test="zljb != null" >
+        #{zljb,jdbcType=VARCHAR},
+      </if>
+      <if test="zlmc != null" >
+        #{zlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="yqjb != null" >
+        #{yqjb,jdbcType=CHAR},
+      </if>
+      <if test="sfcz != null" >
+        #{sfcz,jdbcType=VARCHAR},
+      </if>
+      <if test="gjzlb != null" >
+        #{gjzlb,jdbcType=VARCHAR},
+      </if>
+      <if test="gjzmc != null" >
+        #{gjzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="glyqbs != null" >
+        #{glyqbs,jdbcType=CHAR},
+      </if>
+      <if test="glyqOid != null" >
+        #{glyqOid,jdbcType=VARCHAR},
+      </if>
+      <if test="sjjbs != null" >
+        #{sjjbs,jdbcType=CHAR},
+      </if>
+      <if test="sjjsm != null" >
+        #{sjjsm,jdbcType=VARCHAR},
+      </if>
+      <if test="yqlx != null" >
+        #{yqlx,jdbcType=CHAR},
+      </if>
+      <if test="xzyqbs != null" >
+        #{xzyqbs,jdbcType=CHAR},
+      </if>
+      <if test="xzyqOid != null" >
+        #{xzyqOid,jdbcType=VARCHAR},
+      </if>
+      <if test="gjxm != null" >
+        #{gjxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jqmc != null" >
+        #{jqmc,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=CHAR},
+      </if>
+      <if test="newFlag != null" >
+        #{newFlag,jdbcType=CHAR},
+      </if>
+      <if test="cjsj != null" >
+        #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xgsj != null" >
+        #{xgsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sbsj != null" >
+        #{sbsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lydwbm != null" >
+        #{lydwbm,jdbcType=CHAR},
+      </if>
+      <if test="jczt != null" >
+        #{jczt,jdbcType=CHAR},
+      </if>
+      <if test="yqms != null" >
+        #{yqms,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yqfx != null" >
+        #{yqfx,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="czqk != null" >
+        #{czqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="czxg != null" >
+        #{czxg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="glyqsm != null" >
+        #{glyqsm,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

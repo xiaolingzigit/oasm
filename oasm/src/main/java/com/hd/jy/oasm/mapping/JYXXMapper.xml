@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.JYXXMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.JYXX" >
+    <id column="jh" property="jh" jdbcType="VARCHAR" />
+    <result column="ma" property="ma" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="zw" property="zw" jdbcType="INTEGER" />
+    <result column="cjsj" property="cjsj" jdbcType="DATE" />
+    <result column="scdlsj" property="scdlsj" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="jq" property="jq" jdbcType="VARCHAR" />
+    <result column="xjq" property="xjq" jdbcType="VARCHAR" />
+    <result column="xb" property="xb" jdbcType="VARCHAR" />
+    <result column="sr" property="sr" jdbcType="DATE" />
+    <result column="bmh" property="bmh" jdbcType="VARCHAR" />
+    <result column="dz" property="dz" jdbcType="VARCHAR" />
+    <result column="dh" property="dh" jdbcType="VARCHAR" />
+    <result column="dzyj" property="dzyj" jdbcType="VARCHAR" />
+    <result column="bz" property="bz" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="INTEGER" />
+    <association property="groupMan" javaType="com.hd.jy.oasm.domain.GroupMan" resultMap="GroupManResultMap"></association>
+    <association property="tjczjdx" javaType="com.hd.jy.oasm.domain.Tjczjdx" resultMap="BaseTjczjdx"></association>
+  </resultMap>
+  <!-- 集成组员角色的表 -->
+  <resultMap id="GroupManResultMap" type="com.hd.jy.oasm.domain.GroupMan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmname" property="gmname" jdbcType="VARCHAR" />
+    <result column="states" property="states" jdbcType="INTEGER" />
+    <result column="zrid" property="zrid" jdbcType="INTEGER" />
+  </resultMap>
+  
+   <!-- 关联tjczjdx为了找到囚犯绑定的专管警察 -->
+  <resultMap id="BaseTjczjdx" type="com.hd.jy.oasm.domain.Tjczjdx" >
+    <result column="qh" property="qh" jdbcType="NUMERIC" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="jh" property="jh" jdbcType="VARCHAR" />
+    <result column="jhxm" property="jhxm" jdbcType="VARCHAR" />
+    <result column="xjbh" property="xjbh" jdbcType="VARCHAR"/>
+    <result column="xjxm" property="xjxm" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    jh, ma, xm, zw, cjsj, scdlsj, status, jq, xjq
+  </sql>
+  
+  <!-- 警员信息搜索器 -->
+  <sql id="JyInfoQuery">
+    <trim suffixOverrides="and">
+       <if test="jh!=null">
+        and jh=#{jh}
+       </if>
+       <if test="xm!=null">
+        and xm=#{xm}
+       </if>
+       <if test="jq!=null">
+        and jq=#{jq}
+       </if>
+    </trim>
+  </sql>
+  
+  <!-- 根据职务名称查询是否有该职务，如果没有则提示先添加职务后导入 -->
+  <select id="checkZW" resultType="com.hd.jy.oasm.domain.GroupMan" parameterType="java.lang.String">
+     select id from groupMan where gmname=#{gmname,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 根据警号进入设置页面显示信息 -->
+  <select id="infoSetting" resultType="com.hd.jy.oasm.domain.JYXX" parameterType="java.lang.String">
+      select count(qh) as cnum,xx.jh,xx.xm,xx.jq,gm.gmname as zwName
+         from  JYXX xx
+           left join t_jczjdx jc  on jc.jh=xx.jh 
+           left join groupMan gm on xx.zw=gm.id
+                where xx.jh=#{jh} or jc.xjbh=#{jh}
+                     group by xx.jh,xx.xm,xx.jq,gm.gmname
+  </select>
+  
+  <!-- 后台列出所有警员信息 -->
+  <select id="selectJyxx" resultMap="BaseResultMap">
+    select jh,xm,cjsj,jq,xjq,gm.gmname from groupMan gm inner join jyxx jy on jy.zw=gm.id where jy.status=1 order by jh
+  </select>
+  <!-- 根据账号查出匹配的人数 -->
+  <select id="selectCheck" resultType="com.hd.jy.oasm.domain.JYXX" parameterType="java.lang.String">
+      select ma from jyxx where jh=#{jh,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectCheckUser" resultType="java.lang.Integer" parameterType="com.hd.jy.oasm.domain.JYXX">
+      select count(*) from jyxx where jh=#{jh,jdbcType=INTEGER} and ma = #{ma,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jyxx
+    where jh = #{jh,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.JYXX" >
+    insert into jyxx (jh, ma, xm, zw, 
+      cjsj, scdlsj, status, jq, 
+      xjq)
+    values (#{jh,jdbcType=VARCHAR}, #{ma,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{zw,jdbcType=INTEGER}, 
+      #{cjsj,jdbcType=DATE}, #{scdlsj,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{jq,jdbcType=VARCHAR}, 
+      #{xjq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective">
+    <selectKey keyProperty="zt" resultType="com.hd.jy.oasm.domain.JYXX" order="BEFORE">
+	    select count(*) as zt from jyxx where jh = #{jh,jdbcType=VARCHAR}
+	</selectKey>
+	<!-- 状态为0则添加 -->
+	<if test="zt==0">
+	   insert into jyxx
+      <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jh != null" >jh,</if>
+      <if test="ma != null" >ma,</if>
+      <if test="xm != null" >xm,</if>
+      <if test="zw != null" >zw,</if>
+      <if test="cjsj != null" >cjsj,</if>
+      <if test="scdlsj != null" >scdlsj,</if>
+      <if test="status != null" >status,</if>
+      <if test="jq != null" >jq,</if>
+      <if test="xjq != null" >xjq,</if>
+      <if test="bmh!=null">bmh</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jh != null" >#{jh,jdbcType=VARCHAR},</if>
+      <if test="ma != null" >#{ma,jdbcType=VARCHAR},</if>
+      <if test="xm != null" >#{xm,jdbcType=VARCHAR},</if>
+      <if test="zw != null" >#{zw,jdbcType=INTEGER},</if>
+      <if test="cjsj != null" >#{cjsj,jdbcType=DATE},</if>
+      <if test="scdlsj != null" >#{scdlsj,jdbcType=DATE},</if>
+      <if test="status != null" >#{status,jdbcType=INTEGER},</if>
+      <if test="jq != null" >#{jq,jdbcType=VARCHAR},</if>
+      <if test="xjq != null" >#{xjq,jdbcType=VARCHAR},</if>
+      <if test="bmh!=null">#{bmh,jdbcType=VARCHAR}</if>
+      </trim>
+	</if>
+	<if test="zt==1">
+	  update jyxx
+      set ma = #{ma,jdbcType=VARCHAR},xm = #{xm,jdbcType=VARCHAR},zw = #{zw,jdbcType=INTEGER},
+      cjsj = #{cjsj,jdbcType=DATE},scdlsj = #{scdlsj,jdbcType=DATE},status = #{status,jdbcType=INTEGER},
+      jq = #{jq,jdbcType=VARCHAR},xjq = #{xjq,jdbcType=VARCHAR},bmh = #{bmh,jdbcType=VARCHAR}
+    where jh = #{jh,jdbcType=VARCHAR}
+	</if>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.JYXX" >
+    update jyxx
+    <set >
+      <if test="ma != null" >
+        ma = #{ma,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <!-- Integer必须增加判断一个!='' -->
+      <if test="zw != null and zw!=''" >
+        zw = #{zw,jdbcType=INTEGER},
+      </if>
+      <if test="cjsj != null" >
+        cjsj = #{cjsj,jdbcType=DATE},
+      </if>
+      <if test="scdlsj != null" >
+        scdlsj = #{scdlsj,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="jq != null" >
+        jq = #{jq,jdbcType=VARCHAR},
+      </if>
+      <if test="xjq != null" >
+        xjq = #{xjq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jh = #{jh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.JYXX" >
+    update jyxx
+    set ma = #{ma,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      zw = #{zw,jdbcType=INTEGER},
+      cjsj = #{cjsj,jdbcType=DATE},
+      scdlsj = #{scdlsj,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      jq = #{jq,jdbcType=VARCHAR},
+      xjq = #{xjq,jdbcType=VARCHAR}
+    where jh = #{jh,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据登录警号修改密码 -->
+  <update id="updateCerrurJh" parameterType="com.hd.jy.oasm.domain.JYXX" >
+     update jyxx set ma = #{ma,jdbcType=VARCHAR},status = 1 where jh = #{jh,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 自己修改自己的账号信息 -->
+  <update id="updateCurrent" parameterType="com.hd.jy.oasm.domain.JYXX" >
+    update JYXX
+    <set >
+      <if test="xb != null" >
+        xb = #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="sr != null" >
+        sr = #{sr,jdbcType=DATE},
+      </if>
+      <if test="dz != null" >
+        dz = #{dz,jdbcType=VARCHAR},
+      </if>
+      <if test="dh != null" >
+        dh = #{dh,jdbcType=VARCHAR},
+      </if>
+      <if test="dzyj != null" >
+        dzyj = #{dzyj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jh = #{jh,jdbcType=VARCHAR}
+  </update>
+</mapper>

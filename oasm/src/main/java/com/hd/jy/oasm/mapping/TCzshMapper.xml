@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.TCzshMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.TCzsh" >
+    <id column="rwid" property="rwid" jdbcType="VARCHAR" />
+    <result column="czqk" property="czqk" jdbcType="VARCHAR" />
+    <result column="czxg" property="czxg" jdbcType="VARCHAR" />
+    <result column="czlrr" property="czlrr" jdbcType="VARCHAR" />
+    <result column="czlrsj" property="czlrsj" jdbcType="TIMESTAMP" />
+    <result column="jqyj" property="jqyj" jdbcType="VARCHAR" />
+    <result column="jqjl" property="jqjl" jdbcType="VARCHAR" />
+    <result column="jqqz" property="jqqz" jdbcType="VARCHAR" />
+    <result column="jqshsj" property="jqshsj" jdbcType="TIMESTAMP" />
+    <result column="wpyj" property="wpyj" jdbcType="VARCHAR" />
+    <result column="wpjl" property="wpjl" jdbcType="VARCHAR" />
+    <result column="wpqz" property="wpqz" jdbcType="VARCHAR" />
+    <result column="wpclsj" property="wpclsj" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rwid, czqk, czxg, czlrr, czlrsj, jqyj, jqjl, jqqz, jqshsj, wpyj, wpjl, wpqz, wpclsj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_CZSH
+    where rwid = #{rwid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_CZSH
+    where rwid = #{rwid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.TCzsh" >
+    insert into T_CZSH (rwid, czqk, czxg, 
+      czlrr, czlrsj, jqyj, 
+      jqjl, jqqz, jqshsj, 
+      wpyj, wpjl, wpqz, wpclsj
+      )
+    values (#{rwid,jdbcType=VARCHAR}, #{czqk,jdbcType=VARCHAR}, #{czxg,jdbcType=VARCHAR}, 
+      #{czlrr,jdbcType=VARCHAR}, #{czlrsj,jdbcType=TIMESTAMP}, #{jqyj,jdbcType=VARCHAR}, 
+      #{jqjl,jdbcType=VARCHAR}, #{jqqz,jdbcType=VARCHAR}, #{jqshsj,jdbcType=TIMESTAMP}, 
+      #{wpyj,jdbcType=VARCHAR}, #{wpjl,jdbcType=VARCHAR}, #{wpqz,jdbcType=VARCHAR}, #{wpclsj,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.TCzsh" >
+    insert into T_CZSH
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rwid != null" >
+        rwid,
+      </if>
+      <if test="czqk != null" >
+        czqk,
+      </if>
+      <if test="czxg != null" >
+        czxg,
+      </if>
+      <if test="czlrr != null" >
+        czlrr,
+      </if>
+      <if test="czlrsj != null" >
+        czlrsj,
+      </if>
+      <if test="jqyj != null" >
+        jqyj,
+      </if>
+      <if test="jqjl != null" >
+        jqjl,
+      </if>
+      <if test="jqqz != null" >
+        jqqz,
+      </if>
+      <if test="jqshsj != null" >
+        jqshsj,
+      </if>
+      <if test="wpyj != null" >
+        wpyj,
+      </if>
+      <if test="wpjl != null" >
+        wpjl,
+      </if>
+      <if test="wpqz != null" >
+        wpqz,
+      </if>
+      <if test="wpclsj != null" >
+        wpclsj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rwid != null" >
+        #{rwid,jdbcType=VARCHAR},
+      </if>
+      <if test="czqk != null" >
+        #{czqk,jdbcType=VARCHAR},
+      </if>
+      <if test="czxg != null" >
+        #{czxg,jdbcType=VARCHAR},
+      </if>
+      <if test="czlrr != null" >
+        #{czlrr,jdbcType=VARCHAR},
+      </if>
+      <if test="czlrsj != null" >
+        #{czlrsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jqyj != null" >
+        #{jqyj,jdbcType=VARCHAR},
+      </if>
+      <if test="jqjl != null" >
+        #{jqjl,jdbcType=VARCHAR},
+      </if>
+      <if test="jqqz != null" >
+        #{jqqz,jdbcType=VARCHAR},
+      </if>
+      <if test="jqshsj != null" >
+        #{jqshsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wpyj != null" >
+        #{wpyj,jdbcType=VARCHAR},
+      </if>
+      <if test="wpjl != null" >
+        #{wpjl,jdbcType=VARCHAR},
+      </if>
+      <if test="wpqz != null" >
+        #{wpqz,jdbcType=VARCHAR},
+      </if>
+      <if test="wpclsj != null" >
+        #{wpclsj,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.TCzsh" >
+    update T_CZSH
+    <set >
+      <if test="czqk != null" >
+        czqk = #{czqk,jdbcType=VARCHAR},
+      </if>
+      <if test="czxg != null" >
+        czxg = #{czxg,jdbcType=VARCHAR},
+      </if>
+      <if test="czlrr != null" >
+        czlrr = #{czlrr,jdbcType=VARCHAR},
+      </if>
+      <if test="czlrsj != null" >
+        czlrsj = #{czlrsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jqyj != null" >
+        jqyj = #{jqyj,jdbcType=VARCHAR},
+      </if>
+      <if test="jqjl != null" >
+        jqjl = #{jqjl,jdbcType=VARCHAR},
+      </if>
+      <if test="jqqz != null" >
+        jqqz = #{jqqz,jdbcType=VARCHAR},
+      </if>
+      <if test="jqshsj != null" >
+        jqshsj = #{jqshsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wpyj != null" >
+        wpyj = #{wpyj,jdbcType=VARCHAR},
+      </if>
+      <if test="wpjl != null" >
+        wpjl = #{wpjl,jdbcType=VARCHAR},
+      </if>
+      <if test="wpqz != null" >
+        wpqz = #{wpqz,jdbcType=VARCHAR},
+      </if>
+      <if test="wpclsj != null" >
+        wpclsj = #{wpclsj,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rwid = #{rwid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.TCzsh" >
+    update T_CZSH
+    set czqk = #{czqk,jdbcType=VARCHAR},
+      czxg = #{czxg,jdbcType=VARCHAR},
+      czlrr = #{czlrr,jdbcType=VARCHAR},
+      czlrsj = #{czlrsj,jdbcType=TIMESTAMP},
+      jqyj = #{jqyj,jdbcType=VARCHAR},
+      jqjl = #{jqjl,jdbcType=VARCHAR},
+      jqqz = #{jqqz,jdbcType=VARCHAR},
+      jqshsj = #{jqshsj,jdbcType=TIMESTAMP},
+      wpyj = #{wpyj,jdbcType=VARCHAR},
+      wpjl = #{wpjl,jdbcType=VARCHAR},
+      wpqz = #{wpqz,jdbcType=VARCHAR},
+      wpclsj = #{wpclsj,jdbcType=TIMESTAMP}
+    where rwid = #{rwid,jdbcType=VARCHAR}
+  </update>
+</mapper>

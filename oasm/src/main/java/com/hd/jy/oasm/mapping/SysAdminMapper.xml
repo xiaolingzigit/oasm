@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.SysAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.SysAdmin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="gmid" property="gmid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username,password, gmid,status
+  </sql>
+  <!-- 搜索框 -->
+  <select id="selectByAdminLikeKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select id,username,status from sysAdmin where status=1
+     <if test="_parameter!=null and _parameter!=''">
+       and (username like concat(concat('%',#{uname}),'%'))
+     </if>
+  </select>
+  <!-- 普通管理员列表 -->
+  <select id="selectAdminByStatus" resultMap="BaseResultMap">
+    select id,username,status from sysAdmin where status=1
+  </select>
+  <!-- 通过用户名查询是否已经注册 -->
+  <select id="check_username_add" resultType="java.lang.Integer" parameterType="java.lang.String">
+     select count(username) from sysAdmin where username=#{username,jdbcType=VARCHAR}
+  </select>
+  <!-- 通过用户名查询密码 用于把账号密码放入shiro令牌中-->
+  <select id="checkByUsername" resultType="java.lang.String" parameterType="java.lang.String">
+     select password from sysAdmin where username=#{username,jdbcType=VARCHAR}
+  </select>
+  <!-- 通过用户查询，用于登录验证 -->
+  <select id="selectByUser" resultType="java.lang.Integer"  parameterType="com.hd.jy.oasm.domain.SysAdmin">
+    select count(*) from sysAdmin where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sysAdmin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sysAdmin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.SysAdmin" >
+    insert into sysAdmin (id, username, password, 
+      gmid)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{gmid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.SysAdmin" >
+    insert into sysAdmin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="gmid != null" >
+        gmid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gmid != null" >
+        #{gmid,jdbcType=INTEGER},
+      </if>
+       <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- 超级管理员修改密码 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.SysAdmin" >
+    update sysAdmin
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.SysAdmin" >
+    update sysAdmin
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      gmid = #{gmid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 修改当前登录用户的密码 -->
+  <update id="updateByCurrentUsername" parameterType="com.hd.jy.oasm.domain.SysAdmin">
+     update sysAdmin set password = #{password,jdbcType=VARCHAR} where username = #{username,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 超级管理员逻辑删普通管理员 -->
+  <update id="updateBySuperAdminStatus" parameterType="com.hd.jy.oasm.domain.SysAdmin">
+     update sysAdmin set status=0 where id=#{id,jdbcType=INTEGER}
+  </update>
+</mapper>

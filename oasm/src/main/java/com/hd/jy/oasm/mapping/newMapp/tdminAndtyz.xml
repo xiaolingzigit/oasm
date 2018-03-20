@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.newDao.TdminAndtyzDao" >
+  <!-- 维度属性映射字段部分 -->
+  <resultMap id="BaseTdmin" type="com.hd.jy.oasm.domain.newDomain.Tdmin" >
+    <id column="dim_id" property="dimId" jdbcType="INTEGER" />
+    <result column="dim_name" property="dimName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <!-- 因子属性映射字段部分 -->
+  <resultMap id="BaseTfactor" type="com.hd.jy.oasm.domain.newDomain.Tfactor" >
+    <id column="f_id" property="fId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="f_score" property="fScore" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <!-- 管理维度和因子的关系部分 -->
+  <resultMap id="BaseTdminfactorRelat" type="com.hd.jy.oasm.domain.newDomain.TdminfactorRelat" >
+    <id column="dim_id" property="dimId" jdbcType="INTEGER" />
+    <id column="f_id" property="fId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <association property="tdmin" javaType="com.hd.jy.oasm.domain.newDomain.Tdmin" resultMap="BaseTdmin"/>
+    <association property="tfactor" javaType="com.hd.jy.oasm.domain.newDomain.Tfactor" resultMap="BaseTfactor"/>
+  </resultMap>
+  
+  <!-- 问题表部分 -->
+  <resultMap id="BaseTQuestion" type="com.hd.jy.oasm.domain.newDomain.TQuestion" >
+    <id column="qst_id" property="qstId" jdbcType="INTEGER" />
+    <result column="dim_id" property="dimId" jdbcType="INTEGER" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="options" property="options" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <association property="tdmin" javaType="com.hd.jy.oasm.domain.newDomain.Tdmin" resultMap="BaseTdmin"/>
+  </resultMap>
+  
+  <!-- 因子，维度，问题到生成量表部分 -->
+  <resultMap id="BaseTscale" type="com.hd.jy.oasm.domain.newDomain.Tscale" >
+    <id column="scale_id" property="scaleId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="researher" property="researher" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <!-- 量表配置表部分 -->
+  <resultMap id="BaseTScaleConf" type="com.hd.jy.oasm.domain.newDomain.TScaleConf">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="name" jdbcType="VARCHAR" property="name" />
+    <result column="conf" jdbcType="VARCHAR" property="conf" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="cr_time" jdbcType="TIMESTAMP" property="crTime" />
+    <result column="last_modif" jdbcType="TIMESTAMP" property="lastModif" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  
+  <!-- 囚犯量表配置部分 -->
+  <resultMap id="BaseTCrimScaleRelat" type="com.hd.jy.oasm.domain.newDomain.TCrimScaleRelat" >
+    <id column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+    <id column="sconf_id" property="sconfId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <association property="scaleConf" javaType="com.hd.jy.oasm.domain.newDomain.TScaleConf" resultMap="BaseTScaleConf"></association>
+    <association property="task" javaType="com.hd.jy.oasm.domain.Task" resultMap="BaseTask"></association>
+  </resultMap>
+  
+  <!-- 任务表的数据 -->
+  <resultMap id="BaseTask" type="com.hd.jy.oasm.domain.Task">
+		<id column="task_id" property="taskId" jdbcType="VARCHAR" />
+		<result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="basis" property="taskBasis" jdbcType="VARCHAR" />
+		<result column="describ" property="taskDescrib" jdbcType="VARCHAR" />
+		<result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+		<result column="cop1_no" property="copNo1" jdbcType="VARCHAR" />
+		<result column="cop2_no" property="copNo2" jdbcType="VARCHAR" />
+		<result column="creator" property="creator" jdbcType="VARCHAR" />
+		<result column="cr_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+		<result column="modifier" property="modifier" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+	</resultMap>
+  
+  <!-- 业务接口部分开始 -->
+  <!-- 添加维度 -->
+  <insert id="insertTdmin" parameterType="com.hd.jy.oasm.domain.newDomain.Tdmin">
+     insert into t_dim (dim_name, remark, creator, cr_time, last_modif, modifier,status)
+    values (#{dimName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR}, #{crTime,jdbcType=TIMESTAMP},
+     #{lastModif,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR},#{status,jdbcType=TINYINT})
+  </insert>
+  
+  <!-- 根据添加时的维度名称验证重新添加 -->
+  <select id="selectBytdminName" resultType="java.lang.Integer" parameterType="java.lang.String">
+     select count(dim_name) from t_dim where dim_name=#{dimName,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 列出所有维度 -->
+  <select id="listTdmin" resultMap="BaseTdmin">
+     select dim_id,dim_name from t_dim
+     
+  </select>
+  
+  <!-- 根据添加时的因子名称验证是否已重复添加 -->
+  <select id="checkBytfactorName" resultType="java.lang.Integer">
+      select count(f.name) from t_dim_factor_relat r left join t_factor f on r.f_id=f.f_id where r.dim_id=#{dimId} and f.name=#{name}
+  </select>
+  
+  <!-- 添加因子 -->
+  <insert id="insertTfactor" parameterType="com.hd.jy.oasm.domain.newDomain.Tfactor">
+     insert into t_factor (name, f_score,remark,cr_time, creator, last_modif,modifier, status)
+    values (#{name,jdbcType=VARCHAR}, #{fScore,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR},
+      #{crTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{lastModif,jdbcType=TIMESTAMP}, 
+      #{modifier,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT})
+  </insert>
+  
+  <!-- 验证因子名是否已经存在 -->
+  <select id="chckHaveFname" resultType="java.lang.Integer" parameterType="java.lang.String">
+     select count(f_id) from t_factor where name=#{name}
+  </select>
+  
+  <!-- 根据已添加后的因子名字查询因子编号 -->
+  <select id="selectByfactorName" resultType="java.lang.Integer" parameterType="java.lang.String">
+     select f_id from t_factor where name=#{name,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 通过维度编号列出所有已添加的因子 ,级联使用-->
+  <select id="listFactorBydminId" resultMap="BaseTfactor" parameterType="java.lang.Integer">
+      select f.f_id,f.name,m.dim_id,m.dim_name from t_dim_factor_relat t
+            inner join t_dim m on m.dim_id=t.dim_id
+            inner join t_factor f on t.f_id=f.f_id
+                where m.dim_id=#{dimId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 因子和维度编号验证维度和因子关系 -->
+  <select id="checkDimIdFId" resultType="java.lang.Integer">
+     select count(*) from t_dim_factor_relat where dim_id=#{dimId} and f_id=#{fId}
+  </select>
+  
+  <!-- 添加维度和因子的关系 -->
+  <insert id="insertwdAndyzRelat" parameterType="com.hd.jy.oasm.domain.newDomain.TdminfactorRelat">
+     insert into t_dim_factor_relat (dim_id, f_id, creator,cr_time, last_modif, modifier, status)
+    values (#{dimId,jdbcType=INTEGER}, #{fId,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
+      #{crTime,jdbcType=TIMESTAMP}, #{lastModif,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  
+  <!-- 显示所有的因子和维度关系selectDimAndFactor -->
+  <select id="selectDimAndFactor" resultMap="BaseTdminfactorRelat">
+       select f.f_id,f.name,f.f_score,m.dim_id,m.dim_name,t.cr_time,t.creator from t_dim_factor_relat t
+            inner join t_dim m on m.dim_id=t.dim_id
+            inner join t_factor f on t.f_id=f.f_id
+  </select>
+  
+  <!-- 问题，添加问题 -->
+  <insert id="insertQuestion" parameterType="com.hd.jy.oasm.domain.newDomain.TQuestion">
+      insert into t_question (dim_id, org_id, question, type, remark, 
+      options, answer, creator,cr_time, last_modif, modifier,status)
+    values (#{dimId,jdbcType=INTEGER}, #{orgId,jdbcType=VARCHAR}, 
+      #{question,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{options,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{crTime,jdbcType=TIMESTAMP}, #{lastModif,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  
+  <!-- 根据监狱号动态列出所有问题 -->
+  <select id="allQuestion" resultMap="BaseTQuestion" parameterType="java.lang.String">
+        select q.qst_id,q.question,q.org_id,q.type,q.remark,m.dim_id,m.dim_name,q.options 
+          from t_dim m inner join t_question q on m.dim_id=q.dim_id 
+             where q.status=2
+             <if test="_parameter != null and _parameter!=''">
+               and q.org_id=#{orgId,jdbcType=VARCHAR}
+             </if>
+  </select>
+  
+  <!-- 验证量表名字是否存在 -->
+  <select id="checkScaleName" resultType="java.lang.Integer" parameterType="java.lang.String"> 
+     select count(name) from t_scale where name=#{name,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 量表，添加量表 -->
+  <insert id="insertTscale" parameterType="com.hd.jy.oasm.domain.newDomain.Tscale">
+      insert into t_scale
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="researher != null" >
+        researher,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="crTime != null" >
+        cr_time,
+      </if>
+      <if test="lastModif != null" >
+        last_modif,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="researher != null" >
+        #{researher,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="crTime != null" >
+        #{crTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModif != null" >
+        #{lastModif,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="scale != null" >
+        #{scale,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 显示所有量表，在页面通过type区分他们在哪个阶段进行配置,这个可能要选用默认的已启用的量表 -->
+  <select id="scaleAllList" resultMap="BaseTscale">
+     select scale_id,name,type from t_scale where status=2
+  </select>
+  
+  <!-- 显示所有量表，显示包括已启用和未启用的状态scaleAllListStatus -->
+  <select id="scaleAllListStatus" resultMap="BaseTscale">
+     select scale_id,name,researher,cr_time,remark,status from t_scale
+  </select>
+  
+  <!-- 验证配置名字是否存在 -->
+  <select id="checkConfName" resultType="java.lang.Integer" parameterType="java.lang.String">
+     select count(name) from t_scale_conf where name=#{name,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 添加量表配置 -->
+  <insert id="insertScaleConf" parameterType="com.hd.jy.oasm.domain.newDomain.TScaleConf">
+    insert into t_scale_conf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="conf != null">
+        conf,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="crTime != null">
+        cr_time,
+      </if>
+      <if test="lastModif != null">
+        last_modif,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="conf != null">
+        #{conf,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="crTime != null">
+        #{crTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModif != null">
+        #{lastModif,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 列出所有量表配置 -->
+  <select id="scaleConfList" resultMap="BaseTScaleConf">
+        select id,name,conf,creator,cr_time,status from t_scale_conf
+  </select>
+  
+  <!-- 添加量表囚犯配置 -->
+  <insert id="insertTCrimScaleRelat" parameterType="com.hd.jy.oasm.domain.newDomain.TCrimScaleRelat" >
+    <selectKey keyProperty="conStat" resultType="com.hd.jy.oasm.domain.newDomain.TCrimScaleRelat" order="BEFORE">
+		select count(*) as conStat from t_crim_scale_relat where crim_no = #{crimNo,jdbcType=VARCHAR} and sconf_id = #{sconfId,jdbcType=INTEGER}
+	</selectKey>
+	<if test="conStat==0">
+	    insert into t_crim_scale_relat (crim_no, sconf_id, creator, 
+      cr_time, last_modif, modifier, 
+      status)
+    values (#{crimNo,jdbcType=VARCHAR}, #{sconfId,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
+      #{crTime,jdbcType=TIMESTAMP}, #{lastModif,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT})
+	</if>
+	<if test="conStat==1">
+	    update t_crim_scale_relat
+    set creator = #{creator,jdbcType=VARCHAR},
+      cr_time = #{crTime,jdbcType=TIMESTAMP},
+      last_modif = #{lastModif,jdbcType=TIMESTAMP},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT}
+    where crim_no = #{crimNo,jdbcType=VARCHAR}
+      and sconf_id = #{sconfId,jdbcType=INTEGER}
+	</if>
+  </insert>
+  
+  <!-- 正式评估开始 部分开始-->
+  <!-- 评估量表录入部分，先查询出使用的量表，再通过获取量表里面的问题，判断依据，维度，因子，权重和分数 -->
+ <select id="crimScaleRelatByTaskId" resultMap="BaseTCrimScaleRelat"  parameterType="java.lang.String">
+    select t.task_id,r.crim_no,c.conf from t_task t 
+    inner join t_crim_scale_relat r  on r.crim_no = t.crim_no
+	inner join t_scale_conf c on c.id=r.sconf_id
+	  where t.task_id=#{taskId,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 通过量表编号获取量表 -->
+  <select id="getScaleByScaleId" resultType="com.hd.jy.oasm.domain.newDomain.Tscale" parameterType="java.lang.Integer">
+     select scale_id,name,type,scale from t_scale where scale_id=#{scale_id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据问题编号删除问题 -->
+  <delete id="removeQuestion" parameterType="java.lang.Integer">
+    delete from t_question where qst_id=#{qstId,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 修改维度名称 -->
+  <update id="updateDimName" parameterType="com.hd.jy.oasm.domain.newDomain.Tdmin">
+     update t_dim set dim_name=#{dimName},last_modif=#{lastModif},modifier=#{modifier} where dim_id=#{dimId}
+  </update>
+  
+  <!-- 修改因子名称 -->
+  <update id="updateFactorName" parameterType="com.hd.jy.oasm.domain.newDomain.Tfactor">
+     update t_factor set name=#{name},last_modif=#{lastModif},modifier=#{modifier} where f_id=#{fId}
+  </update>
+  
+  <!-- 修改维度和因子关系 -->
+  <update id="updateWdAndYzRelat">
+     update t_dim_factor_relat set dim_id=#{da},f_id=#{fa},last_modif=#{lastModif},modifier=#{modifier} where dim_id=#{db} and f_id=#{fb}
+  </update>
+  
+</mapper>

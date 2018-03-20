@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.ListLineMapper">
+	<resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.ListLine" >
+		<id column="task_id" property="taskId" jdbcType="VARCHAR" />
+		<result column="type" property="taskType" jdbcType="VARCHAR" />
+		<result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+		<result column="crim_name" property="crimName" jdbcType="VARCHAR" />
+		<result column="prison_no" property="prisonNo" jdbcType="VARCHAR" />
+		<result column="prison_name" property="prisonName" jdbcType="VARCHAR" />
+		<result column="subPrison_no" property="subPrisonNo" jdbcType="VARCHAR" />
+		<result column="subPrison_name" property="subPrisonName" jdbcType="VARCHAR" />
+		<result column="basis" property="basis" jdbcType="VARCHAR" />
+		<result column="describ" property="describ" jdbcType="VARCHAR" />
+		<result column="cop1_no" property="cop1No" jdbcType="VARCHAR" />
+		<result column="cop1_name" property="cop1Name" jdbcType="VARCHAR" />
+		<result column="cop2_no" property="cop2No" jdbcType="VARCHAR" />
+		<result column="cop2_name" property="cop2Name" jdbcType="VARCHAR" />
+		<result column="cr_time" property="crtime" jdbcType="TIMESTAMP" />
+		<result column="creator" property="creatorNo" jdbcType="VARCHAR" />
+		<result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+		<result column="modifier" property="modifierNo" jdbcType="VARCHAR" />
+		<result column="modifer_name" property="modifierName" jdbcType="VARCHAR" />
+		<result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+		<result column="score" property="score" jdbcType="REAL" />
+		<result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+		<result column="status_name" property="statusName" jdbcType="VARCHAR" />
+		<result column="in_time" property="inTime" jdbcType="VARCHAR" />
+		<result column="stage" property="stage" jdbcType="VARCHAR" />
+		<result column="copANo" property="copANo" jdbcType="VARCHAR" />
+		<result column="copAName" property="copAName" jdbcType="VARCHAR" />
+		<result column="copBNo" property="copBNo" jdbcType="VARCHAR" />
+		<result column="copBName" property="copBName" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="CodeName" type="com.hd.jy.oasm.domain.CodeName" >
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="CrimCopRelat" type="com.hd.jy.oasm.domain.CrimCopRelat" >
+		<result column="crim" property="crimCode" jdbcType="VARCHAR" />
+		<result column="cop1" property="cop1Code" jdbcType="VARCHAR" />
+		<result column="cop2" property="cop2Code" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getCrimCodeName" resultMap="CodeName" >select qh code, xm name from  t_zyrymd</select>
+	<select id="getCopCodeName" resultMap="CodeName" >select jh code, xm name from  jyxx</select>
+	<select id="getCopCodeRelat" resultMap="CrimCopRelat" >select qh crim, jh cop1, xjbh cop2 from t_jczjdx</select>
+	<select id="getList" resultMap="BaseResultMap" parameterType="com.hd.jy.oasm.domain.SearchElement">
+		select
+		a.task_id,
+		a.type,
+		a.crim_no,
+		a.basis,
+		a.describ,
+		a.cop1_no,
+		a.cop2_no,
+		a.creator,
+		a.cr_time,
+		a.deadline,
+		c.xm crim_name,
+		c.gyjq prison_no,
+		c.gyjq prison_name,
+		c.fjq subPrison_no,
+		c.fjq subPrison_name,
+		b.jh copANo,
+		b.jhxm copAName,
+		b.xjbh copBNo,
+		b.xjxm copBName,
+		a.last_modif,
+		a.modifier,
+		d.score,
+		a.status,
+		c.sj in_time,
+		c.jd stage
+		from t_task a left join t_jczjdx b on a.crim_no=convert(varchar(10),b.qh)
+		left join t_zyrymd c on a.crim_no=c.qh
+		left join t_test_note d on a.task_id=d.task_id left join jyxx e on a.cop1_no=e.jh left join jyxx f on a.modifier=f.jh
+		<where>
+			<if test="taskType != null" >a.type=#{taskType}</if>
+			<if test="taskId != null" >and a.task_id like '%#{taskId}%'</if>
+			<if test="prison != null" >and c.gyjq=#{prison}</if>
+			<if test="crimNo != null" >and a.crim_no=#{crimNo}</if>
+			<if test="crimName != null" >and b.xm like '%${crimName}%'</if>
+			<choose>
+				<when test="copNo != null">
+					<if test='copRange == "all"'>and (b.jh=#{copNo} or b.xjbh=#{copNo} or a.modifier=#{copNo})</if>
+					<if test='copRange == "zg"' >and b.jh=#{copNo}</if>
+					<if test='copRange == "xg"' >and b.xjbh=#{copNo}</if>
+					<if test='copRange == "zxr"' >and a.modifier=#{copNo})</if>
+				</when >
+			</choose>
+			<choose>
+				<when test="copName != null">
+					<if test='copRange == "all"'>and (b.jhxm like '%${copName}%' or b.xjxm like '%${copName}%' or e.xm like '%${copName}%' or f.xm like '%${copName}%')</if>
+					<if test='copRange == "zg"' >and b.jhxm like '%${copName}%'</if>
+					<if test='copRange == "xg"' >and b.xjxm like '%${copName}%'</if>
+					<if test='copRange == "zxr"' >and (e.xm like '%${copName}%' or f.xm like '%${copName}%')</if>
+				</when >
+			</choose>
+			<if test="creator != null" >and a.creator like '%${creator}%'</if>
+			<if test="crTimeStart != null and crTimeEnd != null" >and (cr_time between #{crTimeStart} and #{crTimeEnd})</if>
+			<if test="deadlineStart != null and deadlineEnd != null" >and (a.deadline between #{deadlineStart} and #{deadlineEnd})</if>
+			<if test="lastModifStart != null and lastModifEnd != null" >and (last_modif between #{lastModifStart} and #{lastModifEnd})</if>
+			<if test="status != null" >and a.status=#{status}</if>
+			<if test="taskBasis != null" >and a.basis like '%${taskBasis}%'</if>
+			<if test="taskDescrib != null" >and a.describ like '%${taskDescrib}%'</if>
+		</where>
+		order by a.crim_no
+	</select>
+	
+	
+	<select id="getListWithTypeLike" resultMap="BaseResultMap" parameterType="com.hd.jy.oasm.domain.SearchElement">
+		select
+		a.task_id,
+		a.type,
+		a.crim_no,
+		a.basis,
+		a.describ,
+		a.cop1_no,
+		a.cop2_no,
+		a.creator,
+		a.cr_time,
+		a.deadline,
+		c.xm crim_name,
+		c.gyjq prison_no,
+		c.gyjq prison_name,
+		c.fjq subPrison_no,
+		c.fjq subPrison_name,
+		b.jh copANo,
+		b.jhxm copAName,
+		b.xjbh copBNo,
+		b.xjxm copBName,
+		a.last_modif,
+		a.modifier,
+		d.score,
+		a.status,
+		c.sj in_time,
+		c.jd stage
+		from t_task a left join t_jczjdx b on a.crim_no=convert(varchar(10),b.qh)
+		left join t_zyrymd c on a.crim_no=c.qh
+		left join t_test_note d on a.task_id=d.task_id left join jyxx e on a.cop1_no=e.jh left join jyxx f on a.modifier=f.jh
+		order by a.crim_no
+		<where>
+			<if test="taskType != null" >a.type like '%${taskType}%'</if>
+			<if test="taskId != null" >and a.task_id like '%#{taskId}%'</if>
+			<if test="prison != null" >and c.gyjq=#{prison}</if>
+			<if test="crimNo != null" >and a.crim_no=#{crimNo}</if>
+			<if test="crimName != null" >and b.xm like '%${crimName}%'</if>
+			<choose>
+				<when test="copNo != null">
+					<if test='copRange == "all"'>and (b.jh=#{copNo} or b.xjbh=#{copNo} or a.modifier=#{copNo})</if>
+					<if test='copRange == "zg"' >and b.jh=#{copNo}</if>
+					<if test='copRange == "xg"' >and b.xjbh=#{copNo}</if>
+					<if test='copRange == "zxr"' >and a.modifier=#{copNo})</if>
+				</when >
+			</choose>
+			<choose>
+				<when test="copName != null">
+					<if test='copRange == "all"'>and (b.jhxm like '%${copName}%' or b.xjxm like '%${copName}%' or e.xm like '%${copName}%')</if>
+					<if test='copRange == "zg"' >and b.jhxm like '%${copName}%'</if>
+					<if test='copRange == "xg"' >and b.xjxm like '%${copName}%'</if>
+					<if test='copRange == "zxr"' >and (e.xm like '%${copName}%' or f.xm like '%${copName}%')</if>
+				</when >
+			</choose>
+			<if test="creator != null" >and a.creator like '%${creator}%'</if>
+			<if test="crTimeStart != null and crTimeEnd != null" >and (cr_time between #{crTimeStart} and #{crTimeEnd})</if>
+			<if test="deadlineStart != null and deadlineEnd != null" >and (a.deadline between #{deadlineStart} and #{deadlineEnd})</if>
+			<if test="lastModifStart != null and lastModifEnd != null" >and (last_modif between #{lastModifStart} and #{lastModifEnd})</if>
+			<if test="status != null" >and a.status=#{status}</if>
+			<if test="taskBasis != null" >and a.basis like '%${taskBasis}%'</if>
+			<if test="taskDescrib != null" >and a.describ like '%${taskDescrib}%'</if>
+		</where>
+	</select>
+	<select id="getTaskToDo" resultMap="BaseResultMap" parameterType="com.hd.jy.oasm.domain.SearchElement">
+		select
+		a.task_id,
+		a.type,
+		a.crim_no,
+		a.basis,
+		a.describ,
+		a.cop1_no,
+		a.cop2_no,
+		a.creator,
+		a.cr_time,
+		a.deadline,
+		c.xm crim_name,
+		c.gyjq prison_no,
+		c.gyjq prison_name,
+		c.fjq subPrison_no,
+		c.fjq subPrison_name,
+		b.jh copANo,
+		b.jhxm copAName,
+		b.xjbh copBNo,
+		b.xjxm copBName,
+		a.last_modif,
+		a.modifier,
+		d.score,
+		a.status,
+		c.sj in_time,
+		c.jd stage
+		from t_task a left join t_jczjdx b on a.crim_no=convert(varchar(10),b.qh)
+		left join t_zyrymd c on a.crim_no=c.qh
+		left join t_test_note d on a.task_id=d.task_id
+		where <![CDATA[ a.status< 4 ]]> and a.type not like '%Rep%'
+		 
+		<if test="copNo != null">and (b.jh=#{copNo} or b.xjbh=#{copNo} or a.modifier=#{copNo})</if>
+		order by a.task_id
+	</select>
+	
+	<insert id="batchAddPgXlcsJg" parameterType="java.util.List">
+		insert into BG_XLCS (RWID,QH,XLWD,XLYZ,XLFS,XLTZ,PGWD,PGYZ,PGFS,BZ)
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			<![CDATA[
+			(#{item.RWID},
+			#{item.QH},
+			#{item.XLWD},
+			#{item.XLYZ},
+			#{item.XLFS},
+			#{item.XLTZ},
+			#{item.PGWD},
+			#{item.PGYZ},
+			#{item.PGFS},
+			#{item.BZ}
+			)
+			]]>
+		</foreach>
+	</insert>
+	
+	<!-- 通过子任务获取心理测试答题结果 -->
+	<select id="getAllPgxlcsjg" resultType="com.hd.jy.oasm.domain.PgXlcsJg" parameterType="java.lang.String">
+	   select RWID,QH,XLWD,XLYZ,XLFS,XLTZ,PGWD,PGYZ,PGFS,BZ from BG_XLCS where RWID=#{RWID,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 根据囚号显示个人已有分数的测试 -->
+	<select id="crimInfoXL" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  select a.task_id,a.type,a.crim_no,a.creator,a.cr_time,a.deadline,a.last_modif,
+       c.xm crim_name,c.gyjq prison_no,c.gyjq prison_name,d.score,c.sj in_time
+	from t_task a 
+		left join t_zyrymd c on a.crim_no=c.qh
+		left join t_test_note d on a.task_id=d.task_id 
+		left join jyxx e on a.cop1_no=e.jh 
+		left join jyxx f on a.modifier=f.jh
+		where a.type like '%Mt%' and a.crim_no=#{crimNo} and d.score is not null
+	</select>
+	
+</mapper>

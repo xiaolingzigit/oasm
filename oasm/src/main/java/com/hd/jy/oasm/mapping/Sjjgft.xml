@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.SjjgftAndxwgcDao" >
+  
+  <!-- 档案分析部分，用于替换sj_dafx，把数据导入的时候自动匹配到的因子，形成视图显示 -->
+  <resultMap id="BaseViewDafxjg" type="com.hd.jy.oasm.domain.ViewDafxjg" >
+    <result column="qh" property="qh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="DATE" />
+    <result column="jq" property="jq" jdbcType="VARCHAR" />
+    <result column="fjq" property="fjq" jdbcType="VARCHAR" />
+    <result column="jy" property="jy" jdbcType="VARCHAR" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="answer" property="answer" jdbcType="LONGVARCHAR" />
+    <result column="result" property="result" jdbcType="LONGVARCHAR" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="levl" property="levl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <!-- 档案分析量表部分，可用来匹配档案数据规则 -->
+  <resultMap id="BaseLBDafx" type="com.hd.jy.oasm.domain.LBjcdafx" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="wd" property="wd" jdbcType="VARCHAR" />
+    <result column="yz" property="yz" jdbcType="VARCHAR" />
+    <result column="minfz" property="minfz" jdbcType="INTEGER" />
+    <result column="maxfz" property="maxfz" jdbcType="INTEGER" />
+    <result column="fs" property="fs" jdbcType="INTEGER" />
+  </resultMap>
+  <!-- 开始业务操作方法部分 -->
+  
+  <!-- 通用搜索器 -->
+  <sql id="Query">
+    <where>
+       <trim prefix="(" suffix=")" suffixOverrides="and" >
+        <if test="qh!=null">
+            qh LIKE concat(concat('%',#{qh}),'%') and
+        </if>
+        <if test="xm!=null">
+            xm LIKE concat(concat('%',#{xm}),'%') and
+        </if>
+        <if test="jhxm!=null">
+            jhxm LIKE concat(concat('%',#{jhxm}),'%') and
+        </if>
+        <if test="gyjq!=null">
+            gyjq LIKE concat(concat('%',#{gyjq}),'%')
+        </if>
+       </trim>
+    </where>
+  </sql>
+  
+  <!-- 全查询档案分析显示视图，需要分页 selectDafxjgbg-->
+  <select id="selectDafxjgbg" resultMap="BaseViewDafxjg">
+    select task_id,qh,xm,sj,jq,fjq,jy,last_modif,score from v_dafxjg
+    <where>
+       <trim prefix="(" suffix=")" suffixOverrides="and" >
+        <if test="qh!=null">
+         qh LIKE concat(concat('%',#{qh}),'%')  and  
+        </if>
+        <if test="xm!=null">
+          xm LIKE concat(concat('%',#{xm}),'%')  and 
+        </if>
+        <if test="jhxm!=null">
+          jhxm LIKE concat(concat('%',#{jhxm}),'%')  and 
+        </if>
+        <if test="gyjq!=null">
+            gyjq LIKE concat(concat('%',#{gyjq}),'%') and
+        </if>
+        SUBSTRING(task_id,12,9)='fileAnlys'
+       </trim>
+    </where>
+      order by score desc
+  </select>
+  
+  <!-- 根据wd和使用的规则fz查询档案分析的因子和分数 -->
+  <select id="selectMoreDafxParam" resultType="com.hd.jy.oasm.domain.LBjcdafx">
+    <![CDATA[select wd,yz,fs from lb_jcdafx a where wd=#{wd,jdbcType=VARCHAR} and minfz<=#{fz} and #{fz}<maxfz]]>
+  </select>
+  <!-- 根据囚号显示罪犯已有分数的档案分析的结果 -->
+  <select id="crimInfoDafxjg" resultMap="BaseViewDafxjg" parameterType="java.lang.String">
+     <![CDATA[select task_id,qh,score,last_modif from v_dafxjg where qh=#{qh} and task_id like '%_fileAnlys_%']]>
+  </select>
+ 
+</mapper>

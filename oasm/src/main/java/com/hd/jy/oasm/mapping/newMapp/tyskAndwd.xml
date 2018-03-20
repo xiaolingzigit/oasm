@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.newDao.TyskAndwdDao" >
+   <!-- 因子或者维度映射元素部分 -->
+   <resultMap id="BaseTysk" type="com.hd.jy.oasm.domain.newDomain.Tysk" >
+    <id column="YSID" property="ysid" jdbcType="INTEGER" />
+    <result column="YSBH" property="ysbh" jdbcType="VARCHAR" />
+    <result column="YSMC" property="ysmc" jdbcType="VARCHAR" />
+    <result column="YSSX" property="yssx" jdbcType="VARCHAR" />
+    <result column="SM" property="sm" jdbcType="VARCHAR" />
+    <result column="YTXZ" property="ytxz" jdbcType="VARCHAR" />
+    <result column="YZFZ" property="yzfz" jdbcType="DOUBLE" />
+    <result column="YZZPC" property="yzzpc" jdbcType="INTEGER" />
+    <result column="ZSXGPC" property="zsxgpc" jdbcType="INTEGER" />
+    <result column="XXXGPC" property="xxxgpc" jdbcType="INTEGER" />
+    <result column="TTXGPC" property="ttxgpc" jdbcType="INTEGER" />
+    <result column="ZFZXGPC" property="zfzxgpc" jdbcType="INTEGER" />
+    <result column="QYZT" property="qyzt" jdbcType="TINYINT" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="CJRBH" property="cjrbh" jdbcType="VARCHAR" />
+    <result column="XGSJ" property="xgsj" jdbcType="TIMESTAMP" />
+    <result column="XGRBH" property="xgrbh" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 因子维度关系映射部分 -->
+  <resultMap id="BaseTwdyzgx" type="com.hd.jy.oasm.domain.newDomain.Twdyzgx" >
+    <id column="WDID" property="wdid" jdbcType="INTEGER" />
+    <id column="YZID" property="yzid" jdbcType="INTEGER" />
+    <result column="SM" property="sm" jdbcType="VARCHAR" />
+    <result column="QYZT" property="qyzt" jdbcType="TINYINT" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="CJRBH" property="cjrbh" jdbcType="VARCHAR" />
+    <result column="XGSJ" property="xgsj" jdbcType="TIMESTAMP" />
+    <result column="XGRBH" property="xgrbh" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 本XML共用检索器 -->
+  <sql id="tyskQuery">
+     <trim  suffixOverrides="and" >
+       <if test="ysbh!=null and ysbh!=''">
+         and YSBH like concat(concat('%',#{ysbh}),'%')
+       </if>
+       <if test="ysmc!=null and ysmc!=''">
+         and YSMC like concat(concat('%',#{ysmc}),'%')
+       </if>
+       <if test="yssx!=null and yssx!=''">
+         and YSSX=#{yssx}
+       </if>
+       <if test="ytxz!=null and ytxz!=''">
+         and YTXZ=#{ytxz,jdbcType=DECIMAL}
+       </if>
+       <if test="yzzpc!=null and yzzpc!=''">
+         and YZZPC=#{yzzpc,jdbcType=DECIMAL}
+       </if>
+       <if test="zsxgpc!=null and zsxgpc!=''">
+         and ZSXGPC = #{zsxgpc,jdbcType=DECIMAL}
+       </if>
+       <if test="xxxgpc!=null and xxxgpc!=''">
+         and XXXGPC =#{xxxgpc,jdbcType=DECIMAL}
+       </if>
+       <if test="ttxgpc!=null and ttxgpc!=''">
+         and TTXGPC=#{ttxgpc,jdbcType=DECIMAL}
+       </if>
+       <if test="zfzxgpc!=null and zfzxgpc!=''">
+         and ZFZXGPC=#{zfzxgpc,jdbcType=DECIMAL}
+       </if>
+       <if test="(cjsj1!=null and cjsj1!='') and (cjsj2!=null and cjsj2!='')">
+         and (CJSJ between convert(date,#{cjsj1},120)  and  convert(date,#{cjsj2},120))
+       </if>
+       <if test="(xgsj1!=null and xgsj1!='') and (xgsj2!=null and xgsj2!='')">
+         and (XGSJ between convert(date,#{xgsj1},120) and convert(date,#{xgsj2},120))
+       </if>
+     </trim>
+  </sql>
+  
+  <!-- 检索因子维度关系 -->
+  
+  <!-- 检索一些维度 -->
+  <select id="likeSomeWdKey" resultMap="BaseTysk">
+      select YSID,YSBH,YSMC from T_YSK where (YTXZ=2 or YTXZ=3)
+      <include refid="tyskQuery"></include>
+      order by YSID
+  </select>
+  
+  <!-- 检索一些因子 -->
+  <select id="likeSomeTyskKey" resultMap="BaseTysk">
+      select YSID,YSBH,YSMC from T_YSK where (YTXZ=1 or YTXZ=3)
+      <include refid="tyskQuery"></include>
+      order by YSID
+  </select>
+  
+  <!-- 检索总因子和维度 -->
+  <select id="likeTyskKey" resultMap="BaseTysk">
+     select YSID,YSBH,YSMC,YSSX,YTXZ,YZZPC,ZSXGPC,XXXGPC,TTXGPC,ZFZXGPC,CJSJ,CJRBH,XGSJ,XGRBH from T_YSK
+     <where>
+     <include refid="tyskQuery"></include>
+     </where>
+     order by YSID
+  </select>
+  
+  <!-- 添加因子维度关系 -->
+  <insert id="addTwdyzgx" parameterType="com.hd.jy.oasm.domain.newDomain.Twdyzgx" >
+    insert into T_WDYZGX (WDID, YZID, SM, 
+      QYZT, CJSJ, CJRBH, 
+      XGSJ, XGRBH)
+    values (#{wdid,jdbcType=INTEGER}, #{yzid,jdbcType=INTEGER}, #{sm,jdbcType=VARCHAR}, 
+      #{qyzt,jdbcType=TINYINT}, #{cjsj,jdbcType=TIMESTAMP}, #{cjrbh,jdbcType=VARCHAR}, 
+      #{xgsj,jdbcType=TIMESTAMP}, #{xgrbh,jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 添加因子 -->
+  <insert id="addTysk" parameterType="com.hd.jy.oasm.domain.newDomain.Tysk" >
+    insert into T_YSK (YSBH, YSMC, 
+      YSSX, SM, YTXZ, YZFZ, 
+      YZZPC, ZSXGPC, XXXGPC, 
+      TTXGPC, ZFZXGPC, QYZT, 
+      CJSJ, CJRBH, XGSJ, 
+      XGRBH)
+    values (#{ysbh,jdbcType=VARCHAR}, #{ysmc,jdbcType=VARCHAR}, 
+      #{yssx,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{ytxz,jdbcType=VARCHAR}, #{yzfz,jdbcType=DOUBLE}, 
+      0, 0, 0, 0, 0, 1, 
+      #{cjsj,jdbcType=TIMESTAMP}, #{cjrbh,jdbcType=VARCHAR}, #{xgsj,jdbcType=TIMESTAMP}, 
+      #{xgrbh,jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 修改因子 -->
+  <update id="updateTysk" parameterType="com.hd.jy.oasm.domain.newDomain.Tysk" >
+    update T_YSK
+    set YSBH = #{ysbh,jdbcType=VARCHAR},
+      YSMC = #{ysmc,jdbcType=VARCHAR},
+      YSSX = #{yssx,jdbcType=VARCHAR},
+      YTXZ = #{ytxz,jdbcType=VARCHAR},
+      XGSJ = #{xgsj,jdbcType=TIMESTAMP},
+      XGRBH = #{xgrbh,jdbcType=VARCHAR}
+    where YSID = #{ysid,jdbcType=INTEGER}
+  </update>
+  <!-- 修改因子维度关系 -->
+</mapper>

@@ -1,0 +1,15 @@
+﻿{
+"children":
+[
+	{ "name": "家庭发生变故", 	"weight": 100 },
+	{ "name": "对家乡亲人思念", 	"weight": 90 },
+	{ "name": "对执法不公反抗", 	"weight": 90 },
+	{ "name": "好逸恶劳", 	"weight": 130 },
+	{ "name": "追求享乐生活", 	"weight": 70 },
+	{ "name": "反抗情绪", 	"weight": 100 },
+	{ "name": "追求自由", 	"weight": 59 },
+	{ "name": "抵抗改造", 	"weight": 90 },
+	{ "name": "感觉人格受到伤害", 	"weight": 65 }
+]
+}
+

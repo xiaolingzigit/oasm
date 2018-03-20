@@ -1,0 +1,30 @@
+﻿{
+"children":
+[
+	{ "name": "提出过无理诉求", 	"weight": 130 },
+	{ "name": "仇恨司法人员", 	"weight": 97 },
+	{ "name": "睡眠差或三天以上不睡觉", 	"weight": 90 },
+	{ "name": "家庭发生变故", 	"weight": 90 },
+	{ "name": "有外调或监区调动意愿", 	"weight": 90 },
+	{ "name": "认为量刑过重", 	"weight": 100 },
+	{ "name": "有酗酒史", 	"weight": 59 },
+	{ "name": "有申诉", 	"weight": 90 },
+	{ "name": "有自伤自残史", 	"weight": 85 },
+	{ "name": "疾病困扰", 	"weight": 55 },
+	{ "name": "无减刑希望", 	"weight": 77 },
+	{ "name": "吃饭情况较差或两天以上不吃不喝", 	"weight": 85 },
+	{ "name": "有赌博史", 	"weight": 55 },
+	{ "name": "子女上学无人照顾", 	"weight": 55 },
+	{ "name": "自认无罪或被冤枉", 	"weight": 70 },
+	{ "name": "三无人员", 	"weight": 55 },
+	{ "name": "流浪史", 	"weight": 55 },
+	{ "name": "关心服刑改造情况", 	"weight": 66 },
+	{ "name": "严重暴力行为史", 	"weight": 55 },
+	{ "name": "自杀史", 	"weight": 55 },
+	{ "name": "吃饭不正常", 	"weight": 55 },
+	{ "name": "离异或丧偶", 	"weight": 30 },
+	{ "name": "受欺凌史", 	"weight": 30 },
+	{ "name": "睡眠一般或1天不睡觉", 	"weight": 30 },
+	{ "name": "疾病伤残影响生产生活", 	"weight": 50 }
+]
+}

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.VPgbgListMapper" >
+  <!-- 评估报告列表属性映射部分 -->
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.VPgbgList" >
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="last_modif" property="lastModif" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="levl" property="levl" jdbcType="VARCHAR" />
+    <result column="stat" property="stat" jdbcType="TINYINT" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="gyjqmc" property="gyjqmc" jdbcType="VARCHAR" />
+    <result column="jh" property="jh" jdbcType="VARCHAR" />
+    <result column="jhxm" property="jhxm" jdbcType="VARCHAR" />
+    <result column="xjbh" property="xjbh" jdbcType="VARCHAR" />
+    <result column="xjxm" property="xjxm" jdbcType="VARCHAR" />
+    <association property="tczsh" javaType="com.hd.jy.oasm.domain.TCzsh" resultMap="TCzshResultMap"></association>
+  </resultMap>
+  
+  <!-- 评估报告罪犯基础信息属性映射部分 -->
+  <resultMap id="BaseViewgrpgbgxx" type="com.hd.jy.oasm.domain.Viewgrpgbgxx" >
+    <result column="bh" property="bh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="xbdm" property="xbdm" jdbcType="VARCHAR" />
+    <result column="csrq" property="csrq" jdbcType="DATE" />
+    <result column="mzdm" property="mzdm" jdbcType="VARCHAR" />
+    <result column="whcddm" property="whcddm" jdbcType="VARCHAR" />
+    <result column="bqzy" property="bqzy" jdbcType="VARCHAR" />
+    <result column="xfcs" property="xfcs" jdbcType="TINYINT" />
+    <result column="gyjqmc" property="gyjqmc" jdbcType="VARCHAR" />
+    <result column="lydwbm" property="lydwbm" jdbcType="CHAR" />
+    <result column="bqmm" property="bqmm" jdbcType="VARCHAR" />
+    <result column="hyzkdm" property="hyzkdm" jdbcType="VARCHAR" />
+    <result column="gtfzlxdm" property="gtfzlxdm" jdbcType="VARCHAR" />
+    <result column="sg" property="sg" jdbcType="NUMERIC" />
+    <result column="tz" property="tz" jdbcType="NUMERIC" />
+    <result column="xq" property="xq" jdbcType="VARCHAR" />
+    <result column="qr" property="qr" jdbcType="DATE" />
+    <result column="zr" property="zr" jdbcType="DATE" />
+    <result column="bznx" property="bznx" jdbcType="VARCHAR" />
+    <result column="qzcj" property="qzcj" jdbcType="TINYINT" />
+    <result column="bdlbdm" property="bdlbdm" jdbcType="VARCHAR" />
+    <result column="xzjx" property="xzjx" jdbcType="TINYINT" />
+    <result column="aflbdm" property="aflbdm" jdbcType="VARCHAR" />
+    <result column="mscc" property="mscc" jdbcType="VARCHAR" />
+    <result column="fj" property="fj" jdbcType="NUMERIC" />
+    <result column="zkxz1dm" property="zkxz1dm" jdbcType="VARCHAR" />
+    <result column="zkxz2dm" property="zkxz2dm" jdbcType="VARCHAR" />
+    <result column="zklbdm" property="zklbdm" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 最全的评估报告罪犯基本信息 第一部分-->
+   <resultMap id="BaseBGjbxx" type="com.hd.jy.oasm.domain.BGjbxx" >
+      <id column="QH" property="qh" jdbcType="VARCHAR" />
+      <result column="JY" property="jy" jdbcType="VARCHAR" />
+      <result column="JQ" property="jq" jdbcType="VARCHAR" />
+      <result column="FJQ" property="fjq" jdbcType="VARCHAR" />
+      <result column="XM" property="xm" jdbcType="VARCHAR" />
+      <result column="XB" property="xb" jdbcType="VARCHAR" />
+      <result column="BM" property="bm" jdbcType="VARCHAR" />
+      <result column="CSRQ" property="csrq" jdbcType="DATE" />
+      <result column="NL" property="nl" jdbcType="TINYINT" />
+      <result column="GJ" property="gj" jdbcType="VARCHAR" />
+      <result column="MZ" property="mz" jdbcType="VARCHAR" />
+      <result column="WHCD" property="whcd" jdbcType="VARCHAR" />
+      <result column="ZZMM" property="zzmm" jdbcType="VARCHAR" />
+      <association property="bgxxxx" javaType="com.hd.jy.oasm.domain.BGxxxx" resultMap="BaseBGxxxx"></association>
+   </resultMap>
+   
+    <!-- 最全的评估报告罪犯基本信息 第二部分-->
+   <resultMap id="BaseBGxxxx" type="com.hd.jy.oasm.domain.BGxxxx" >
+      <id column="QH" property="qh" jdbcType="VARCHAR" />
+      <result column="BQZY" property="bqzy" jdbcType="VARCHAR" />
+      <result column="ZJLX" property="zjlx" jdbcType="VARCHAR" />
+      <result column="SG" property="sg" jdbcType="VARCHAR" />
+      <result column="TZ" property="tz" jdbcType="VARCHAR" />
+      <result column="HTZK" property="htzk" jdbcType="VARCHAR" />
+      <result column="HJDZ" property="hjdz" jdbcType="VARCHAR" />
+      <result column="JTZZ" property="jtzz" jdbcType="VARCHAR" />
+      <result column="HYGX" property="hygx" jdbcType="VARCHAR" />
+      <result column="JTZC" property="jtzc" jdbcType="VARCHAR" />
+      <result column="JTBG" property="jtbg" jdbcType="VARCHAR" />
+      <result column="WCNFJTZK" property="wcnfjtzk" jdbcType="VARCHAR" />
+      <result column="SFDSZN" property="sfdszn" jdbcType="VARCHAR" />
+      <result column="ZMMC" property="zmmc" jdbcType="VARCHAR" />
+      <result column="RJRQ" property="rjrq" jdbcType="DATE" />
+      <result column="FYLX" property="fylx" jdbcType="VARCHAR" />
+      <result column="GTFZLX" property="gtfzlx" jdbcType="VARCHAR" />
+      <result column="BDLB" property="bdlb" jdbcType="VARCHAR" />
+      <result column="XQ" property="xq" jdbcType="VARCHAR" />
+      <result column="AFLB" property="aflb" jdbcType="VARCHAR" />
+      <result column="BZNX" property="bznx" jdbcType="VARCHAR" />
+      <result column="QZCJ" property="qzcj" jdbcType="VARCHAR" />
+      <result column="XZJX" property="xzjx" jdbcType="VARCHAR" />
+      <result column="FZ" property="fz" jdbcType="DECIMAL" />
+      <result column="MSCC" property="mscc" jdbcType="VARCHAR" />
+      <result column="FZSS" property="fzss" jdbcType="VARCHAR" />
+      <result column="ZKLB" property="zklb" jdbcType="VARCHAR" />
+      <result column="ZKXZ1" property="zkxz1" jdbcType="VARCHAR" />
+      <result column="ZKXZ2" property="zkxz2" jdbcType="VARCHAR" />
+      <result column="RZLB" property="rzlb" jdbcType="VARCHAR" />
+      <result column="XFCS" property="xfcs" jdbcType="TINYINT" />
+      <result column="HFGDJ" property="hfgdj" jdbcType="VARCHAR" />
+      <result column="SFSW" property="sfsw" jdbcType="VARCHAR" />
+      <result column="SFSJ" property="sfsj" jdbcType="VARCHAR" />
+      <result column="YNSALB" property="ynsalb" jdbcType="VARCHAR" />
+      <result column="LDNL" property="ldnl" jdbcType="VARCHAR" />
+      <result column="JBLB" property="jblb" jdbcType="VARCHAR" />
+      <result column="TAFQX" property="tafqx" jdbcType="VARCHAR" />
+      <result column="ZMFL" property="zmfl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+<!--   评估报告处置审核意见 -->
+  <resultMap id="TCzshResultMap" type="com.hd.jy.oasm.domain.TCzsh" >
+    <id column="rwid" property="rwid" jdbcType="VARCHAR" />
+    <result column="czqk" property="czqk" jdbcType="VARCHAR" />
+    <result column="czxg" property="czxg" jdbcType="VARCHAR" />
+    <result column="czlrr" property="czlrr" jdbcType="VARCHAR" />
+    <result column="czlrsj" property="czlrsj" jdbcType="TIMESTAMP" />
+    <result column="jqyj" property="jqyj" jdbcType="VARCHAR" />
+    <result column="jqjl" property="jqjl" jdbcType="VARCHAR" />
+    <result column="jqqz" property="jqqz" jdbcType="VARCHAR" />
+    <result column="jqshsj" property="jqshsj" jdbcType="TIMESTAMP" />
+    <result column="wpyj" property="wpyj" jdbcType="VARCHAR" />
+    <result column="wpjl" property="wpjl" jdbcType="VARCHAR" />
+    <result column="wpqz" property="wpqz" jdbcType="VARCHAR" />
+    <result column="wpclsj" property="wpclsj" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <!-- 评估报告搜索条件 -->
+  <sql id="pgQuery">
+    <where>
+  	   <trim suffixOverrides="and">
+  		 <if test="jh!=null and jh!=''">
+  		    jh = #{jh} and
+  		 </if>
+  		 <if test="type != null and type != ''">
+  			type= #{type} and
+  		 </if>
+  		 <if test="crim_no!=null and crim_no!=''">
+            crim_no LIKE concat(concat('%',#{crim_no}),'%') and 
+        </if>
+        <if test="xm!=null and xm!=''">
+            xm LIKE concat(concat('%',#{xm}),'%') and 
+        </if>
+        <if test="jhxm!=null and jhxm!=''">
+            jhxm LIKE concat(concat('%',#{jhxm}),'%') and
+        </if>
+        <if test="gyjqmc!=null and gyjqmc!=''">
+            gyjqmc = #{gyjqmc} and
+        </if>
+        <if test="levl!=null and levl!=''">
+            levl LIKE concat(concat('%',#{levl}),'%') and
+        </if>
+        <if test="deadline!=null">
+            deadline LIKE concat(concat('%',#{deadline}),'%') and
+        </if>
+        <if test="last_modif!=null">
+            last_modif LIKE concat(concat('%',#{deadline}),'%') and
+        </if>
+        <if test="stat!=null and stat!=''">
+           status = #{stat,jdbcType=DECIMAL} and
+        </if>
+        <if test="czlrsj != null and czlrsj != ''">
+           czlrsj is not null and
+        </if>
+        <if test="jqshsj != null and jqshsj != ''">
+           jqshsj is not null and 
+        </if>
+        <if test="wpclsj != null and wpclsj != ''">
+           wpclsj is not null
+        </if>
+  	  </trim>
+  	</where>
+  </sql>
+  
+  <!--评估报告视图PGBGViewCotroller  -->
+  <select id="getViewPgbg" resultMap="BaseResultMap">
+  	select 
+  	task_id,crim_no,type,CONVERT(varchar(20), deadline, 111)  deadline,CONVERT(varchar(20), last_modif, 111) last_modif,status,
+	score,levl,stat,
+	xm,gyjqmc,
+	jh,jhxm,xjbh,xjxm
+  	from v_pgbg_list
+  	<include refid="pgQuery"></include>
+  	ORDER BY score desc,task_id
+  </select>
+  
+  <!-- 根据囚犯编号显示评估报告的基本信息 -->
+  <select id="crimInfoBycrimNo" resultMap="BaseBGjbxx" parameterType="java.lang.String">
+    select 
+    a.QH, a.JY, a.JQ, a.FJQ, a.XM, a.XB, a.BM, a.CSRQ, a.NL, a.GJ, a.MZ, a.WHCD, a.ZZMM, 
+	b.BQZY, b.ZJLX, b.SG, b.TZ, b.HTZK, b.HJDZ, b.JTZZ, b.HYGX, b.JTZC, b.JTBG, b.WCNFJTZK, b.SFDSZN, b.ZMMC, 
+    b.RJRQ, b.FYLX, b.GTFZLX, b.BDLB, b.XQ, b.AFLB, b.BZNX, b.QZCJ, b.XZJX, b.FZ, b.MSCC, b.FZSS, b.ZKLB, b.ZKXZ1, 
+    b.ZKXZ2, b.RZLB, b.XFCS, b.HFGDJ, b.SFSW, b.SFSJ, b.YNSALB, b.LDNL, b.JBLB, b.TAFQX,b.ZMFL
+    from BG_JBXX a left join BG_XXXX b on a.QH=b.QH where a.QH=#{qh}
+  </select>
+  
+  <!-- 罪犯历史评估报告 :评估编号，评估阶段，分数，危险等级，评估时间   -->
+  <select id="getLsPgbg" resultMap="BaseResultMap" resultType="java.lang.String">
+  	select task_id,type,score,levl,CONVERT(varchar(20), last_modif, 111) last_modif 
+  	from v_pgbg_list 
+  	where crim_no=#{qh} and ( type='dyRep' or type='inRep' or type='otRep' or type='mdRep') and score is not null
+  	order by last_modif asc
+  </select>
+  
+  <!--个人危险等级变化： 分数，时间，需要转ECharts数据（分数，时间）  --> 
+  <select id="getGrdjbh" resultMap="BaseResultMap" resultType="java.lang.String">
+  	select score,levl,CONVERT(varchar(20), last_modif, 111) last_modif from v_pgbg_list 
+  	where crim_no=#{qh} and ( type='dyRep' or type='inRep' or type='otRep' or type='mdRep') and score is not null
+  	order by last_modif asc
+  </select>
+  
+  <!-- 查询报告处理列表 -->
+  <select id="listViewPgbgAndTCzsh" resultMap="BaseResultMap">
+  	select 
+	task_id,crim_no,type,CONVERT(varchar(20), deadline, 111)  deadline,CONVERT(varchar(20), last_modif, 111) last_modif,status,
+	score,levl,stat,
+	xm,gyjqmc,
+	jh,jhxm,xjbh,xjxm,
+	czlrsj,jqshsj,wpclsj
+	from v_pgbg_list 
+	LEFT join T_CZSH tc on tc.rwid=task_id 	 
+  	<include refid="pgQuery"></include>
+  	ORDER BY crim_no,task_id
+  </select>
+  
+  
+  
+</mapper>

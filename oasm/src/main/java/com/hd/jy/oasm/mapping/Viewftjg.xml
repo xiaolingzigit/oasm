@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hd.jy.oasm.dao.ViewftjgAndxwgcDao">
+   <!-- 入监结构访谈页面显示视图部分 -->
+   <resultMap id="BaseViewRJjgft" type="com.hd.jy.oasm.domain.Viewrjjgft">
+    <result column="qh" jdbcType="VARCHAR" property="qh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="gyjq" jdbcType="VARCHAR" property="gyjq" />
+    <result column="sj" jdbcType="TIMESTAMP" property="sj" />
+    <result column="fs" jdbcType="INTEGER" property="fs" />
+    <result column="jhxm" jdbcType="VARCHAR" property="jhxm" />
+    <result column="ftzt" jdbcType="CHAR" property="ftzt" />
+    <result column="rjftid" jdbcType="NUMERIC" property="rjftid" />
+    <result column="jh" jdbcType="VARCHAR" property="jh" />
+  </resultMap>
+   
+   <!-- 中期结构访谈页面显示视图部分 -->
+   <resultMap id="BaseViewZQjgft" type="com.hd.jy.oasm.domain.Viewzqjgft">
+    <result column="qh" jdbcType="VARCHAR" property="qh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="gyjq" jdbcType="VARCHAR" property="gyjq" />
+    <result column="sj" jdbcType="TIMESTAMP" property="sj" />
+    <result column="fs" jdbcType="INTEGER" property="fs" />
+    <result column="jhxm" jdbcType="VARCHAR" property="jhxm" />
+    <result column="ftzt" jdbcType="CHAR" property="ftzt" />
+    <result column="zqftid" jdbcType="NUMERIC" property="zqftid" />
+    <result column="jh" jdbcType="VARCHAR" property="jh" />
+  </resultMap>
+   
+   <!-- 出监结构访谈页面显示视图部分 -->
+   <resultMap id="BaseCJjgft" type="com.hd.jy.oasm.domain.Viewcjjgft">
+    <result column="qh" jdbcType="VARCHAR" property="qh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="gyjq" jdbcType="VARCHAR" property="gyjq" />
+    <result column="sj" jdbcType="TIMESTAMP" property="sj" />
+    <result column="fs" jdbcType="INTEGER" property="fs" />
+    <result column="jhxm" jdbcType="VARCHAR" property="jhxm" />
+    <result column="ftzt" jdbcType="CHAR" property="ftzt" />
+    <result column="cjftid" jdbcType="NUMERIC" property="cjftid" />
+    <result column="jh" jdbcType="VARCHAR" property="jh" />
+  </resultMap>
+  
+  <!-- 档案数据分析，匹配完成，把得到的结果插入到Sjdafx中 -->
+  <resultMap id="BaseDasjfx" type="com.hd.jy.oasm.domain.ViewDasjfx" >
+    <result column="BH" property="bh" jdbcType="VARCHAR" />
+    <result column="XM" property="xm" jdbcType="VARCHAR" />
+    <result column="XQ" property="xq" jdbcType="VARCHAR" />
+    <result column="CSRQ" property="csrq" jdbcType="INTEGER" />
+    <result column="BQWHCD" property="bqwhcd" jdbcType="CHAR" />
+    <result column="XFCS" property="xfcs" jdbcType="TINYINT" />
+    <result column="GTFZLX" property="gtfzlx" jdbcType="VARCHAR" />
+    <result column="TBGZLB" property="tbgzlb" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   
+   <!-- 业务操作部分开始 -->
+   <!-- 显示入监结构访谈视图的数据 -->
+   <select id="showViewrjjgft" resultMap="BaseViewRJjgft" parameterType="java.lang.String">
+      select qh, xm, gyjq,sj, fs, jhxm, ftzt,rjftid from v_rjjgft 
+         <where>
+           <if test="_parameter != null">
+             jh=#{jh,jdbcType=VARCHAR}
+           </if>
+         </where>
+         order by fs desc
+   </select>
+   
+   <!-- 显示中期结构访谈视图的数据 -->
+   <select id="showViewzqjgft" resultMap="BaseViewZQjgft" parameterType="java.lang.String">
+     select qh, xm, gyjq,sj, fs, jhxm, ftzt,zqftid from  v_zqjgft 
+         <where>
+           <if test="_parameter != null">
+             jh=#{jh,jdbcType=VARCHAR}
+           </if>
+         </where>
+          order by fs desc
+   </select>
+   
+   <!-- 在页面显示出监结构访谈视图数据 -->
+   <select id="showViewcjjgft" resultMap="BaseCJjgft" parameterType="java.lang.String">
+     select qh, xm, gyjq,sj, fs, jhxm, ftzt,cjftid from v_cjjgft
+         <where>
+           <if test="_parameter != null">
+             jh=#{jh,jdbcType=VARCHAR}
+           </if>
+         </where>
+    	 order by fs desc
+   </select>
+   
+   <!-- 档案数据分析，把导过来的数据进行分析，通过规则匹配，把结果存到Sjdafx中 -->
+   <select id="seachDasjfxByBh" resultMap="BaseDasjfx">
+      select BH,XM,XQ,CSRQ,BQWHCD,XFCS,GTFZLX,TBGZLB from v_dasjfx
+   </select>
+   
+   <!-- 档案数据分析特别关注代码 -->
+   <select id="tbgzDasjfxByBh" resultMap="BaseDasjfx" parameterType="java.lang.String">
+       select BH,XM,XQ,CSRQ,BQWHCD,XFCS,GTFZLX,TBGZLB from v_dasjfx where BH=#{BH,jdbcType=VARCHAR}
+   </select> 
+   
+   <!-- 出监档案数据分析，把出监监区（十监区，出监管区）的数据导过来分析，结果也存到Sjdafx中 -->
+   <select id="cjDasjfxByRelat" resultMap="BaseDasjfx">
+     select da.BH,da.XM,da.XQ,da.CSRQ,da.BQWHCD,da.XFCS,da.GTFZLX,da.TBGZLB from  
+      t_zyrymd zy left join ZD_JYDW_JQ jq  on jq.jqmc=zy.gyjq
+	  left join v_dasjfx da on zy.qh=da.BH
+   where jq.jqzt=2
+   </select>
+   
+</mapper>

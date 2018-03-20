@@ -1,0 +1,155 @@
+ul, ol { list-style:none; }
+.bg_title {
+    text-align: center;
+    font-size: 40px;
+}
+.bgid{
+	font-size:20px;
+	color:red;
+	padding-left:10px;
+}
+.bg_item {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.bg_item_title {
+    font-size: 20px;
+    color: #36acfd;
+    padding: 6px 0;
+}
+.bg_item_title2 {
+    color: #36acfd;
+    padding: 6px 0;
+}
+.bg_sub_line {
+    height: 5px;
+    background: #ffff6f;
+    margin-bottom:2px;
+}
+.bg_ul {
+	width:99%;
+	/*background:#e6eae8;*/
+	margin:10px auto;
+	display:inline-block;
+	
+
+}
+.bg_li {
+   /*  height: 32px; */
+    line-height: 32px;
+    margin: 3px 0 5px 10px;
+    background: #d7dcdf;
+}
+.bg_li2 {
+    line-height: 32px;
+    margin: 3px 0 5px 10px;
+    background: #d7dcdf;
+}
+.bg_li3 {
+    line-height: 32px;
+    margin: 3px 0 0 10px;
+    background: #7ecbf7;
+    border-radius:20px;
+    color:#fff;
+    text-align:center;
+    
+}
+.bg_li_w1{
+	width:32%;
+}
+.bg_li_w2{
+	width:64.7%;
+}
+.bg_li_w3{
+	width:97.5%;
+}
+.bg_li_w4{	
+	width:12%;
+}
+.bg_ul li{
+	float:left;
+}
+
+.bg_item_h{
+overflow-x: auto;
+overflow-y: auto;
+/* height:400px; */
+}
+.bg_item1,.bg_item2 {
+    display: inline-block;
+    text-align: center;
+}
+.bg_item3 {
+    display: inline-block;
+}
+.bg_item1 {
+    width: 160px;
+    vertical-align:top;
+    color: white;
+    background-color: #7ecbf7;
+}
+
+.bg_item2 {
+    padding-left: 5px;
+}
+.bg_item2_w {
+	width:98%;
+	margin: 12px auto;
+}
+.ztsize{
+	font-size: 23px;
+	color: #ffffff;
+	line-height: 28px;
+	font-weight: bold;
+}
+.bg_tb{
+	width:99%;
+	margin:0 auto;   
+	text-align: center;
+	line-height: 22px;
+	background:#7ecbf7;
+	margin-bottom:5px;
+}
+.bg_tb th{	
+	background:#7ecbf7;
+	color:#fff;
+}
+.bg_tb tr{	
+	background:#fff;
+}
+.td_title{
+    width:20%;	
+}
+.bg_tb2{
+	width:100%;
+	text-align: center;
+	line-height: 30px;
+	background:#7ecbf7;
+}
+.bg_tb2 th{
+	background:#7ecbf7;
+	color:#fff;
+}
+
+.bg_fs{
+	color:#f00;
+}
+.bg_rs{
+	color:#7ecbf7;
+}
+.yz_tr{
+	font-weight:bold;
+	text-align:center;
+}
+.yz_td{
+	text-align: left;
+	padding-left:200px;
+}
+.bg_rs_left{
+	margin-left: 80%;
+	margin-bottom:5px;
+}

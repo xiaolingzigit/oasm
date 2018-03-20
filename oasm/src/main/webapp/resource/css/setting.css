@@ -1,0 +1,35 @@
+.sub_item{
+    width: 50%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 6px 20px 19px 20px;
+     -moz-box-shadow:0px 2px 7px #777; 
+    -webkit-box-shadow:0px 2px 7px #777;
+     box-shadow:0px 2px 7px #777;
+	
+}
+.userinfo_tb{
+	margin:0 auto;
+	margin-top:12px;
+}
+.userinfo_tb table{
+	font-size:20px;
+}
+.title_td{
+	text-align: justify;
+    text-align-last: justify;
+}
+.userinfo_tb tr{
+	height:40px;
+}
+
+.userinfo_tb input{
+    height: 30px;
+    width: 70%;
+    font-size: 18px;
+    box-shadow: 1px 1px 1px #777;
+}
+.edit_model{
+	display:none;
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 用户角色权限表 -->
+<mapper namespace="com.hd.jy.oasm.dao.GrolePermissMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.GrolePermiss" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="grid" property="grid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="jh" property="jh" jdbcType="INTEGER" />
+    
+    <!-- 使用封装类的形式关联，记住不要写错包名，否则所有的.xml都会报错 -->
+    <association property="grouMan" javaType="com.hd.jy.oasm.domain.GroupMan" resultMap="GrouManBase"></association>
+    <association property="permission" javaType="com.hd.jy.oasm.domain.Permission" resultMap="PermissionBase"></association>
+  </resultMap>
+  <!-- 关联组员信息 属性-->
+  <resultMap type="com.hd.jy.oasm.domain.GroupMan" id="GrouManBase">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="gmname" property="gmname" jdbcType="VARCHAR"/>
+      <result column="states" property="states" jdbcType="INTEGER"/>
+      <result column="rgid" property="rgid" jdbcType="INTEGER"/>
+  </resultMap>
+  <!-- 关联权限信息 属性 -->
+  <resultMap type="com.hd.jy.oasm.domain.Permission" id="PermissionBase">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="zpname" property="zpname" jdbcType="VARCHAR"/>
+      <result column="states" property="states" jdbcType="INTEGER"/>
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, grid, pid, jh
+  </sql>
+  
+  <!-- 根据警号查询角色权限 -->
+  <select id="selectRole" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      SELECT gp.jh,gm.gmname,ps.zpname
+         FROM
+             groupMan gm
+                  INNER JOIN grole_permiss gp ON gp.grid = gm.id
+                  INNER JOIN permission  ps ON gp.pid = ps.id
+                         where jh=#{jh,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from grole_permiss
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from grole_permiss
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.GrolePermiss" >
+    insert into grole_permiss (id, grid, pid, 
+      jh)
+    values (#{id,jdbcType=INTEGER}, #{grid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{jh,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.GrolePermiss" >
+    insert into grole_permiss
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="grid != null" >
+        grid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="jh != null" >
+        jh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="grid != null" >
+        #{grid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="jh != null" >
+        #{jh,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.GrolePermiss" >
+    update grole_permiss
+    <set >
+      <if test="grid != null" >
+        grid = #{grid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="jh != null" >
+        jh = #{jh,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.GrolePermiss" >
+    update grole_permiss
+    set grid = #{grid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      jh = #{jh,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

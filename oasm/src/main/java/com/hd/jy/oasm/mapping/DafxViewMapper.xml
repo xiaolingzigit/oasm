@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.DafxViewMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.DafxView" >
+    <result column="qh" property="qh" jdbcType="VARCHAR" />
+    <result column="zsxm" property="zsxm" jdbcType="VARCHAR" />
+    <result column="db" property="db" jdbcType="VARCHAR" />
+    <result column="hyzk" property="hyzk" jdbcType="VARCHAR" />
+    <result column="lgf" property="lgf" jdbcType="VARCHAR" />
+    <result column="ssqk4" property="ssqk4" jdbcType="VARCHAR" />
+    <result column="qkqk1" property="qkqk1" jdbcType="VARCHAR" />
+    <result column="xq" property="xq" jdbcType="VARCHAR" />
+    <result column="syxq" property="syxq" jdbcType="VARCHAR" />
+    <result column="yfxq" property="yfxq" jdbcType="VARCHAR" />
+    <result column="yfxqbl" property="yfxqbl" jdbcType="VARCHAR" />
+    <result column="xaflb" property="xaflb" jdbcType="VARCHAR" />
+    <result column="ywss" property="ywss" jdbcType="VARCHAR" />
+    <result column="zsqk" property="zsqk" jdbcType="VARCHAR" />
+    <result column="fj" property="fj" jdbcType="VARCHAR" />
+    <result column="mscc" property="mscc" jdbcType="VARCHAR" />
+    <result column="fjjn" property="fjjn" jdbcType="VARCHAR" />
+    <result column="fylx" property="fylx" jdbcType="VARCHAR" />
+    <result column="jxcd" property="jxcd" jdbcType="VARCHAR" />
+    <result column="lbc" property="lbc" jdbcType="VARCHAR" />
+    <result column="rjnl" property="rjnl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="findAndToall" resultMap="BaseResultMap">
+       select qh,zsxm,jq,hyzk,lgf,ssqk4,qkqk1,xq,syxq,yfxq,yfxqbl,
+          xaflb, ywss, zsqk, fj, mscc, fjjn, fylx, jxcd, lbc, rjnl
+        from V_dafx
+  </select>
+  
+  <select id="selectByQh" resultMap="BaseResultMap" parameterType="java.lang.String">
+     select qh,zsxm,jq,hyzk,lgf,ssqk4,qkqk1,xq,syxq,yfxq,yfxqbl,
+          xaflb, ywss, zsqk, fj, mscc, fjjn, fylx, jxcd, lbc, rjnl
+        from V_dafx where qh=#{qh,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.DafxView" >
+    insert into V_dafx (qh, zsxm,db, hyzk, 
+      lgf, ssqk4, qkqk1, 
+      xq, syxq, yfxq, yfxqbl, 
+      xaflb, ywss, zsqk, 
+      fj, mscc, fjjn, fylx, 
+      jxcd, lbc, rjnl)
+    values (#{qh,jdbcType=VARCHAR}, #{zsxm,jdbcType=VARCHAR}, #{db,jdbcType=VARCHAR},#{hyzk,jdbcType=VARCHAR}, 
+      #{lgf,jdbcType=VARCHAR}, #{ssqk4,jdbcType=VARCHAR}, #{qkqk1,jdbcType=VARCHAR}, 
+      #{xq,jdbcType=VARCHAR}, #{syxq,jdbcType=VARCHAR}, #{yfxq,jdbcType=VARCHAR}, #{yfxqbl,jdbcType=VARCHAR}, 
+      #{xaflb,jdbcType=VARCHAR}, #{ywss,jdbcType=VARCHAR}, #{zsqk,jdbcType=VARCHAR}, 
+      #{fj,jdbcType=VARCHAR}, #{mscc,jdbcType=VARCHAR}, #{fjjn,jdbcType=VARCHAR}, #{fylx,jdbcType=VARCHAR}, 
+      #{jxcd,jdbcType=VARCHAR}, #{lbc,jdbcType=VARCHAR}, #{rjnl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.DafxView" >
+    insert into V_dafx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qh != null" >
+        qh,
+      </if>
+      <if test="zsxm != null" >
+        zsxm,
+      </if>
+       <if test="db != null" >
+        db,
+      </if>
+      <if test="hyzk != null" >
+        hyzk,
+      </if>
+      <if test="lgf != null" >
+        lgf,
+      </if>
+      <if test="ssqk4 != null" >
+        ssqk4,
+      </if>
+      <if test="qkqk1 != null" >
+        qkqk1,
+      </if>
+      <if test="xq != null" >
+        xq,
+      </if>
+      <if test="syxq != null" >
+        syxq,
+      </if>
+      <if test="yfxq != null" >
+        yfxq,
+      </if>
+      <if test="yfxqbl != null" >
+        yfxqbl,
+      </if>
+      <if test="xaflb != null" >
+        xaflb,
+      </if>
+      <if test="ywss != null" >
+        ywss,
+      </if>
+      <if test="zsqk != null" >
+        zsqk,
+      </if>
+      <if test="fj != null" >
+        fj,
+      </if>
+      <if test="mscc != null" >
+        mscc,
+      </if>
+      <if test="fjjn != null" >
+        fjjn,
+      </if>
+      <if test="fylx != null" >
+        fylx,
+      </if>
+      <if test="jxcd != null" >
+        jxcd,
+      </if>
+      <if test="lbc != null" >
+        lbc,
+      </if>
+      <if test="rjnl != null" >
+        rjnl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qh != null" >
+        #{qh,jdbcType=VARCHAR},
+      </if>
+      <if test="zsxm != null" >
+        #{zsxm,jdbcType=VARCHAR},
+      </if>
+      <if test="db != null" >
+        #{db,jdbcType=VARCHAR},
+      </if>
+      <if test="hyzk != null" >
+        #{hyzk,jdbcType=VARCHAR},
+      </if>
+      <if test="lgf != null" >
+        #{lgf,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqk4 != null" >
+        #{ssqk4,jdbcType=VARCHAR},
+      </if>
+      <if test="qkqk1 != null" >
+        #{qkqk1,jdbcType=VARCHAR},
+      </if>
+      <if test="xq != null" >
+        #{xq,jdbcType=VARCHAR},
+      </if>
+      <if test="syxq != null" >
+        #{syxq,jdbcType=VARCHAR},
+      </if>
+      <if test="yfxq != null" >
+        #{yfxq,jdbcType=VARCHAR},
+      </if>
+      <if test="yfxqbl != null" >
+        #{yfxqbl,jdbcType=VARCHAR},
+      </if>
+      <if test="xaflb != null" >
+        #{xaflb,jdbcType=VARCHAR},
+      </if>
+      <if test="ywss != null" >
+        #{ywss,jdbcType=VARCHAR},
+      </if>
+      <if test="zsqk != null" >
+        #{zsqk,jdbcType=VARCHAR},
+      </if>
+      <if test="fj != null" >
+        #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="mscc != null" >
+        #{mscc,jdbcType=VARCHAR},
+      </if>
+      <if test="fjjn != null" >
+        #{fjjn,jdbcType=VARCHAR},
+      </if>
+      <if test="fylx != null" >
+        #{fylx,jdbcType=VARCHAR},
+      </if>
+      <if test="jxcd != null" >
+        #{jxcd,jdbcType=VARCHAR},
+      </if>
+      <if test="lbc != null" >
+        #{lbc,jdbcType=VARCHAR},
+      </if>
+      <if test="rjnl != null" >
+        #{rjnl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

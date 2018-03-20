@@ -1,0 +1,18 @@
+﻿{
+"children":
+[
+	{ "name": "自我失望感", 	"weight": 100 },
+	{ "name": "悲观", 	"weight": 110 },
+	{ "name": "消极倾向", 	"weight": 100 },
+	{ "name": "抑郁", 	"weight": 130 },
+	{ "name": "自罪感", 	"weight": 80 },
+	{ "name": "犹豫不决", 	"weight": 100 },
+	{ "name": "失败感", 	"weight": 70 },
+	{ "name": "社交退缩", 	"weight": 66 },
+	{ "name": "形体形象改变较大", 	"weight": 60 },
+	{ "name": "满足感缺乏", 	"weight": 45 },
+	{ "name": "完不成劳动任务", 	"weight": 30 },
+	{ "name": "疲乏感", 	"weight": 30 },
+	{ "name": "食欲丧失", 	"weight": 30 }
+]
+}

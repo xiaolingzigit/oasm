@@ -1,0 +1,124 @@
+/*Í³¼Æ·ÖÎö*/
+.tj_content_table{
+	width: 100%;
+    margin:0 auto;
+    margin-bottom:24px;
+    background:#ffffff;
+    
+}
+.tj_content_table table{
+	margin:0 auto;
+	width:100%;
+	border:1px;
+	border-collapse:collapse;
+	border-spacing:0;
+	text-align: center;
+}
+.tj_content_table th{
+    height: 27px;
+    background: #65bbed;
+    border: 1px solid #abc1ff;
+ 
+}
+.tj_content_table td{
+    height: 27px;
+    border-bottom: 1px solid #65bbed;
+    text-align: center;
+}
+.tj_content_table tr:hover{
+	background:#ffff00;
+}
+.tjfx_td01{}
+.tjfx_td02{
+	cursor:pointer;
+	background:#ffff00;
+}
+.tjfx_td03{
+/* 	background:#ffff00; */
+}
+.tjfx_td04{}
+.tjfx_td05{}
+.tjfx_td06{}
+.tjfx_tr01{
+	background:#ffffff;
+	border-bottom: 1px solid #dff7ff;
+	color:#000000;
+}
+.tjfx_tr01:hover{
+	background:#e2f8fe;
+}
+.bubble text{
+		fill: black;
+		font-size: 14px;
+		font-family: arial;
+		text-anchor: middle;
+	}
+.bubble:hover circle{
+		stroke: #a8aaf9;
+		stroke-width: 2px;
+	}
+.bubble:hover text{
+		font-size: 17px;
+		fill: #fff;
+	}
+.bubble_svg{
+		margin-left:300px;
+}
+.wxyzfx div{
+		display: none;
+	}
+
+.wxyzfx div:first-child{
+		display: block;
+	}
+.statistical_search_option li{
+	float:left;
+	border:1px solid #c0c0c0;
+	cursor:pointer;
+	border-bottom:0px;
+	width: 100px;
+    text-align: center;
+}
+.statisticaltype_now{
+	color: #007bff;
+    box-shadow: 0px -2px 2px #219bd5;
+    background: #f6f6f6;
+}
+.sub_search_area{
+	clear:both;
+	min-height:100px;
+	background: #f6f6f6;
+	margin-left:5px;    
+	padding-top: 18px;
+	padding-bottom:10px;
+	
+}
+.statistical_search_area .sub_search_area{
+	display: none;	
+}
+.statistical_search_area .sub_search_area:first-child{
+		display: block;
+	}
+
+.sub_input_source{
+	float:left;
+	min-width: 14%; 
+	margin-left: 5px;
+}
+.tjsetting_category li{
+	float:left;
+	min-width: 10%;
+    margin-top: 0px;
+}
+
+.tjsetting_tb{
+	width:100%;
+}
+.checked_style{
+	color:#db0029;
+	 font-weight: bold;
+}
+.tjsetting_tb_td{
+	border: 1px dashed #777;
+    background: white;
+	}

@@ -1,0 +1,382 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#lbfxPage{
+   padding: 0px 10px 0px 10px;
+   width:100%;
+   min-height: 1000px;
+   height: auto;
+   position: relative;
+   background-color: #ffffff;
+}
+/* .localtion{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    margin:10px 0;
+} */
+.easyui-tabs{
+   margin-top: 30px;
+}
+
+/**閫夐」鍗�**/
+.main_content_base_pggj {
+    background: #d8f6ff;
+    width: 99.3%;
+    min-height: 400px;
+    height: auto;
+    clear: both;
+    border: 1px solid #4195c4;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+/**鍙鍖栧浘琛ㄩ儴鍒�**/
+#lbfxcharts{
+  width: 100%;
+  height: 400px;
+  display:block;
+}
+#xindu{
+    float: left;
+    width:50%;
+    height: 400px;
+}
+#xiaodu{
+    float: left;
+    width: 50%;
+    height: 400px;
+}
+/**閲忚〃鍥犲瓙鍒嗘瀽閮ㄥ垎**/
+#lbyzfx{
+    width: 100%;
+    height: 300px;
+}
+/**涓婂崐閮ㄥ垎**/
+#zhnamediv{
+   float: left;
+   width: 15%;
+   height: 300px;
+}
+#zhdatadiv{
+   float: left;
+   width: 80%;
+   height: 300px;
+}
+#zhpglb{
+   float: left;
+   width: 55%;
+   height: 300px;
+   border: solid 1px #333;
+   font-size: 16px;
+   text-align: center;
+
+}
+#zhpglb_sx{
+   float: left;
+   margin: 30px 0;
+   width: 40%;
+   height: 267px;
+}
+#wdtz{
+   text-align: center;
+   width: 100%;
+   height: 24%;
+   border: solid 1px #333;
+}
+#kbtz{
+   text-align: center;
+   width: 100%;
+   height: 24%;
+   border: solid 1px #333;
+}
+#xltz{
+   text-align: center;
+   width: 100%;
+   height: 24%;
+   border: solid 1px #333;
+}
+#xwtz{
+   text-align: center;
+   width: 100%;
+   height: 24%;
+   border: solid 1px #333;
+}
+#leftzhdatatable{
+   float:left; 
+   width: 70%;
+   height: 300px;
+}
+#zhdatadiv table{
+    height: 100%;
+    width: 100%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+}
+#zhdatadiv table thead{
+    background: #999;
+}
+#zhdatadiv table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}
+#rightzhdataimg{
+    float: left;
+    width: 28%;
+    height: 300px;
+}
+#rightzhdataimg img{
+    width: 100%;
+    height: 80%;
+}
+#rightzhdataimg span{
+    margin-left: 30%;
+}
+/**涓棿閮ㄥ垎**/
+#zspglb{
+    margin-top:20px; 
+    width: 100%;
+    height: 200px;
+}
+#zspgdata{
+    float: left;
+    width: 75%;
+    height: 200px;
+    
+}
+#zsname{
+    float: left;
+    width: 11%;
+    height: 200px;
+    font-size: 16px;
+    text-align: center;
+    border: solid 1px #333;
+}
+#zstable{
+    float: left;
+    width: 84%;
+    height: 200px;
+}
+#zstable table{
+    height: 200px;
+    width: 100%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+}
+#zstable table thead{
+    background: #999;
+}
+#zstable table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}
+#zspgimg{
+    float:left;
+    width: 23%;
+    height: 200px;
+    
+}
+#zspgimg img{
+    width: 100%;
+    height: 80%;
+}
+#zspgimg span{
+    margin-left: 30%;
+}
+/*琛屽嚩涓撻」*/
+#xxzxpglb{
+    margin-top:20px; 
+    width: 100%;
+    height: 200px;
+}
+#xxzxdata{
+    width: 75%;
+    height: 200px;
+    float: left;
+}
+#xxzxname{
+    float: left;
+    width: 11%;
+    height: 200px;
+    font-size: 16px;
+    text-align: center;
+    border: solid 1px #333;
+
+}
+#xxzxtable{
+  float: left;
+  width: 84%;
+  height: 200px;
+}
+#xxzxtable table{
+    height: 200px;
+    width: 100%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+}
+#xxzxtable table thead{
+    background: #999;
+}
+#xxzxtable table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}
+#xxzximg{
+    float:left;
+    width: 23%;
+    height: 200px;
+    
+}
+#xxzximg img{
+    width: 100%;
+    height: 80%;
+}
+#xxzximg span{
+    margin-left: 30%;
+}
+/*鍐嶇姱缃儴鍒�*/
+#zfzpglb{
+    margin-top:20px; 
+    width: 100%;
+    height: 200px;
+}
+#zfzdata{
+    width: 75%;
+    height: 200px;
+    float: left;
+}
+#zfzname{
+    float: left;
+    width: 11%;
+    height: 200px;
+    font-size: 16px;
+    text-align: center;
+    border: solid 1px #333;
+
+}
+#zfztable{
+  float: left;
+  width: 84%;
+  height: 200px;
+}
+#zfztable table{
+    height: 200px;
+    width: 100%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+}
+#zfztable table thead{
+    background: #999;
+}
+#zfztable table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}
+#zfzimg{
+    float:left;
+    width: 23%;
+    height: 200px;
+    
+}
+#zfzimg img{
+    width: 100%;
+    height: 80%;
+}
+#zfzimg span{
+    margin-left: 30%;
+}
+/*閲忚〃甯告ā*/
+/*鐪佺骇*/
+#sjdtcm{
+  width: 100%;
+  height: 350px;
+}
+.cmname{
+  width: 15%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: solid 1px #333;
+}
+.cmleft{
+  margin-top: 50px;
+  float: left;
+  width: 12%;
+  height: 250px;
+}
+.cmkx{
+  width: 90%;
+  height: 250px;
+}
+.rs{
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.jz{
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.fc{
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.jgdfsfw{
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.gdfsfw{
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.zdfsfw{
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.ddfsfw{
+  width: 100%;
+  height: 33px;
+  border: solid 1px #333;
+  text-align: center;
+}
+.cmright{
+  margin-top: 10px;
+  float: left;
+  height: 290px;
+  width: 85%;
+}
+.cmright table{
+    height: 290px;
+    width: 100%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+}
+.cmright table thead{
+    background: #999;
+}
+.cmright table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}
+/*鐩戠嫳绾у父妯＄户缁皟鐢╟lass鐨勬牱寮�*/
+#jyjdtcm{
+  margin-top: 30px;
+  width: 100%;
+  height: 350px;
+}

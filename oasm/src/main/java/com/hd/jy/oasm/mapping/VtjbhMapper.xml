@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.VtjbhMapper" >
+
+  <resultMap id="TwxlxbhResultMap" type="com.hd.jy.oasm.domain.Twxlxbh" >
+    <id column="wxlxbh" property="wxlxbh" jdbcType="INTEGER" />
+    <result column="jq" property="jq" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="VARCHAR" />
+    <result column="zsjg" property="zsjg" jdbcType="INTEGER" />
+    <result column="zsgd" property="zsgd" jdbcType="INTEGER" />
+    <result column="zszd" property="zszd" jdbcType="INTEGER" />
+    <result column="zsdd" property="zsdd" jdbcType="INTEGER" />
+    <result column="xxjg" property="xxjg" jdbcType="INTEGER" />
+    <result column="xxgd" property="xxgd" jdbcType="INTEGER" />
+    <result column="xxzd" property="xxzd" jdbcType="INTEGER" />
+    <result column="xxdd" property="xxdd" jdbcType="INTEGER" />
+    <result column="ttjg" property="ttjg" jdbcType="INTEGER" />
+    <result column="ttgd" property="ttgd" jdbcType="INTEGER" />
+    <result column="ttzd" property="ttzd" jdbcType="INTEGER" />
+    <result column="ttdd" property="ttdd" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="TzfzbhResultMap" type="com.hd.jy.oasm.domain.Tzfzbh" >
+    <id column="zfzbh" property="zfzbh" jdbcType="INTEGER" />
+    <result column="jq" property="jq" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="VARCHAR" />
+    <result column="jg" property="jg" jdbcType="INTEGER" />
+    <result column="gd" property="gd" jdbcType="INTEGER" />
+    <result column="zd" property="zd" jdbcType="INTEGER" />
+    <result column="dd" property="dd" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="autoSave" statementType="CALLABLE">
+  	{call p_autoSave}
+  </select>
+
+
+</mapper>

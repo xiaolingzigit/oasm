@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.TLbqysyMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.TLbqysy" >
+    <id column="qyspid" property="qyspid" jdbcType="INTEGER" />
+    <result column="pzid" property="pzid" jdbcType="VARCHAR" />
+    <result column="dxid" property="dxid" jdbcType="INTEGER" />
+    <result column="bpr" property="bpr" jdbcType="VARCHAR" />
+    <result column="bpsj" property="bpsj" jdbcType="DATE" />
+    <result column="spr" property="spr" jdbcType="VARCHAR" />
+    <result column="spsj" property="spsj" jdbcType="DATE" />
+    <result column="spzt" property="spzt" jdbcType="CHAR" />
+    <result column="zy" property="zy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qyspid, pzid, dxid, bpr, bpsj, spr, spsj, spzt, zy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_lbqysp
+    where qyspid = #{qyspid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_lbqysp
+    where qyspid = #{qyspid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hd.jy.oasm.domain.TLbqysy" >
+    insert into t_lbqysp (qyspid, pzid, dxid, 
+      bpr, bpsj, spr, spsj, 
+      spzt, zy)
+    values (#{qyspid,jdbcType=INTEGER}, #{pzid,jdbcType=VARCHAR}, #{dxid,jdbcType=INTEGER}, 
+      #{bpr,jdbcType=VARCHAR}, #{bpsj,jdbcType=DATE}, #{spr,jdbcType=VARCHAR}, #{spsj,jdbcType=DATE}, 
+      #{spzt,jdbcType=CHAR}, #{zy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.TLbqysy" >
+    insert into t_lbqysp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qyspid != null" >
+        qyspid,
+      </if>
+      <if test="pzid != null" >
+        pzid,
+      </if>
+      <if test="dxid != null" >
+        dxid,
+      </if>
+      <if test="bpr != null" >
+        bpr,
+      </if>
+      <if test="bpsj != null" >
+        bpsj,
+      </if>
+      <if test="spr != null" >
+        spr,
+      </if>
+      <if test="spsj != null" >
+        spsj,
+      </if>
+      <if test="spzt != null" >
+        spzt,
+      </if>
+      <if test="zy != null" >
+        zy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qyspid != null" >
+        #{qyspid,jdbcType=INTEGER},
+      </if>
+      <if test="pzid != null" >
+        #{pzid,jdbcType=VARCHAR},
+      </if>
+      <if test="dxid != null" >
+        #{dxid,jdbcType=INTEGER},
+      </if>
+      <if test="bpr != null" >
+        #{bpr,jdbcType=VARCHAR},
+      </if>
+      <if test="bpsj != null" >
+        #{bpsj,jdbcType=DATE},
+      </if>
+      <if test="spr != null" >
+        #{spr,jdbcType=VARCHAR},
+      </if>
+      <if test="spsj != null" >
+        #{spsj,jdbcType=DATE},
+      </if>
+      <if test="spzt != null" >
+        #{spzt,jdbcType=CHAR},
+      </if>
+      <if test="zy != null" >
+        #{zy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.TLbqysy" >
+    update t_lbqysp
+    <set >
+      <if test="pzid != null" >
+        pzid = #{pzid,jdbcType=VARCHAR},
+      </if>
+      <if test="dxid != null" >
+        dxid = #{dxid,jdbcType=INTEGER},
+      </if>
+      <if test="bpr != null" >
+        bpr = #{bpr,jdbcType=VARCHAR},
+      </if>
+      <if test="bpsj != null" >
+        bpsj = #{bpsj,jdbcType=DATE},
+      </if>
+      <if test="spr != null" >
+        spr = #{spr,jdbcType=VARCHAR},
+      </if>
+      <if test="spsj != null" >
+        spsj = #{spsj,jdbcType=DATE},
+      </if>
+      <if test="spzt != null" >
+        spzt = #{spzt,jdbcType=CHAR},
+      </if>
+      <if test="zy != null" >
+        zy = #{zy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where qyspid = #{qyspid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.TLbqysy" >
+    update t_lbqysp
+    set pzid = #{pzid,jdbcType=VARCHAR},
+      dxid = #{dxid,jdbcType=INTEGER},
+      bpr = #{bpr,jdbcType=VARCHAR},
+      bpsj = #{bpsj,jdbcType=DATE},
+      spr = #{spr,jdbcType=VARCHAR},
+      spsj = #{spsj,jdbcType=DATE},
+      spzt = #{spzt,jdbcType=CHAR},
+      zy = #{zy,jdbcType=VARCHAR}
+    where qyspid = #{qyspid,jdbcType=INTEGER}
+  </update>
+</mapper>

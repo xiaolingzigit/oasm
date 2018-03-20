@@ -1,0 +1,116 @@
+/**因子分析**/
+*{
+	margin: 0;
+	padding: 0;
+}
+#yzfxPage{
+   padding: 0px 10px 0px 10px;
+   width:98%;
+   min-height: 1000px;
+   height: auto;
+   position: relative;
+   background-color: #ffffff;
+}
+#yzkfxys{
+    height:100px; 
+    width: 100%;
+}
+#yzkfxys span{
+	font-size: 20px;
+	font-style: 华文楷体;
+	color: #333;
+}
+.tpdiv{
+	width: 80%;
+	height: 260px;
+	margin-left: 100px;
+}
+.tpdiv_yx{
+	margin-top: 20px;
+	float: left;
+    width: 50%;
+    height: 260px;
+}
+.tpdiv_yx img{
+	width: 60%;
+	height: 220px;
+}
+.tpdiv_yx span{
+    margin-left: 20%;
+}
+.tpdiv_yc{
+	margin-top: 20px;
+	float: left;
+    width: 50%;
+    height: 260px;
+}
+.tpdiv_yc img{
+	width: 60%;
+	height: 220px;
+}
+.tpdiv_yc span{
+   margin-left: 20%;
+}
+
+/**因子量表部分**/
+#lbyzxs{
+   margin-top:60px; 
+   width: 100%;
+   height: 40px;
+}
+#lbyzxs span{
+	font-size: 20px;
+	font-style: 华文楷体;
+	color: #333;
+}
+#zhyzlb{
+  width: 100%;
+  height: 200px;
+}
+
+#zsAndxx{
+	margin-top: 20px;
+	width: 100%;
+    height: 200px;
+}
+.yzAndlb{
+	float: left;
+	width: 50%;
+	height: 200px;
+}
+
+#ttAndzfz{
+	margin-top: 20px;
+	width: 100%;
+    height: 200px;
+}
+#zhyzlb table{
+    height: 180px;
+    width: 48%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+    background: #FFF;
+}
+#zhyzlb table thead{
+    background: #999;
+}
+#zhyzlb table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}
+.yzAndlb table{
+    height: 180px;
+    width: 96%;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+    background: #FFF;
+}
+.yzAndlb table thead{
+    background: #999;
+}
+.yzAndlb table td{
+    text-align: center;
+    border-left:1px solid #333;
+    border-top:1px solid #333;
+}

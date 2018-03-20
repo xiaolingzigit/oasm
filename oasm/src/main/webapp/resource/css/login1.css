@@ -1,0 +1,108 @@
+/* 
+* @Author: Marte
+* @Date:   2016-05-05 14:06:28
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-07-20 10:20:39
+*/
+/* 鍒濆鍖朇SS  閲嶇疆娴忚鍣ㄦ牱寮�*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+fieldset, img { border:none; } 
+img{display: block;}
+ul, ol { list-style:none; }
+input { padding-top:0; padding-bottom:0; font-family: "SimSun","瀹嬩綋";}
+/*select, input, textarea { font-size:12px; margin:0; }*/
+textarea { resize:none;}
+/*table {border-collapse:collapse; }*/
+body {font-size:14px;color:#333;background: #2ba8fd;}
+.clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both; }
+.clearfix { zoom:1;}
+a { color:#333; text-decoration:none; }
+ /*.log-bg{
+     left:0;
+     top:0;
+     width: 100%;
+     height: 100%;
+     position: relative;
+ }*/
+
+ .log-bg img{
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    z-Index: -1;
+    position: absolute;
+}
+
+ .txt-pos strong{
+    position: absolute;
+    /*left: 670px;
+    top: 190px;*/
+     left: 53%;
+     top: 32%;
+     font-size: 30px;
+	 color: #163575;
+
+}
+ .txt-pos span strong{
+    position: absolute;
+    left: 54%;
+    top:  37%;
+    font-size: 30px;
+	color: #163575;
+
+}
+ span{
+    color: #163575;
+    font-weight: 700; 
+  }
+ .log-bg .log-form {
+      position: absolute;
+      /*left: 595px;
+      top: 275px;*/
+     left: 47%;
+     top: 48%;
+
+  }
+ .log-tr{
+    text-align: right;
+}
+ .log-tr input{
+	 height:30px;
+	 width:200px;
+	 font-size:25px;
+	 margin-left:15px
+}
+ .log-tr2{
+    text-align: center;
+}
+ .log-inp{
+     text-align: left;
+}
+ .log-td{
+     color: #4687DF;
+     font-size: 25px;
+ }
+ .log-bot{
+    left: 31%;
+    top: 86%;
+    color: #747B85;
+    position: absolute;
+    font:normal 700 17px "SimSun";
+}
+
+ .sub,.btn{
+     width:60px;
+     height:25px;
+     text-align:center;
+     letter-spacing:2px;
+     line-height:25px;
+     border:none;
+     color:#FFFFFF;
+     cursor:pointer;
+     background:url(../images/icon_3.png) 0 -90px no-repeat;
+    }
+
+
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.VTjpgbgMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.VTjpgbg" >
+    <result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="gyjqmc" property="gyjqmc" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="levl" property="levl" jdbcType="VARCHAR" />
+    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <!-- 统计各个监区危险程度的人数 -->
+  <select id="getVTjpgbg" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select levl,count(levl) sl from v_tjpgbg
+  <where>
+  	<if test="_parameter != null">
+  		gyjqmc=#{jq,jdbcType=VARCHAR}
+  	</if>
+  </where>
+  group by levl
+  </select>
+  
+  <!-- 按危险程度查询罪犯信息 -->
+  <select id="getAllVT" resultMap="BaseResultMap" parameterType="com.hd.jy.oasm.domain.VTjpgbg">
+  	select * from v_tjpgbg
+  	<trim prefix="where" prefixOverrides="and">
+	  	<if test="levl != null">
+	  		and levl=#{levl,jdbcType=VARCHAR} 
+	  	</if>
+	  	<if test="gyjqmc != null">
+	  		and gyjqmc=#{gyjqmc,jdbcType=VARCHAR}
+	  	</if>
+  	</trim>
+  </select>
+  
+</mapper>

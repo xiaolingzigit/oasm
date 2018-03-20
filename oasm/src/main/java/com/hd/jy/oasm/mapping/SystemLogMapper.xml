@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.jy.oasm.dao.SystemLogDao" >
+  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.util.domain.SystemLog" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="logType" property="logType" jdbcType="LONGVARCHAR" />
+    <result column="requireIP" property="requireIP" jdbcType="VARCHAR" />
+    <result column="exceptionCode" property="exceptionCode" jdbcType="VARCHAR" />
+    <result column="exceptionDetail" property="exceptionDetail" jdbcType="VARCHAR" />
+    <result column="params" property="params" jdbcType="VARCHAR" />
+    <result column="createBy" property="createBy" jdbcType="VARCHAR" />
+    <result column="createDate" property="createDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, description, method, logType,requireIP,exceptionCode,exceptionDetail,params,createBy,createDate
+  </sql>
+  <!-- 日志动态搜索器 -->
+  <sql id="LogQuery">
+     <where>
+         <trim suffixOverrides="and">
+            <if test="createBy!=null">
+              createBy LIKE concat(concat('%',#{createBy}),'%') and 
+            </if>
+            <if test="description!=null">
+              description LIKE concat(concat('%',#{description}),'%') and 
+            </if>
+            <if test="createDate!=null">
+              createDate LIKE concat(concat('%',#{createDate}),'%')
+            </if>
+         </trim>
+     </where>
+  </sql>
+  <insert id="insertLog" parameterType="com.hd.jy.oasm.util.domain.SystemLog">
+    insert into SYS_log(id,description,method,logType,requireIP,exceptionCode,exceptionDetail,params,
+           createBy,createDate) 
+         values(#{id,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{method,jdbcType=VARCHAR},#{logType,jdbcType=LONGVARCHAR},#{requireIP,jdbcType=VARCHAR},
+             #{exceptionCode,jdbcType=VARCHAR},#{exceptionDetail,jdbcType=VARCHAR},#{params,jdbcType=VARCHAR},
+                 #{createBy,jdbcType=VARCHAR},#{createDate,jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 显示操作日志 -->
+  <select id="systemLogInfo" resultMap="BaseResultMap">
+       select id,description,method,logType,requireIP,exceptionDetail,params,createBy,createDate from SYS_Log
+       <include refid="LogQuery"></include>
+       order by createDate desc
+  </select>
+  
+  <!-- 对数据库进行备份 -->
+  <select id="backupDB" resultType="java.lang.String" parameterType="java.lang.String" statementType="CALLABLE">
+     <![CDATA[
+              {call backupDB(#{fileName},'Test_pg')}
+         ]]>
+  </select>
+</mapper>
