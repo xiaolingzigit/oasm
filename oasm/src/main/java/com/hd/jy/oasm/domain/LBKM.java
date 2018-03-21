@@ -28,11 +28,11 @@ public class LBKM {
     private int jd; //阶段
     
     //把所有使用到的量表放到量表库中
-    private LBRJ lbrj; //根据lbbh关联入监量表
-    
-    private LBRC lbrc; //根据lbbh关联日常量表
-    
-    private LBZQ lbzq; //根据lbbh关联中期量表
+//    private LBRJ lbrj; //根据lbbh关联入监量表
+//    
+//    private LBRC lbrc; //根据lbbh关联日常量表
+//    
+//    private LBZQ lbzq; //根据lbbh关联中期量表
     
     private LBCJ lbcj; //根据lbbh关联出监量表
     
@@ -44,29 +44,29 @@ public class LBKM {
 		this.jd = jd;
 	}
 
-	public LBRJ getLbrj() {
-		return lbrj;
-	}
-
-	public void setLbrj(LBRJ lbrj) {
-		this.lbrj = lbrj;
-	}
-
-	public LBRC getLbrc() {
-		return lbrc;
-	}
-
-	public void setLbrc(LBRC lbrc) {
-		this.lbrc = lbrc;
-	}
-
-	public LBZQ getLbzq() {
-		return lbzq;
-	}
-
-	public void setLbzq(LBZQ lbzq) {
-		this.lbzq = lbzq;
-	}
+//	public LBRJ getLbrj() {
+//		return lbrj;
+//	}
+//
+//	public void setLbrj(LBRJ lbrj) {
+//		this.lbrj = lbrj;
+//	}
+//
+//	public LBRC getLbrc() {
+//		return lbrc;
+//	}
+//
+//	public void setLbrc(LBRC lbrc) {
+//		this.lbrc = lbrc;
+//	}
+//
+//	public LBZQ getLbzq() {
+//		return lbzq;
+//	}
+//
+//	public void setLbzq(LBZQ lbzq) {
+//		this.lbzq = lbzq;
+//	}
 
 	public LBCJ getLbcj() {
 		return lbcj;

@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.hd.jy.oasm.domain.LBCJ;
 import com.hd.jy.oasm.domain.LBKM;
-import com.hd.jy.oasm.domain.LBRC;
-import com.hd.jy.oasm.domain.LBRJ;
-import com.hd.jy.oasm.domain.LBZQ;
 import com.hd.jy.oasm.domain.WD;
 /**
  * 
@@ -28,11 +25,8 @@ public interface LBKMMapper extends BaseDao<LBKM>{
 
     int updateByPrimaryKey(LBKM record);
     
-    List<LBKM> rjlbtmyz(String fl);  //入监量表根据fl选出要答题的题目因子
     
-    List<LBKM> rclbtmyz(String fl);  //日常量表根据分类选出要答题的题目因子
     
-    List<LBKM> zqlbtmyz(String fl); //中期量表分类选中要答题的题目因子
     
     List<LBKM> cjlbtmyz(String fl);  //出监量表根据分类要答题的题目因子
     
@@ -42,14 +36,9 @@ public interface LBKMMapper extends BaseDao<LBKM>{
 
     List<LBKM> selectRDLB(String str); //查询显示某个阶段的量表名
     
-    //*************************计算录入因子的分数和显示因子的部分*************************************************************
-    LBRJ selectRjyzAndfsByyzbm(int yzbm);  //根据入监录入的因子计算分数  在ZuoTiService层调用
+    //*************************计算录入因子的分数和显示因子的部分************************************************************
     
-    LBRC selectRcyzAndfsByyzbm(int yzbm);  //日常因子编码计算单个因子和分数
-    
-    LBZQ selectZqyzAndfsByyzbm(int yzbm); //中期因子编码计算单个因子和分数
-    
-    LBCJ selectCjyzAndfsByyzbm(int yzbm); //出监因子编码计算单个因子和分数
+    LBCJ selectCjyzAndfsByyzbm(int yzbm); //出监因子编码计算单个因子和分数  在ZuoTiService层调用
     
     
     

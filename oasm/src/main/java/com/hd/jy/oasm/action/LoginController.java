@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.services.JyxxService;
-import com.hd.jy.oasm.util.CryptographyUtil;
 import com.hd.jy.oasm.util.CustomizedToken;
 import com.hd.jy.oasm.util.LoginType;
 

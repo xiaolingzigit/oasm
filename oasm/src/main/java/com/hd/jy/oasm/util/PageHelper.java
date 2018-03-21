@@ -130,12 +130,10 @@ public class PageHelper implements Interceptor {
 //        pageSql.append(") where row_id > ").append(page.getStartRow());
         
         pageSql.append(sql);
-        pageSql.append(" OFFSET ");
+        pageSql.append(" LIMIT ");
         pageSql.append(page.getStartRow());
-        pageSql.append(" ROWS ");
-        pageSql.append(" FETCH NEXT ");
+        pageSql.append(" , ");
         pageSql.append(page.getPageSize());
-        pageSql.append(" ROWS ONLY");
         return pageSql.toString();
        
     }

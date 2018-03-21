@@ -1,10 +1,7 @@
 package com.hd.jy.oasm.action;
 
-import java.io.File;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,14 +24,10 @@ import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.domain.SysAdmin;
 import com.hd.jy.oasm.services.JyxxService;
 import com.hd.jy.oasm.services.SysAdminService;
-import com.hd.jy.oasm.services.SystemLogService;
-import com.hd.jy.oasm.util.CryptographyUtil;
 import com.hd.jy.oasm.util.CustomizedToken;
 import com.hd.jy.oasm.util.LoginType;
 import com.hd.jy.oasm.util.Page;
 import com.hd.jy.oasm.util.PageHelper;
-import com.hd.jy.oasm.util.domain.SystemLog;
-import com.hd.jy.oasm.util.file.ZIPcompression;
 
 /***
  * 
@@ -53,7 +46,7 @@ public class SysAdminController {
 	
 	//日志操作接口
 	@Autowired
-	private SystemLogService logService; 
+//	private SystemLogService logService; 
 	
 	
 
@@ -69,11 +62,11 @@ public class SysAdminController {
 		return "/systemBlank/adminBlank";
 	}
 	
-	//罪犯标识卡
-	@RequestMapping(value="/zfIDcard")
-	public String zfIDcard(){
-		return "/systemBlank/zfIDcard";
-	}
+//	//罪犯标识卡
+//	@RequestMapping(value="/zfIDcard")
+//	public String zfIDcard(){
+//		return "/systemBlank/zfIDcard";
+//	}
 
 	// 警员信息页面
 	@SuppressWarnings("rawtypes")
@@ -118,10 +111,10 @@ public class SysAdminController {
 	}
 
 	// 数据导入页面
-	@RequestMapping(value = "dataInput")
-	public String dataInput() {
-		return "/systemBlank/dataInput";
-	}
+//	@RequestMapping(value = "dataInput")
+//	public String dataInput() {
+//		return "/systemBlank/dataInput";
+//	}
 
 	@SuppressWarnings("static-access")
 	@ResponseBody
@@ -216,7 +209,8 @@ public class SysAdminController {
 			if(null!=jh&&""!=jh){
 				up = new SysAdmin();
 				up.setUsername(username);
-				up.setPassword(CryptographyUtil.MD5(password.trim()));
+//				up.setPassword(CryptographyUtil.MD5(password.trim()));
+				up.setPassword(password.trim());
 				i = sysAdminService.updateByCurrentUsername(up);
 			}else{
 				log.error("请确保管理员为登录状态");
@@ -257,7 +251,8 @@ public class SysAdminController {
 		 try {
 			 admin = new SysAdmin();
 			 admin.setUsername(username.trim());
-			 admin.setPassword(CryptographyUtil.MD5(password.trim()));
+//			 admin.setPassword(CryptographyUtil.MD5(password.trim()));
+			 admin.setPassword(password);
 			i = sysAdminService.selectByUser(admin);
 			log.info("根据原密码匹配到账号"+i+"个");
 		} catch (Exception e) {
@@ -282,7 +277,8 @@ public class SysAdminController {
 				 su = new SysAdmin();
 				 su.setId(id);
 				 su.setUsername(username.trim());
-				 su.setPassword(CryptographyUtil.MD5(password.trim()));
+//				 su.setPassword(CryptographyUtil.MD5(password.trim()));
+				 su.setPassword(password);
 				 su.setStatus(1);
 				 i = sysAdminService.updateByPrimaryKeySelective(su);
 				 log.info("成功帮助修改普通管理员密码"+i+"个"); 
@@ -332,7 +328,7 @@ public class SysAdminController {
 	  * 上午11:02:04
 	  * Map<Object,Object>
 	  */
-	 @SuppressWarnings("rawtypes")
+	/* @SuppressWarnings("rawtypes")
 	@ResponseBody
 	 @RequestMapping(value="/logInof",method={RequestMethod.POST,RequestMethod.GET})
 	 public Map<Object,Object> logInof(int pageNum,int pageSize,String createBy,String description,String createDate){
@@ -352,7 +348,7 @@ public class SysAdminController {
 			log.error("显示操作日志失败，请稍后重试...");
 		}
 		 return mapPage;
-	 }
+	 }*/
 	 /**
 	  * 数据库备份
 	  * @todo TODO
@@ -361,10 +357,10 @@ public class SysAdminController {
 	  * @time 2018年1月11日 下午3:51:55
 	  *
 	  */
-	 @RequestMapping(value="/backupDB",method={RequestMethod.GET,RequestMethod.POST})
+	/* @RequestMapping(value="/backupDB",method={RequestMethod.GET,RequestMethod.POST})
 	 public String backupDB(){
 		 return "/systemBlank/backupDB";
-	 }
+	 }*/
 	 /**
 	  * 保存备份数据到指定路径下
 	  * @todo TODO
@@ -375,7 +371,7 @@ public class SysAdminController {
 	  * @time 2018年1月11日 下午6:27:12
 	  *
 	  */
-	 @ResponseBody
+	/* @ResponseBody
 	 @RequestMapping(value="/backupPackge",method={RequestMethod.GET,RequestMethod.POST})
 	 @Log(operationType="备份数据",operationName="备份数据库数据")
 	 public String backupPackge(String savePath,HttpSession session){
@@ -397,7 +393,7 @@ public class SysAdminController {
 			log.error("压缩文件异常");
 		}
 		 return dbPath;
-	 }
+	 }*/
 	 
     //建立session
 	public static HttpSession getSession() {

@@ -22,7 +22,6 @@ import com.hd.jy.oasm.domain.Tjczjdx;
 import com.hd.jy.oasm.domain.newDomain.Tip;
 import com.hd.jy.oasm.services.JyxxService;
 import com.hd.jy.oasm.services.TzyrymdService;
-import com.hd.jy.oasm.util.CryptographyUtil;
 import com.hd.jy.oasm.util.file.FileDataCheck;
 import com.hd.jy.oasm.util.file.ReadExcelUtil;
 import com.hd.jy.oasm.util.lsc.GsonUtil;
@@ -191,7 +190,8 @@ public class ExcelViewController {
 							zw = checkZW(zwname); //查找到职务的编号
 							jy = new JYXX();
 							jy.setJh(jh);
-							jy.setMa(new CryptographyUtil().MD5(ma));
+//							jy.setMa(new CryptographyUtil().MD5(ma));
+							jy.setMa(ma);
 							jy.setXm(xm);
 							jy.setZw(zw);
 							jy.setZwName(zwname); //别名，职务名，不使用名称入库，使用编号，为了返回前端

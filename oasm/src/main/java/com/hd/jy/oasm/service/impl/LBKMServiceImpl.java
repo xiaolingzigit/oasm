@@ -61,54 +61,6 @@ public class LBKMServiceImpl implements LBKMService {
 			return i;
 		}
 
-	 //入监量表根据fl选出要答题的题目因子逻辑方法
-	@Override
-	public List<LBKM> rjlbtmyz(String lbbh) {
-		// TODO Auto-generated method stub
-		List<LBKM> rjlbtmyz = null;
-		try {
-			log.info("开始选出【lbrj】答题题目时间"+DateUtil.getTime(new Date()));
-			rjlbtmyz = lbkmDao.rjlbtmyz(lbbh);
-			log.info("【lbrj】答题题目数据报文"+rjlbtmyz.size()+"条数据");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("选出【lbrj】答题题目时间异常"+e.getMessage());
-		}
-		return rjlbtmyz;
-	}
-	
-	//选出日常量表根据fl选出要答题的题目
-	@Override
-	public List<LBKM> rclbtmyz(String fl) {
-		// TODO Auto-generated method stub
-		List<LBKM> rclbtmyz = null;
-		try {
-			log.info("开始根据"+fl+"查询时间"+DateUtil.getTime(new Date()));
-			rclbtmyz = lbkmDao.rclbtmyz(fl);
-			log.info("成功查出【日常量表】数据报文"+rclbtmyz.size()+"条");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("根据"+fl+"查询【日常量表异常】,请重试..."+e.getMessage());
-		}
-		return rclbtmyz;
-	}
-
-	//选出中期量表根据fl选出要答题的题目
-	@Override
-	public List<LBKM> zqlbtmyz(String fl) {
-		// TODO Auto-generated method stub
-		List<LBKM> zqlbtmyz = null;
-		try {
-			log.info("开始根据"+fl+"查询【中期量表因子】时间"+DateUtil.getTime(new Date()));
-			zqlbtmyz = lbkmDao.zqlbtmyz(fl);
-			log.info("成功查出【中期量表因子】数据报文"+zqlbtmyz.size()+"条");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("根据"+fl+"查询【中期量表异常】,请重试..."+e.getMessage());
-		}
-		return zqlbtmyz;
-	}
-
 	//选出出监量表根据fl选出要答题的题目
 	@Override
 	public List<LBKM> cjlbtmyz(String fl) {

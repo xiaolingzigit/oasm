@@ -20,7 +20,6 @@ import com.hd.jy.oasm.domain.GroupMan;
 import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.domain.ZRole;
 import com.hd.jy.oasm.services.JyxxService;
-import com.hd.jy.oasm.util.CryptographyUtil;
 
 @Controller
 @RequestMapping("jyxx")
@@ -122,7 +121,8 @@ public class JyxxController {
 			  sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			  jy.setJh(jh);
 			  jy.setXm(xm);
-			  jy.setMa(CryptographyUtil.MD5(ma).trim());
+//			  jy.setMa(CryptographyUtil.MD5(ma).trim());
+			  jy.setMa(ma);
 			  jy.setZw(zw);
 			  jy.setJq(jq);
 			  jy.setXjq(xjq);
@@ -205,7 +205,8 @@ public class JyxxController {
 	  if((ma!=null&&ma!="")||(jh!=null&&jh!="")){
 		  jy = new JYXX();
 		  jy.setJh(jh);
-		  jy.setMa(CryptographyUtil.MD5(ma.trim()));
+//		  jy.setMa(CryptographyUtil.MD5(ma.trim()));
+		  jy.setMa(ma);
 		  i = jyxxService.selectCheckUser(jy);
 		  log.info("根据原密码匹配出"+i+"个正确的用户");
 	  }else{
@@ -230,7 +231,8 @@ public class JyxxController {
 	  if((ma!=null&&ma!="")||(jh!=null&&jh!="")){
 		  jy = new JYXX();
 		  jy.setJh(jh);
-		  jy.setMa(CryptographyUtil.MD5(ma.trim()));
+//		  jy.setMa(CryptographyUtil.MD5(ma.trim()));
+		  jy.setMa(ma);
 		  i = jyxxService.updateCerrurJh(jy);
 	  }else{
 		  log.error("根据当前"+jh+"修改失败，请重新登录...");

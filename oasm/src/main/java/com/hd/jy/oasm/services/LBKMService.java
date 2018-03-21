@@ -3,23 +3,21 @@ package com.hd.jy.oasm.services;
 import java.util.List;
 
 import com.hd.jy.oasm.domain.LBKM;
+
+import com.hd.jy.oasm.domain.WD;
+import com.hd.jy.oasm.domain.ZCYCYQPC;
 /**
  * 
  * @author quite
  *量表库操作逻辑接口，包括全查询方法
  */
-import com.hd.jy.oasm.domain.WD;
-import com.hd.jy.oasm.domain.ZCYCYQPC;
 public interface LBKMService {
 	public List<LBKM> selectAllkm(); //查询显示所有的量表库名
 	
 	public List<LBKM> selectRDLB(String str); //查询显示某个阶段的量表名
 	
-	public List<LBKM> rjlbtmyz(String lbbh);  //入监量表根据lbbh选出要答题的题目因子
 	
-    public List<LBKM> rclbtmyz(String fl);  //日常量表根据分类选出要答题的题目因子
     
-    public List<LBKM> zqlbtmyz(String fl); //中期量表分类选中要答题的题目因子
     
     public List<LBKM> cjlbtmyz(String fl);  //出监量表根据分类要答题的题目因子
 	

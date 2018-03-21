@@ -107,27 +107,6 @@
       </if>
     </trim>
   </insert>
-  <!-- 更改入监部分状态 -->
-  <update id="updateRjftzt" parameterType="java.lang.Long">
-      update t_zyrymd set ftzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=1
-  </update>
-  
-  <update id="updateGczt" parameterType="java.lang.Long">
-      update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=1
-  </update>
-  
-  <!-- 更改日常部分状态 -->
-  <update id="updateRcgczt" parameterType="java.lang.Long">
-     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=2
-  </update>
-  
-  <!-- 更改中期部分状态 -->
-  <update id="updateZqftzt" parameterType="java.lang.Long">
-     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=3
-  </update>
-  <update id="updateZqGczt" parameterType="java.lang.Long">
-     update t_zyrymd set xwzt=1 where qh=#{qh,jdbcType=VARCHAR} and jd=3
-  </update>
   
   <!-- 更改出监部分状态 -->
   <update id="updateCjftzt" parameterType="java.lang.Long">

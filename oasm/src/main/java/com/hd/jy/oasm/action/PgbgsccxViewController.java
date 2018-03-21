@@ -127,19 +127,19 @@ public class PgbgsccxViewController {
 
 	
 	//*********************************危险类型部分************************************************
-   @ResponseBody
-   @RequestMapping("/rjlxSelectByQh")
-   public LxRj rjlxSelectByQh(long qh){
-	   LxRj lxByQh = pglxService.selectLxByQh(qh);
-	   return lxByQh;
-   }
-   
-   @ResponseBody
-   @RequestMapping("/rclxSelectByQh")
-   public LxRc rclxSelectByQh(long qh){
-	   LxRc lxrc = pglxService.selectLxrc(qh);
-	   return lxrc;
-   }
+//   @ResponseBody
+//   @RequestMapping("/rjlxSelectByQh")
+//   public LxRj rjlxSelectByQh(long qh){
+//	   LxRj lxByQh = pglxService.selectLxByQh(qh);
+//	   return lxByQh;
+//   }
+//   
+//   @ResponseBody
+//   @RequestMapping("/rclxSelectByQh")
+//   public LxRc rclxSelectByQh(long qh){
+//	   LxRc lxrc = pglxService.selectLxrc(qh);
+//	   return lxrc;
+//   }
    @ResponseBody
    @RequestMapping("/cjlxSelectByQh")
    public LxCj cjlxSelectByQh(long qh){

@@ -47,60 +47,60 @@ public class LBKController {
 		return "/systemBlank/lbkManager";
 	}
 
-	// 根据入监fl查出使用的量表
-	@ResponseBody
-	@RequestMapping(value = "/waitRjlbtmda", method = { RequestMethod.GET, RequestMethod.POST })
-	public List<LBKM> waitRjlbtmda(String lbbh) {
-		List<LBKM> rjlbtmyz = null;
-		if (lbbh != null && lbbh != "") {
-			try {
-				rjlbtmyz = lbkmService.rjlbtmyz(lbbh);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				log.error("使用【lbbh】查出使用的量表异常，请重试...");
-			}
-			return rjlbtmyz; // 返回有数据的报文
-		} else {
-			return rjlbtmyz; // 返回无数据的报文
-		}
+//	// 根据入监fl查出使用的量表
+//	@ResponseBody
+//	@RequestMapping(value = "/waitRjlbtmda", method = { RequestMethod.GET, RequestMethod.POST })
+//	public List<LBKM> waitRjlbtmda(String lbbh) {
+//		List<LBKM> rjlbtmyz = null;
+//		if (lbbh != null && lbbh != "") {
+//			try {
+//				rjlbtmyz = lbkmService.rjlbtmyz(lbbh);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				log.error("使用【lbbh】查出使用的量表异常，请重试...");
+//			}
+//			return rjlbtmyz; // 返回有数据的报文
+//		} else {
+//			return rjlbtmyz; // 返回无数据的报文
+//		}
+//
+//	}
 
-	}
+//	// 根据日常量表fl查出使用的量表
+//	@ResponseBody
+//	@RequestMapping(value = "/waitRclbtmda", method = { RequestMethod.GET, RequestMethod.POST })
+//	public List<LBKM> waitRclbtmda(String fl) {
+//		List<LBKM> rclbtmyz = null;
+//		if (fl != null & fl != "") {
+//			try {
+//				rclbtmyz = lbkmService.rclbtmyz(fl);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				log.error("根据【日常量表" + fl + "】查询异常，请重试...");
+//			}
+//			return rclbtmyz;
+//		} else {
+//			return rclbtmyz;
+//		}
+//	}
 
-	// 根据日常量表fl查出使用的量表
-	@ResponseBody
-	@RequestMapping(value = "/waitRclbtmda", method = { RequestMethod.GET, RequestMethod.POST })
-	public List<LBKM> waitRclbtmda(String fl) {
-		List<LBKM> rclbtmyz = null;
-		if (fl != null & fl != "") {
-			try {
-				rclbtmyz = lbkmService.rclbtmyz(fl);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				log.error("根据【日常量表" + fl + "】查询异常，请重试...");
-			}
-			return rclbtmyz;
-		} else {
-			return rclbtmyz;
-		}
-	}
-
-	// 根据中期量表fl查出使用的量表
-	@ResponseBody
-	@RequestMapping(value = "/waitZqlbtmda", method = { RequestMethod.GET, RequestMethod.POST })
-	public List<LBKM> waitZqlbtmda(String fl) {
-		List<LBKM> zqlbtmyz = null;
-		if (fl != null & fl != "") {
-			try {
-				zqlbtmyz = lbkmService.zqlbtmyz(fl);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				log.error("使用中期【lb】查询使用的量表异常，请重试...");
-			}
-			return zqlbtmyz;
-		} else {
-			return zqlbtmyz;
-		}
-	}
+//	// 根据中期量表fl查出使用的量表
+//	@ResponseBody
+//	@RequestMapping(value = "/waitZqlbtmda", method = { RequestMethod.GET, RequestMethod.POST })
+//	public List<LBKM> waitZqlbtmda(String fl) {
+//		List<LBKM> zqlbtmyz = null;
+//		if (fl != null & fl != "") {
+//			try {
+//				zqlbtmyz = lbkmService.zqlbtmyz(fl);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				log.error("使用中期【lb】查询使用的量表异常，请重试...");
+//			}
+//			return zqlbtmyz;
+//		} else {
+//			return zqlbtmyz;
+//		}
+//	}
 
 	// 根据出监量表fl查出使用的量表
 	@ResponseBody

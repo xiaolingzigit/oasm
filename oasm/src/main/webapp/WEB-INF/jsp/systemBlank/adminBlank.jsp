@@ -51,8 +51,8 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#"><img style="height: 36px;"
-						alt="广东省监狱管理局"
-						src="<c:url value='/resource/systemBlank/assets/img/blankLogo.png'/>">危险评估后台系统</a>
+						alt="监狱管理局"
+						src="<c:url value='/resource/systemBlank/assets/img/blankLogo.png'/>">出监评估后台系统</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -135,19 +135,18 @@
 					onclick="showPage('${pageContext.request.contextPath}/systemAdmin/jyxxSetting')"><i
 						class="fa fa-desktop "></i>警员管理</a>
 				</li>
-				<li><a href="javaScript:void(0);"
+				<!-- <li><a href="javaScript:void(0);"
 					onclick="showPage('${pageContext.request.contextPath}/systemAdmin/zfIDcard')"><i
 						class="fa fa-desktop "></i>罪犯标识卡</a>
-				</li>
-				<li><a href="#"><i class="fa fa-edit "></i>数据自动导入设置<span
+				</li> -->
+				<!--  <li><a href="#"><i class="fa fa-edit "></i>数据自动导入设置<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="javaScript:void(0);" onclick="showPage('${pageContext.request.contextPath}/systemAdmin/dataInput')">时间设置</a></li>
 						<li><a href="#">检索新数据</a></li>
 						<li><a href="#">导入前备份</a></li>
-					</ul></li>
-				<li><a href="#"><i class="fa fa-edit "></i>工具管理与维护
-				<span class="fa arrow"></span></a>
+					</ul></li>-->
+				<li><a href="#"><i class="fa fa-edit "></i>工具管理与维护<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 					   <li><a href="javaScript:void(0);" onclick="showPage('${pageContext.request.contextPath}/yzk/yzManager')">因子库管理与维护</a></li>
 					   <li><a href="javaScript:void(0);" onclick="showPage('${pageContext.request.contextPath}/lbk/lbkManager')">量表库管理与维护</a></li>
@@ -155,8 +154,8 @@
 					   <li><a href="javaScript:void(0);" onclick="showPage('${pageContext.request.contextPath}/lbbz/lbsp')">量表审批管理</a></li>
 					</ul>
 				</li>
-				<li><a href="javaScript:void(0);" onclick="showPage('${pageContext.request.contextPath}/systemAdmin/backupDB')"><i  class="fa fa-qrcode "></i>数据备份与还原</a></li>
-				<li><a href="#"><i class="fa fa-table "></i>扩容</a></li>
+				<!-- <li><a href="javaScript:void(0);" onclick="showPage('${pageContext.request.contextPath}/systemAdmin/backupDB')"><i  class="fa fa-qrcode "></i>数据备份与还原</a></li>
+				<li><a href="#"><i class="fa fa-table "></i>扩容</a></li> -->
 			</ul>
 
 		</div>
@@ -169,10 +168,10 @@
 					<div class="col-md-12" id="content">
 						<ol class="breadcrumb">
 							<li><a href="#">首页</a></li>
-							<li class="active">系统日志</li>
+							<!-- <li class="active">系统日志</li> -->
 						</ol>
 						<!-- 系统日志 -->
-						<form class="form-horizontal-left" role="form">
+						<!-- <form class="form-horizontal-left" role="form">
 						    <div class="form-group-left">
 						        <label>操作人:</label>
 						        <input type="text" class="form-control-left" id="createBy" placeholder="操作人">
@@ -197,15 +196,15 @@
 										<th>操作时间</th>
 									</tr>
 								</thead>
-								<tbody id="sysLogData">
+								<tbody id="sysLogData"> -->
 									<!-- 拼接回来的日志 -->
-								</tbody>
+							<!--	</tbody>
 							</table>
 							<div id="barcon" class="barcon">
 						<div id="barcon1" class="barcon1">
-						</div>
+						</div>-->
 						<!-- 分页 -->
-						<div id="barcon2" class="barcon2">
+						<!--<div id="barcon2" class="barcon2">
 							<ul>
 								<li><a id="firstPage">首页</a></li>
 								<li><a id="prePage">上一页</a></li>
@@ -221,7 +220,7 @@
 					    <span id="pageNum" style="display: none;"></span>
 					</div>
 						</div>
-					</div>
+					</div> -->
 					<nav class="navbar-fixed text-center">
 						<p>&copy;版权所有&nbsp;&nbsp;广东省监狱管理局&nbsp;&nbsp;技术支持&nbsp;&nbsp;北明软件科技有限公司</p>
 					</nav>

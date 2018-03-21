@@ -16,7 +16,7 @@ import com.hd.jy.oasm.services.VCjpgService;
 @DataSource("userDataSource")
 public class VCjpgServiceImpl implements VCjpgService{
 	
-	private Logger log = Logger.getLogger(VRcpgServiceImpl.class);
+	private Logger log = Logger.getLogger(VCjpgServiceImpl.class);
 	
 	@Autowired
 	private VCjpgMapper vCjpgMapper;

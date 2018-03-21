@@ -14,9 +14,9 @@
     <result column="jd" property="jd" jdbcType="INTEGER"/>
     
     <!-- 使用量表库管理关联的量表部分 -->
-    <association property="lbrj" javaType="com.hd.jy.oasm.domain.LBRJ" resultMap="BaseLBRJ"></association>
-    <association property="lbrc" javaType="com.hd.jy.oasm.domain.LBRC" resultMap="BaseLBRC"></association>
-    <association property="lbzq" javaType="com.hd.jy.oasm.domain.LBZQ" resultMap="BaseLBZQ"></association>
+     <!-- <association property="lbrj" javaType="com.hd.jy.oasm.domain.LBRJ" resultMap="BaseLBRJ"></association> -->
+    <!-- <association property="lbrc" javaType="com.hd.jy.oasm.domain.LBRC" resultMap="BaseLBRC"></association> -->
+    <!-- <association property="lbzq" javaType="com.hd.jy.oasm.domain.LBZQ" resultMap="BaseLBZQ"></association> -->
     <association property="lbcj" javaType="com.hd.jy.oasm.domain.LBCJ" resultMap="BaseLBCJ"></association>
   </resultMap>
   
@@ -28,39 +28,9 @@
   </resultMap>
   
   
-  <!-- 关联入监量表 部分-->
-  <resultMap type="com.hd.jy.oasm.domain.LBRJ" id="BaseLBRJ">
-    <result column="rjlbbh" property="rjlbbh" jdbcType="VARCHAR" />
-    <result column="fl" property="fl" jdbcType="VARCHAR" />
-    <result column="wd" property="wd" jdbcType="VARCHAR" />
-    <result column="yzbm" property="yzbm" jdbcType="INTEGER" />
-    <result column="yz" property="yz" jdbcType="VARCHAR" />
-    <result column="fs" property="fs" jdbcType="INTEGER" />
-    <result column="qz" property="qz" jdbcType="INTEGER" />
-    <association property="wdbm" javaType="com.hd.jy.oasm.domain.WD" resultMap="BaseWD"></association>
-  </resultMap>
-  <!-- 关联日常量表部分 -->
-  <resultMap type="com.hd.jy.oasm.domain.LBRC" id="BaseLBRC">
-    <result column="rclbbh" property="rclbbh" jdbcType="VARCHAR" />
-    <result column="fl" property="fl" jdbcType="VARCHAR" />
-    <result column="wd" property="wd" jdbcType="VARCHAR" />
-    <result column="yzbm" property="yzbm" jdbcType="INTEGER" />
-    <result column="yz" property="yz" jdbcType="VARCHAR" />
-    <result column="fs" property="fs" jdbcType="INTEGER" />
-    <result column="qz" property="qz" jdbcType="INTEGER" />
-    <association property="wdbm" javaType="com.hd.jy.oasm.domain.WD" resultMap="BaseWD"></association>
-  </resultMap>
-  <!-- 关联中期量表部分 -->
-  <resultMap type="com.hd.jy.oasm.domain.LBZQ" id="BaseLBZQ">
-    <result column="zqlbbh" property="zqlbbh" jdbcType="VARCHAR" />
-    <result column="fl" property="fl" jdbcType="VARCHAR" />
-    <result column="wd" property="wd" jdbcType="VARCHAR" />
-    <result column="yzbm" property="yzbm" jdbcType="INTEGER" />
-    <result column="yz" property="yz" jdbcType="VARCHAR" />
-    <result column="fs" property="fs" jdbcType="INTEGER" />
-    <result column="qz" property="qz" jdbcType="INTEGER" />
-    <association property="wdbm" javaType="com.hd.jy.oasm.domain.WD" resultMap="BaseWD"></association>
-  </resultMap>
+  
+ 
+ 
   <!-- 关联出监量表部分 -->
   <resultMap type="com.hd.jy.oasm.domain.LBCJ" id="BaseLBCJ">
     <result column="cjlbbh" property="cjlbbh" jdbcType="VARCHAR" />
@@ -80,25 +50,7 @@
   <!-- 
             根据fl列出页面上做题所选的因子的部分，包括维度，因子，分数，因子编码，维度（单选，多选）  
    -->
-  <!-- 根据fl列出所有入监量表的答题因子 -->
-  <select id="rjlbtmyz" resultMap="BaseLBRJ" parameterType="java.lang.String">
-       select rjlbbh,r.wd,yzbm,yz,fs,qz,xz from lb_rj r left join wd on r.wd=wd.wdbm 
-            where rjlbbh = (select lbbh from lb_km where zt=1 and jd=1) and fl=#{fl,jdbcType=VARCHAR}  
-                order by yzbm
-  </select>
-  
-  <!-- 根据fl列出所有日常量表的答题因子 -->
-  <select id="rclbtmyz" resultMap="BaseLBRC" parameterType="java.lang.String">
-       select rclbbh,r.wd,yzbm,yz,fs,qz,xz from lb_rc r left join wd on r.wd=wd.wdbm 
-              where rclbbh = (select lbbh from lb_km where zt=1 and jd=2) and fl=#{fl,jdbcType=VARCHAR} 
-                  order by yzbm
-  </select>
-  <!-- 根据fl列出所有中期量表的答题因子 -->
-  <select id="zqlbtmyz" resultMap="BaseLBZQ" parameterType="java.lang.String">
-       select zqlbbh,r.wd,yzbm,yz,fs,qz,xz from lb_zq r left join wd on r.wd=wd.wdbm 
-            where zqlbbh = (select lbbh from lb_km where zt=1 and jd=3) and fl=#{fl,jdbcType=VARCHAR}  
-                 order by yzbm   
-  </select>
+ 
   <!-- 根据fl列出所有出监量表的答题因子 -->
   <select id="cjlbtmyz" resultMap="BaseLBCJ" parameterType="java.lang.String">
         select cjlbbh,r.wd,yzbm,yz,fs,qz,xz from lb_cj r left join wd on r.wd=wd.wdbm 
@@ -110,24 +62,11 @@
   <!--
                  根据因子编码计算所对应的因子和分数部分，然后在评估报告中显示。
    -->
-  <!-- rjlb根据因子编号查出相对应的因子和fs -->
-  <select id="selectRjyzAndfsByyzbm" resultType="com.hd.jy.oasm.domain.LBRJ" parameterType="java.lang.Integer">
-       select yzbm,yz,fs from lb_rj where yzbm=#{yzbm,jdbcType=INTEGER}
-  </select>
+ 
   
-  <!-- rclb根据因子编号查出想对应的因子和fs -->
-  <select id="selectRcyzAndfsByyzbm" resultType="com.hd.jy.oasm.domain.LBRC" parameterType="java.lang.Integer">
-        select yzbm,yz,fs from lb_rc where yzbm=#{yzbm,jdbcType=INTEGER}
-  </select>
-  
-  <!-- zqlb根据因子编号查询相对应的因子和fs -->
-  <select id="selectZqyzAndfsByyzbm" resultType="com.hd.jy.oasm.domain.LBZQ" parameterType="java.lang.Integer">
-        select yzbm,yz,fs from lb_zq where yzbm=#{yzbm,jdbcType=INTEGER}
-  </select>
-  
-  <!-- rclb根据因子编号查询相对应的因子和fs -->
+  <!-- cjlb根据因子编号查询相对应的因子和fs -->
   <select id="selectCjyzAndfsByyzbm" resultType="com.hd.jy.oasm.domain.LBCJ" parameterType="java.lang.Integer">
-        select yzbm,yz,fs from lb_rc where yzbm=#{yzbm,jdbcType=INTEGER}
+        select yzbm,yz,fs from lb_cj where yzbm=#{yzbm,jdbcType=INTEGER}
   </select>
   
   <!-- 全查询列表库 -->

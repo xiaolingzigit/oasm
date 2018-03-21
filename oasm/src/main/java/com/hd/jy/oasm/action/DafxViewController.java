@@ -21,13 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hd.jy.oasm.domain.BGjbxx;
 import com.hd.jy.oasm.domain.Tzyrymd;
-import com.hd.jy.oasm.domain.ViewDafxjg;
-import com.hd.jy.oasm.domain.Viewcjjgft;
-import com.hd.jy.oasm.domain.Viewcjxwgc;
-import com.hd.jy.oasm.domain.Viewrcxwgc;
-import com.hd.jy.oasm.domain.Viewrjxwgc;
-import com.hd.jy.oasm.domain.Viewzqjgft;
-import com.hd.jy.oasm.domain.Viewzqxwgc;
+
 import com.hd.jy.oasm.domain.newDomain.Viewpggl;
 import com.hd.jy.oasm.services.SjjgftAndxwgcService;
 import com.hd.jy.oasm.services.TzyrymdService;
@@ -45,7 +39,7 @@ public class DafxViewController {
 
 	@Autowired
 	private ViewftjgAndxwgcService viewftAndgcService; // 档案、访谈和观察数据视图返回操作接口，可以调用最新的
-	
+
 	@Autowired
 	private SjjgftAndxwgcService sjjgftAndxwgcService; //最新档案分析逻辑接口，页面显示档案分析，以及因子和分数使用
 	
@@ -130,9 +124,11 @@ public class DafxViewController {
 	@RequestMapping("/cj_jgft")
 	public String cj_jgft(Model model) {
 		String jh = getJhforView();
-		List<Viewcjjgft> viewcjjgft = null;
+		List<Viewpggl> viewcjjgft = null;
 		try {
-			viewcjjgft = viewftAndgcService.showViewcjjgft(jh);
+//			viewcjjgft = viewftAndgcService.showViewcjjgft(jh);
+			viewcjjgft = viewftAndgcService.cjjgftViewpggl(null);//TODO
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("根据警号动态获取出监结构访谈数据失败，请重试...");
@@ -214,9 +210,10 @@ public class DafxViewController {
 	@RequestMapping("/cj_rcgc")
 	public String cj_rcgc(Model model) {
 		String jh = getJhforView();
-		List<Viewcjxwgc> viewcjxwgc = null;
+		List<Viewpggl> viewcjxwgc = null;
 		try {
-			viewcjxwgc = viewftAndgcService.findViewcjxwgc(jh);
+//			viewcjxwgc = viewftAndgcService.findViewcjxwgc(jh);
+			viewcjxwgc = viewftAndgcService.cjxwgcViewpggl(null);//TODO
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("根据警号动态获取出监行为观察数据失败，请重试...");

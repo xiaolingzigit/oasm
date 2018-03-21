@@ -105,159 +105,159 @@
 	//超级管理员给管理员修改密码
 	
 //操作日志加分
-var pageNum=1;
-var pageSize = 20;
-var total = 1;//总记录数
-var pages = 1;//总页数
-var psize=10;//每页的数量
-var clazz="";
-var find="";//搜索内容
-
-$(function(){
-	$("#firstPage").click(function(){ 
-		$("#prePage").addClass("ban");
-	    $("#firstPage").addClass("ban"); 
-		if(pageNum==1){
-		}else{
-	        goPage(1,psize,clazz); 
-	        $("#nextPage").removeClass("ban");
-	    	$("#lastPage").removeClass("ban");
-		}
-    });
-    
-    $("#lastPage").click(function(){
-//		console.info("lastPage "+pageNum+"----"+pages)
-        if(pageNum==pages){
-        }else{
-        	goPage(pages,psize,clazz); 
-        	$("#nextPage").addClass("ban");    
-    	    $("#lastPage").addClass("ban");
-    	    $("#firstPage").removeClass("ban");    
-    	    $("#prePage").removeClass("ban");
-        }
-    });
-    
-    $("#prePage").click(function(){  
-    	if(pageNum>1){
-    		if(pageNum-1 == 1){
-    	    	$("#firstPage").addClass("ban");    
-        	    $("#prePage").addClass("ban");
-    	    }
-	        goPage(pageNum-1,psize,clazz);    
-	    	$("#nextPage").removeClass("ban");
-	    	$("#lastPage").removeClass("ban");
-    	}else{
-    		$("#firstPage").addClass("ban");    
-    	    $("#prePage").addClass("ban");
-    	}
-    });
-    $("#nextPage").click(function(){
-//     	console.info("pageNum "+pageNum+" nextPage "+pages+" psize "+psize);
-    	if(pageNum<pages){
-    		if(pageNum+1 == 10){
-    			$("#nextPage").addClass("ban");    
-    			$("#lastPage").addClass("ban");
-    		}
-    		goPage(pageNum+1,psize,clazz); 
-    		$("#firstPage").removeClass("ban");    
-    		$("#prePage").removeClass("ban");
-    		
-    	}else{
-    		$("#nextPage").addClass("ban");    
-    		$("#lastPage").addClass("ban");
-    	}
-    });
-});
-
-
- function adminLog(createBy,description,createDate){
-	 $.ajax({
-			url:"/oasm/systemAdmin/logInof", 
-			dataType:"JSON",
-			type:"post",
-			async:false,
-			data:{pageNum:pageNum,pageSize:pageSize,createBy:createBy,description:description,createDate:createDate},
-			success:function(result){
-				var td = "";
-				var count = 0;
-				console.info(result.info.length);
-				if(result.info.length>0){
-					$.each(result.info,function(l,g){
-						 count = (pageNum-1)*pageSize+1+l;
-						 td+="<tr>";
-						 td+="<td>"+count+"</td>";
-						 td+="<td>"+g.description+"</td>";
-						 td+="<td>"+g.method+"</td>";
-						 td+="<td>"+g.params+"</td>";
-						 td+="<td>"+g.requireIP+"</td>";
-						 td+="<td>"+g.createBy+"</td>";
-						 td+="<td>"+g.createDate+"</td>";
-						 td+="</tr>";
-					  });
-				}else{
-					 td+="<tr>";
-					 td+="<td>无数据</td>";
-					 td+="<td>...</td>";
-					 td+="<td>...</td>";
-					 td+="<td>...</td>";
-					 td+="<td>...</td>";
-					 td+="<td>...</td>";
-					 td+="<td>无数据</td>";
-					 td+="</tr>";
-				}
-			    $("#sysLogData").html(td);
-			    pageSize = result.page.pageSize;
-				pages = result.page.pages;
-				total = result.page.total;
-				$("#pageSize").html(pageSize);
-			 	$("#pages").html(pages);
-			}
-		});
- }
- 
- function goPage(pageNum1,psize1,clazz1){
-		psize=psize1;
-		pageNum=pageNum1;
-		clazz=clazz1;
-		$("#pageNum").html(pageNum);
-		
-		if(clazz=="adminLog"){
-			var createBy = $("#createBy").val().trim();
-			var description = $("#description").val().trim();
-			var createDate = $("#createDate").val().trim();
-			adminLog(createBy,description,createDate);
-		}
-		
-		//记录数据
-		var tempStr = "共"+total+"条记录 当前"+pageNum+"/"+pages+"页";    
-	    document.getElementById("barcon1").innerHTML = tempStr;    
-//	    console.info(tempStr);
-	    
-	    //下拉
-	    var tempOption="";    
-	    for(var i=1;i<=pages;i++)    
-	    {    
-	        tempOption+='<option value='+i+'>'+i+'</option>'    
-	    }    
-	    $("#jumpWhere").html(tempOption);    
-	    $("#jumpWhere").val(pageNum);  
- }
- 
-//跳转
- function jumpPage()    
- {    
-     var num=parseInt($("#jumpWhere").val());    
-     if(num!=pageNum)    
-     {    
-         goPage(num,pageSize,clazz);    
-     }    
- }
- //页面分页调用
- $(function(){
-		goPage(1,20,"adminLog"); 
-});
-
- //日志搜索器
- function logReach(){
-	 goPage(1,psize,"adminLog"); 
- }
+//var pageNum=1;
+//var pageSize = 20;
+//var total = 1;//总记录数
+//var pages = 1;//总页数
+//var psize=10;//每页的数量
+//var clazz="";
+//var find="";//搜索内容
+//
+//$(function(){
+//	$("#firstPage").click(function(){ 
+//		$("#prePage").addClass("ban");
+//	    $("#firstPage").addClass("ban"); 
+//		if(pageNum==1){
+//		}else{
+//	        goPage(1,psize,clazz); 
+//	        $("#nextPage").removeClass("ban");
+//	    	$("#lastPage").removeClass("ban");
+//		}
+//    });
+//    
+//    $("#lastPage").click(function(){
+////		console.info("lastPage "+pageNum+"----"+pages)
+//        if(pageNum==pages){
+//        }else{
+//        	goPage(pages,psize,clazz); 
+//        	$("#nextPage").addClass("ban");    
+//    	    $("#lastPage").addClass("ban");
+//    	    $("#firstPage").removeClass("ban");    
+//    	    $("#prePage").removeClass("ban");
+//        }
+//    });
+//    
+//    $("#prePage").click(function(){  
+//    	if(pageNum>1){
+//    		if(pageNum-1 == 1){
+//    	    	$("#firstPage").addClass("ban");    
+//        	    $("#prePage").addClass("ban");
+//    	    }
+//	        goPage(pageNum-1,psize,clazz);    
+//	    	$("#nextPage").removeClass("ban");
+//	    	$("#lastPage").removeClass("ban");
+//    	}else{
+//    		$("#firstPage").addClass("ban");    
+//    	    $("#prePage").addClass("ban");
+//    	}
+//    });
+//    $("#nextPage").click(function(){
+////     	console.info("pageNum "+pageNum+" nextPage "+pages+" psize "+psize);
+//    	if(pageNum<pages){
+//    		if(pageNum+1 == 10){
+//    			$("#nextPage").addClass("ban");    
+//    			$("#lastPage").addClass("ban");
+//    		}
+//    		goPage(pageNum+1,psize,clazz); 
+//    		$("#firstPage").removeClass("ban");    
+//    		$("#prePage").removeClass("ban");
+//    		
+//    	}else{
+//    		$("#nextPage").addClass("ban");    
+//    		$("#lastPage").addClass("ban");
+//    	}
+//    });
+//});
+//
+//
+// function adminLog(createBy,description,createDate){
+//	 $.ajax({
+//			url:"/oasm/systemAdmin/logInof", 
+//			dataType:"JSON",
+//			type:"post",
+//			async:false,
+//			data:{pageNum:pageNum,pageSize:pageSize,createBy:createBy,description:description,createDate:createDate},
+//			success:function(result){
+//				var td = "";
+//				var count = 0;
+//				console.info(result.info.length);
+//				if(result.info.length>0){
+//					$.each(result.info,function(l,g){
+//						 count = (pageNum-1)*pageSize+1+l;
+//						 td+="<tr>";
+//						 td+="<td>"+count+"</td>";
+//						 td+="<td>"+g.description+"</td>";
+//						 td+="<td>"+g.method+"</td>";
+//						 td+="<td>"+g.params+"</td>";
+//						 td+="<td>"+g.requireIP+"</td>";
+//						 td+="<td>"+g.createBy+"</td>";
+//						 td+="<td>"+g.createDate+"</td>";
+//						 td+="</tr>";
+//					  });
+//				}else{
+//					 td+="<tr>";
+//					 td+="<td>无数据</td>";
+//					 td+="<td>...</td>";
+//					 td+="<td>...</td>";
+//					 td+="<td>...</td>";
+//					 td+="<td>...</td>";
+//					 td+="<td>...</td>";
+//					 td+="<td>无数据</td>";
+//					 td+="</tr>";
+//				}
+//			    $("#sysLogData").html(td);
+//			    pageSize = result.page.pageSize;
+//				pages = result.page.pages;
+//				total = result.page.total;
+//				$("#pageSize").html(pageSize);
+//			 	$("#pages").html(pages);
+//			}
+//		});
+// }
+// 
+// function goPage(pageNum1,psize1,clazz1){
+//		psize=psize1;
+//		pageNum=pageNum1;
+//		clazz=clazz1;
+//		$("#pageNum").html(pageNum);
+//		
+//		if(clazz=="adminLog"){
+//			var createBy = $("#createBy").val().trim();
+//			var description = $("#description").val().trim();
+//			var createDate = $("#createDate").val().trim();
+//			adminLog(createBy,description,createDate);
+//		}
+//		
+//		//记录数据
+//		var tempStr = "共"+total+"条记录 当前"+pageNum+"/"+pages+"页";    
+//	    document.getElementById("barcon1").innerHTML = tempStr;    
+////	    console.info(tempStr);
+//	    
+//	    //下拉
+//	    var tempOption="";    
+//	    for(var i=1;i<=pages;i++)    
+//	    {    
+//	        tempOption+='<option value='+i+'>'+i+'</option>'    
+//	    }    
+//	    $("#jumpWhere").html(tempOption);    
+//	    $("#jumpWhere").val(pageNum);  
+// }
+// 
+////跳转
+// function jumpPage()    
+// {    
+//     var num=parseInt($("#jumpWhere").val());    
+//     if(num!=pageNum)    
+//     {    
+//         goPage(num,pageSize,clazz);    
+//     }    
+// }
+// //页面分页调用
+// $(function(){
+//		goPage(1,20,"adminLog"); 
+//});
+//
+// //日志搜索器
+// function logReach(){
+//	 goPage(1,psize,"adminLog"); 
+// }
