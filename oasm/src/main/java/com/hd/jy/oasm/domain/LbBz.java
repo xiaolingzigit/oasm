@@ -6,11 +6,11 @@ public class LbBz {
 
     private Integer pzid;//配置id
 
-    private String rjlbid;//入监量表id
-
-    private String rclbid;//日常量表id
-
-    private String zqlbid;//中期量表id
+//    private String rjlbid;//入监量表id
+//
+//    private String rclbid;//日常量表id
+//
+//    private String zqlbid;//中期量表id
 
     private String cjlbid;//出监量表id
 
@@ -28,29 +28,29 @@ public class LbBz {
         this.pzid = pzid;
     }
 
-    public String getRjlbid() {
-        return rjlbid;
-    }
-
-    public void setRjlbid(String rjlbid) {
-        this.rjlbid = rjlbid == null ? null : rjlbid.trim();
-    }
-
-    public String getRclbid() {
-        return rclbid;
-    }
-
-    public void setRclbid(String rclbid) {
-        this.rclbid = rclbid == null ? null : rclbid.trim();
-    }
-
-    public String getZqlbid() {
-        return zqlbid;
-    }
-
-    public void setZqlbid(String zqlbid) {
-        this.zqlbid = zqlbid == null ? null : zqlbid.trim();
-    }
+//    public String getRjlbid() {
+//        return rjlbid;
+//    }
+//
+//    public void setRjlbid(String rjlbid) {
+//        this.rjlbid = rjlbid == null ? null : rjlbid.trim();
+//    }
+//
+//    public String getRclbid() {
+//        return rclbid;
+//    }
+//
+//    public void setRclbid(String rclbid) {
+//        this.rclbid = rclbid == null ? null : rclbid.trim();
+//    }
+//
+//    public String getZqlbid() {
+//        return zqlbid;
+//    }
+//
+//    public void setZqlbid(String zqlbid) {
+//        this.zqlbid = zqlbid == null ? null : zqlbid.trim();
+//    }
 
     public String getCjlbid() {
         return cjlbid;

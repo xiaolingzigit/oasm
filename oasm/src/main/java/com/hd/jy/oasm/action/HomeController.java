@@ -20,8 +20,8 @@ public class HomeController {
 		return "/pcras/main";
 	}
 	
-	@RequestMapping("/home")
-	public String home(){
-		return "/pcras/home/home";
-	}
+//	@RequestMapping("/home")
+//	public String home(){
+//		return "/pcras/home/home";
+//	}
 }

@@ -178,7 +178,7 @@
         <property name="realms">
             <list>
                 <ref bean="CustomersRealm" />
-                <ref bean="ProvinceRealm"/>
+               <!--  <ref bean="ProvinceRealm"/> -->
                 <ref bean="AdminRealm"/>
             </list>
         </property>
@@ -196,7 +196,7 @@
     <!-- 普通操作员Realm -->
     <bean id="CustomersRealm" class="com.hd.jy.oasm.util.CustomersRealm"></bean>
     <!-- 省级操作员Realm -->
-    <bean id="ProvinceRealm" class="com.hd.jy.oasm.util.ProvinceRealm"></bean>
+    <!-- <bean id="ProvinceRealm" class="com.hd.jy.oasm.util.ProvinceRealm"></bean> -->
     <!-- 系统管理员Realm -->
 	<bean id="AdminRealm" class="com.hd.jy.oasm.util.AdminRealm"></bean>
 	

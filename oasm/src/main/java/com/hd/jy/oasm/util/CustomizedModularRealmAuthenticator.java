@@ -48,9 +48,9 @@ public class CustomizedModularRealmAuthenticator extends ModularRealmAuthenticat
         }
 	}
 	
-	public static void main(String[] args) {
-		String s="com.hd.jy.oasm.util.CustomersRealm@14b2a098";
-		String a = "Customers";
-		System.out.println(s.contains(a));
-	}
+//	public static void main(String[] args) {
+//		String s="com.hd.jy.oasm.util.CustomersRealm@14b2a098";
+//		String a = "Customers";
+//		System.out.println(s.contains(a));
+//	}
 }

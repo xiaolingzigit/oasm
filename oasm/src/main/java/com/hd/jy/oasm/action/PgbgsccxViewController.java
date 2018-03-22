@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hd.jy.oasm.domain.BGjbxx;
 import com.hd.jy.oasm.domain.BGwxlx;
 import com.hd.jy.oasm.domain.LxCj;
-import com.hd.jy.oasm.domain.LxRc;
-import com.hd.jy.oasm.domain.LxRj;
 import com.hd.jy.oasm.domain.Rjpgsj;
 import com.hd.jy.oasm.domain.TevalReport;
 import com.hd.jy.oasm.services.PgLxService;

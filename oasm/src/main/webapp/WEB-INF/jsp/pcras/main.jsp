@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-<title>危险评估系统</title>
+<title>出监评估系统</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resource/easyui/themes/metro/easyui.css'/>">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resource/easyui/themes/icon.css'/>">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resource/css/home.css'/>">
@@ -53,15 +53,15 @@
 		<div id="header_logo"></div>
 		<div id="header_xxk">
 			<ul class="ul02">
-				<li class="current" id="home">主页</li>
-				<li id="pggl">评估管理</li>
+				<!-- <li class="current" id="home">主页</li> -->
+				<li class="current" id="pggl">评估管理</li>
 				<li id="xljz">心理测试</li>
-				<li id="tjfx">统计分析</li>
-				<li id="zxgl">专项管理</li>
+				<li id="tjfx">再犯罪统计</li>
+				<!-- <li id="zxgl">专项管理</li> -->
 				<!-- <li id="czgz">处置跟踪</li> -->
 				<!-- <li id="pggj">评估工具分析</li> -->
-				<li id="jygz">矫正项目</li>
-				<li id="grmb" class="task">个人任务<!-- <div class="notice" id="main_grrw">6</div> --></li>
+				<li id="jygz">罪犯信息</li>
+				<!-- <li id="grmb" class="task">个人任务</li> -->
 
 			</ul>
 		</div>
@@ -69,7 +69,7 @@
 			<div id="" class="sub_menu_line">
 				<div id="pggl2" class="sub_menu_area ulm01 ">
 					<ul class="sub_menu_ul">
-						<li id="lr_da" class="sub_menu_li">基础信息评估</li>
+						<!-- <li id="lr_da" class="sub_menu_li">基础信息评估</li>
 						<li class="sub_menu_divider">|</li>					
 						<li id="lr_rj" class="sub_menu_li">入监评估</li>
 						<li class="sub_menu_divider">|</li>
@@ -81,22 +81,22 @@
 						<li class="sub_menu_divider">|</li>
 						<li id="lr_zq" class="sub_menu_li">中期评估</li>
 						<li class="sub_menu_divider">|</li>
-						<li id="bg_zq" class="sub_menu_li">中期评估报告</li>
-						<li class="sub_menu_divider">|</li>
+						<li id="bg_zq" class="sub_menu_li">中期评估报告</li> 
+						<li class="sub_menu_divider">|</li>-->
 						<li id="lr_cj" class="sub_menu_li">出监评估</li>
 						<li class="sub_menu_divider">|</li>
 						<li id="bg_cj" class="sub_menu_li">出监评估报告</li>
 					</ul>
 				<!-- 	<span class="import_btn" >PAD端数据导入</span> -->
 				</div>
-				<div id="tjfx2" class="sub_menu_area ulm02">
+				<!-- <div id="tjfx2" class="sub_menu_area ulm02">
 					<ul class="sub_menu_ul">
 						<li id="wxqkbh" class="sub_menu_li">危评情况变化</li>
 						<li class="sub_menu_divider">|</li>
 						<li id="wxcdtj" class="sub_menu_li">危险等级统计</li>
 						<li class="sub_menu_divider">|</li>
-<!-- 						<li id="wxlbtj" class="sub_menu_li">危险类别统计</li> -->
-<!-- 						<li class="sub_menu_divider">|</li> -->
+						<li id="wxlbtj" class="sub_menu_li">危险类别统计</li>
+						<li class="sub_menu_divider">|</li>
 						<li id="zxttj" class="sub_menu_li">罪犯自杀、行凶、脱逃倾向统计</li>
 						<li class="sub_menu_divider">|</li>
 						<li id="cjzftj" class="sub_menu_li">罪犯出监再犯罪倾向统计</li>
@@ -112,8 +112,8 @@
 						<li id="wxyzfx" class="sub_menu_li">极高危险罪犯因子分析</li>
 
 					</ul>
-				</div>
-				<div id="zxgl2" class="sub_menu_area ulm03">
+				</div> -->
+				<!-- <div id="zxgl2" class="sub_menu_area ulm03">
 					<ul class="sub_menu_ul">
 						<li id="jgfgl" class="sub_menu_li">极高危罪犯管理</li>
 						<li class="sub_menu_divider">|</li>
@@ -125,8 +125,8 @@
 						<li class="sub_menu_divider">|</li>
 						<li id="wwfgl" class="sub_menu_li">顽危犯管理</li>
 					</ul>
-				</div>
-				<div id="jygz2" class="sub_menu_area ulm04">
+				</div> -->
+				<!-- <div id="jygz2" class="sub_menu_area ulm04">
 					<ul class="sub_menu_ul">
 						<li id="zfxx" class="sub_menu_li">罪犯信息查询</li>
 						<li class="sub_menu_divider">|</li>
@@ -138,12 +138,12 @@
 						<li class="sub_menu_divider">|</li>
 						<li id="" class="sub_menu_li">典型案例</li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 		<!-- 内容 -->
 		<div class="content" id="container"></div>
 
-		<p class="footer_font">版权所有：广东省监狱管理局&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：北明软件有限公司</p>
+		<p class="footer_font">版权所有：吴晓玲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：吴晓玲</p>
 	</div>
 		</div>
 <script type="text/javascript" src="<c:url value='/resource/js/jquery-1.7.2.min.js'/>"></script>
@@ -183,7 +183,7 @@
 		}, 100)
 	}
  
-	function loadnext7(qh,taskID, rwlx) {
+/* 	function loadnext7(qh,taskID, rwlx) {
 		switch (rwlx) {
 		case "rj_jgft":
 			$("#pggl").click();
@@ -198,9 +198,9 @@
 			},50)
 			break;
 		}
-	}
+	} */
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	//加载因子分析面板
 	function loadyzPage(url) {
 		$('#container').load(url);
@@ -210,7 +210,7 @@
 		$('#container').load(url);
 	}
 
-</script>
+</script> -->
 </body>
 <script type="text/javascript"
 	src="<c:url value='/resource/js/common.js'/>"></script>

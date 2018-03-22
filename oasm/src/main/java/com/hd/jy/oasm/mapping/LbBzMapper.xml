@@ -3,16 +3,16 @@
 <mapper namespace="com.hd.jy.oasm.dao.LbBzMapper" >
   <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.LbBz" >
     <id column="pzid" property="pzid" jdbcType="INTEGER" />
-    <result column="rjlbid" property="rjlbid" jdbcType="VARCHAR" />
-    <result column="rclbid" property="rclbid" jdbcType="VARCHAR" />
-    <result column="zqlbid" property="zqlbid" jdbcType="VARCHAR" />
+    <!-- <result column="rjlbid" property="rjlbid" jdbcType="VARCHAR" />-->
+    <!-- <result column="rclbid" property="rclbid" jdbcType="VARCHAR" /> -->
+    <!-- <result column="zqlbid" property="zqlbid" jdbcType="VARCHAR" />-->
     <result column="cjlbid" property="cjlbid" jdbcType="VARCHAR" />
     <result column="qysj" property="qysj" jdbcType="DATE" />
     <result column="qyr" property="qyr" jdbcType="VARCHAR" />
     <result column="zt" property="zt" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pzid, rjlbid, rclbid, zqlbid, cjlbid, qysj, qyr, zt
+    pzid, cjlbid, qysj, qyr, zt
   </sql>
   
   <select id="getAllLbBz" resultMap="BaseResultMap" >
@@ -33,11 +33,8 @@
     where pzid = #{pzid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hd.jy.oasm.domain.LbBz" >
-    insert into lb_bz (pzid, rjlbid, rclbid, 
-      zqlbid, cjlbid, qysj, 
-      qyr, zt)
-    values (#{pzid,jdbcType=INTEGER}, #{rjlbid,jdbcType=VARCHAR}, #{rclbid,jdbcType=VARCHAR}, 
-      #{zqlbid,jdbcType=VARCHAR}, #{cjlbid,jdbcType=VARCHAR}, #{qysj,jdbcType=DATE}, 
+    insert into lb_bz (pzid, cjlbid, qysj, qyr, zt)
+    values (#{pzid,jdbcType=INTEGER}, #{cjlbid,jdbcType=VARCHAR}, #{qysj,jdbcType=DATE}, 
       #{qyr,jdbcType=VARCHAR}, #{zt,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hd.jy.oasm.domain.LbBz" >
@@ -45,15 +42,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pzid != null" >
         pzid,
-      </if>
-      <if test="rjlbid != null" >
-        rjlbid,
-      </if>
-      <if test="rclbid != null" >
-        rclbid,
-      </if>
-      <if test="zqlbid != null" >
-        zqlbid,
       </if>
       <if test="cjlbid != null" >
         cjlbid,
@@ -72,15 +60,6 @@
       <if test="pzid != null" >
         #{pzid,jdbcType=INTEGER},
       </if>
-      <if test="rjlbid != null" >
-        #{rjlbid,jdbcType=VARCHAR},
-      </if>
-      <if test="rclbid != null" >
-        #{rclbid,jdbcType=VARCHAR},
-      </if>
-      <if test="zqlbid != null" >
-        #{zqlbid,jdbcType=VARCHAR},
-      </if>
       <if test="cjlbid != null" >
         #{cjlbid,jdbcType=VARCHAR},
       </if>
@@ -98,15 +77,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hd.jy.oasm.domain.LbBz" >
     update lb_bz
     <set >
-      <if test="rjlbid != null" >
-        rjlbid = #{rjlbid,jdbcType=VARCHAR},
-      </if>
-      <if test="rclbid != null" >
-        rclbid = #{rclbid,jdbcType=VARCHAR},
-      </if>
-      <if test="zqlbid != null" >
-        zqlbid = #{zqlbid,jdbcType=VARCHAR},
-      </if>
       <if test="cjlbid != null" >
         cjlbid = #{cjlbid,jdbcType=VARCHAR},
       </if>
@@ -124,10 +94,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hd.jy.oasm.domain.LbBz" >
     update lb_bz
-    set rjlbid = #{rjlbid,jdbcType=VARCHAR},
-      rclbid = #{rclbid,jdbcType=VARCHAR},
-      zqlbid = #{zqlbid,jdbcType=VARCHAR},
-      cjlbid = #{cjlbid,jdbcType=VARCHAR},
+    set cjlbid = #{cjlbid,jdbcType=VARCHAR},
       qysj = #{qysj,jdbcType=DATE},
       qyr = #{qyr,jdbcType=VARCHAR},
       zt = #{zt,jdbcType=CHAR}

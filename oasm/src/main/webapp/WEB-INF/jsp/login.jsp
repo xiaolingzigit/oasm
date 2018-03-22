@@ -12,11 +12,10 @@
 <body>
 
 <div id="login_title">
-<div class="ghlogo"></div><h1>广东省监狱罪犯危险性评估系统</h1>
+<div class="ghlogo"></div><h1>出监评估系统</h1>
 </div>
 <div id="login">
 <form id="loginForm" method="post">
-            	<%session.setAttribute("name","123");%>
 		<span id="loginInfo"></span><span id="loginBlank"></span><span id="loginManager"></span>
 		<p><span class="user">账号</span>：<input type="text" name="jh" id="user"></p>
 		<p><span class="pwd">密码</span>：<input type="password" name="ma" id="pwd"  ></p>
@@ -24,7 +23,7 @@
 	</form>
 	
 </div>
-<div class="copyright"><p >版权所有：广东省监狱管理局&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：北明软件有限公司</p></div>
+<div class="copyright"><p >版权所有：吴晓玲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：吴晓玲</p></div>
 <script type="text/javascript" src="<c:url value='/resource/js/jquery-1.7.2.min.js'/>"></script>
   <script type="text/javascript" src="<c:url value='/resource/js/login/login.js'/>"></script>
 </body>

@@ -40,44 +40,45 @@ $(".ul02 li").mouseout(function(){
 	   
 	   });
 
-	$("#container").load("home");
+//	$("#container").load("home");
+   $("#container").load("/oasm/dafxView/lr_cj");
 	$('.sub_menu_li').click(function (event) {
 		$('.sub_menu_li').removeClass('selected_li');
 		$(this).addClass('selected_li');
 		switch ($(this).attr("id")) {
                        //评估管理部分
-		    case "lr_da":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/dafxView/lr_da");
-			    break;
-			case "lr_rj":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/dafxView/lr_rj");
-				break;
-			case "lr_rc":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/dafxView/lr_rc");
-				break;			
-			case "lr_zq":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/dafxView/lr_zq");
-				break;
-			case "lr_cj":
+		    case "lr_cj":
 				$("#pggl").addClass('current').siblings().removeClass('current');
 				$("#container").load("/oasm/dafxView/lr_cj");
-				break;
-			case "bg_rj":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/pgbgsccxView/bg_rj");
-				break;
-			case "bg_rc":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/pgbgsccxView/bg_rc");
-				break;			
-			case "bg_zq":
-				$("#pggl").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/pgbgsccxView/bg_zq");
-				break;
+			    break;
+//			case "lr_rj":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/dafxView/lr_rj");
+//				break;
+//			case "lr_rc":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/dafxView/lr_rc");
+//				break;			
+//			case "lr_zq":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/dafxView/lr_zq");
+//				break;
+//			case "lr_cj":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/dafxView/lr_cj");
+//				break;
+//			case "bg_rj":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/pgbgsccxView/bg_rj");
+//				break;
+//			case "bg_rc":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/pgbgsccxView/bg_rc");
+//				break;			
+//			case "bg_zq":
+//				$("#pggl").addClass('current').siblings().removeClass('current');
+//				$("#container").load("/oasm/pgbgsccxView/bg_zq");
+//				break;
 			case "bg_cj":
 				$("#pggl").addClass('current').siblings().removeClass('current');
 				$("#container").load("/oasm/pgbgsccxView/bg_cj");
@@ -202,23 +203,26 @@ $(".ul02 li").mouseout(function(){
 		$('.sub_menu_li').removeClass('selected_li');
 		$(this).addClass('current').siblings().removeClass('current');
 		switch ($(this).attr("id")) {
-			case "home":
-				$("#container").load("home");
-				break;
+//			case "home":
+//				$("#container").load("home");
+//				break;
 			case 'pggl': //评估管理
-				$("#lr_da").addClass('selected_li');
-				$("#container").load("/oasm/dafxView/lr_da");
+//				$("#lr_da").addClass('selected_li');
+				$("#lr_cj").addClass('selected_li');
+//				$("#container").load("/oasm/dafxView/lr_da");
+				$("#container").load("/oasm/dafxView/lr_cj");
 				break;
 			case "xljz"://心理矫治
 				$("#container").load("/oasm/xljzView/xlcs");
 				break;	
-			case "czgz"://处置跟踪
-				$("#czgz").addClass('selected_li');
-				$("#container").load("/oasm/czgzView/czgz");
-				break;
+//			case "czgz"://处置跟踪
+//				$("#czgz").addClass('selected_li');
+//				$("#container").load("/oasm/czgzView/czgz");
+//				break;
 			case "tjfx"://统计分析
 				$("#wxqkbh").addClass('selected_li');
-				$("#container").load("/oasm/tjfxView/wpqkbh");
+//				$("#container").load("/oasm/tjfxView/wpqkbh");
+				$("#container").load("/oasm/tjfxView/cjzftj");//改为点击进入再犯罪统计及
 				break;
 			case "jygz"://教育改造
 				$("#zfxx").addClass('selected_li');
@@ -227,13 +231,13 @@ $(".ul02 li").mouseout(function(){
 			case "pggj"://评估工具 
 				$("#container").load("/oasm/pggjglView/lbfx");
 				break;
-			case "grmb"://个人任务
-				$("#container").load("/oasm/gzrwglView/grgzmb");
-				break;
-			case "zxgl"://专项管理
-				$("#jgfgl").addClass('selected_li');
-				$("#container").load("/oasm/zxglView/jgfgl");
-				break;
+//			case "grmb"://个人任务
+//				$("#container").load("/oasm/gzrwglView/grgzmb");
+//				break;
+//			case "zxgl"://专项管理
+//				$("#jgfgl").addClass('selected_li');
+//				$("#container").load("/oasm/zxglView/jgfgl");
+//				break;
 		}
 	});
 
