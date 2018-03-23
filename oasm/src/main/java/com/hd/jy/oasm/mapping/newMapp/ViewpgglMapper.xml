@@ -41,48 +41,7 @@
         </if>
        </trim>
   </sql>
-  
-  
-  <!-- 入监结构访谈数据视图显示 -->
-  <select id="rjjgftViewpggl" resultMap="BaseViewpggl">
-     SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl
-       FROM v_pggl where type='inTk'
-       <include refid="Query"></include>
-       order by score
-  </select>
-  
-  <!-- 入监行为观察数据视图显示 -->
-  <select id="rjxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
-   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
-      FROM v_pggl where type='inAct'
-        <include refid="Query"></include>
-        order by score
-  </select>
-  
-  <!-- 日常行为观察动态数据视图显示 -->
-  <select id="rcxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
-   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
-      FROM v_pggl where type='dyAct'
-        <include refid="Query"></include>
-        order by score
-  </select>
-  
-  <!-- 中期结构访谈动态视图数据显示 -->
-  <select id="zqjgftViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
-   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
-      FROM v_pggl where type='mdTk'
-        <include refid="Query"></include>
-        order by score
-  </select>
-  
-  <!-- 中期行为观察动态视图数据显示 -->
-  <select id="zqxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
-   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
-      FROM v_pggl where type='mdAct'
-        <include refid="Query"></include>
-        order by score,task_id
-  </select>
-  
+
   <!-- 出监访谈动态视图数据显示 -->
   <select id="cjjgftViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
    SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 

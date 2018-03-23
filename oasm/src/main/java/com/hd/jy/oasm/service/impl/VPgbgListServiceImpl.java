@@ -18,13 +18,14 @@ import com.hd.jy.oasm.dao.SjjgftAndxwgcDao;
 import com.hd.jy.oasm.dao.TaskMapper;
 import com.hd.jy.oasm.dao.TestMapper;
 import com.hd.jy.oasm.dao.VPgbgListMapper;
-import com.hd.jy.oasm.dao.ZCYCYQPCMapper;
+//import com.hd.jy.oasm.dao.ZCYCYQPCMapper;
 import com.hd.jy.oasm.dao.newDao.ViewpgglMapper;
 import com.hd.jy.oasm.domain.BGgtft;
 import com.hd.jy.oasm.domain.BGjbxx;
 import com.hd.jy.oasm.domain.BGjcxxpg;
 import com.hd.jy.oasm.domain.BGwxlx;
 import com.hd.jy.oasm.domain.BGxwgc;
+import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.domain.PgXlcsJg;
 import com.hd.jy.oasm.domain.SearchElement;
 import com.hd.jy.oasm.domain.Task;
@@ -34,13 +35,10 @@ import com.hd.jy.oasm.domain.TevalReport;
 import com.hd.jy.oasm.domain.VPgbgList;
 import com.hd.jy.oasm.domain.ViewDafxjg;
 import com.hd.jy.oasm.domain.Viewrwxq;
-import com.hd.jy.oasm.domain.ZCYCYQPC;
+//import com.hd.jy.oasm.domain.ZCYCYQPC;
 import com.hd.jy.oasm.domain.newDomain.CrimInfoView;
 import com.hd.jy.oasm.domain.newDomain.Pgbg;
 import com.hd.jy.oasm.domain.newDomain.Viewpggl;
-import com.hd.jy.oasm.model.CopaResult;
-import com.hd.jy.oasm.model.SCL90Result;
-import com.hd.jy.oasm.module.CopaTestHandler;
 import com.hd.jy.oasm.services.VPgbgListService;
 import com.hd.jy.oasm.util.date.DateUtil;
 import com.hd.jy.oasm.util.lsc.DataUtil;
@@ -52,7 +50,7 @@ import com.hd.jy.oasm.util.priv.PGPart;
 * @ClassName: VPgbgListServiceImpl 
 * @Description: 显示评估报告列表
 * @author liangjiaying
-* @date 2017年12月8日 下午6:52:29 
+* @date 2018年3月23日 下午6:52:29 
 *
  */
 @Service("vPgbgListServiceImpl")
@@ -64,8 +62,6 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	private String logDate = DateUtil.getTime(new Date());
-	
-	
 	
 	@Autowired
 	private VPgbgListMapper vPgbgListMapper; //评估列表业务接口
@@ -79,8 +75,8 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 	@Autowired
 	private TaskMapper taskRelatDao; //总任务与子任务业务接口
 	
-	@Autowired
-	private ZCYCYQPCMapper ycyqDao; //异常狱情业务接口--显示异常狱情
+//	@Autowired
+//	private ZCYCYQPCMapper ycyqDao; //异常狱情业务接口--显示异常狱情
 	
 	@Autowired
 	private ViewpgglMapper pgglDao; //评估管理业务接口 --显示结构访谈和行为观察
@@ -263,45 +259,45 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 						
 						list.add(pgbg);
 						break;
-					case CT.PG_XLSCL90: //心理scl90答题结果--重构
-						allPgxlcsjg = listLineDao.getAllPgxlcsjg(tr.getChildId());
-						if(allPgxlcsjg==null){
-							continue loop;
-						}
-						for (PgXlcsJg xlpg : allPgxlcsjg) {
-							pgScores+=xlpg.getPGFS();
-							childTaskId=xlpg.getRWID();
-						}
-						
-						pgbg = new Pgbg();
-						map.put(CT.PG_XLSCL90, ""+pgScores); //心理copapi的值
-						pgbg.setCtaskId(childTaskId);
-						pgbg.setXlcepg(allPgxlcsjg);
-						pgbg.setTaskType(tr.getChildType());
-						pgbg.setTaskfs(""+pgScores);
-						
-						list.add(pgbg);
-						break;
-					case CT.PG_XLCOPAPI: //心理copapi答题结果
-						allPgxlcsjg = listLineDao.getAllPgxlcsjg(tr.getChildId());
-						if(allPgxlcsjg==null){
-							continue loop;
-						}
-						for (PgXlcsJg xlpg : allPgxlcsjg) {
-							pgScores+=xlpg.getPGFS();
-							childTaskId=xlpg.getRWID();
-							
-						}
-						log.info("copapi的分数【"+pgScores+"】");
-						pgbg = new Pgbg();
-						map.put(CT.PG_XLCOPAPI, ""+pgScores); //心理copapi的值
-						pgbg.setCtaskId(childTaskId);
-						pgbg.setXlcepg(allPgxlcsjg);
-						pgbg.setTaskType(tr.getChildType());
-						pgbg.setTaskfs(""+pgScores);
-						
-						list.add(pgbg);
-						break;
+//					case CT.PG_XLSCL90: //心理scl90答题结果--重构
+//						allPgxlcsjg = listLineDao.getAllPgxlcsjg(tr.getChildId());
+//						if(allPgxlcsjg==null){
+//							continue loop;
+//						}
+//						for (PgXlcsJg xlpg : allPgxlcsjg) {
+//							pgScores+=xlpg.getPGFS();
+//							childTaskId=xlpg.getRWID();
+//						}
+//						
+//						pgbg = new Pgbg();
+//						map.put(CT.PG_XLSCL90, ""+pgScores); //心理copapi的值
+//						pgbg.setCtaskId(childTaskId);
+//						pgbg.setXlcepg(allPgxlcsjg);
+//						pgbg.setTaskType(tr.getChildType());
+//						pgbg.setTaskfs(""+pgScores);
+//						
+//						list.add(pgbg);
+//						break;
+//					case CT.PG_XLCOPAPI: //心理copapi答题结果
+//						allPgxlcsjg = listLineDao.getAllPgxlcsjg(tr.getChildId());
+//						if(allPgxlcsjg==null){
+//							continue loop;
+//						}
+//						for (PgXlcsJg xlpg : allPgxlcsjg) {
+//							pgScores+=xlpg.getPGFS();
+//							childTaskId=xlpg.getRWID();
+//							
+//						}
+//						log.info("copapi的分数【"+pgScores+"】");
+//						pgbg = new Pgbg();
+//						map.put(CT.PG_XLCOPAPI, ""+pgScores); //心理copapi的值
+//						pgbg.setCtaskId(childTaskId);
+//						pgbg.setXlcepg(allPgxlcsjg);
+//						pgbg.setTaskType(tr.getChildType());
+//						pgbg.setTaskfs(""+pgScores);
+//						
+//						list.add(pgbg);
+//						break;
 					default:
 						break;
 					}
@@ -321,12 +317,12 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 					double gtfs = Double.parseDouble(map.get(CT.PG_GTFT));
 					double xwfs = Double.parseDouble(map.get(CT.PG_XWGC));
 					
-					double copafs = DataUtil.isNothing(copaJSON)? 0: GsonUtil.toInstance(copaJSON, CopaResult.class).getPgTotalScore();
-					double sclfs = DataUtil.isNothing(sclJSON)? 0: GsonUtil.toInstance(sclJSON, SCL90Result.class).getPgTotalScore();
+//					double copafs = DataUtil.isNothing(copaJSON)? 0: GsonUtil.toInstance(copaJSON, CopaResult.class).getPgTotalScore();
+//					double sclfs = DataUtil.isNothing(sclJSON)? 0: GsonUtil.toInstance(sclJSON, SCL90Result.class).getPgTotalScore();
 					
-					int zfs = (int)(dafs+gtfs+xwfs+copafs+sclfs); //总分数
-					addEval(zfs,taskId); //抽出来一个方法，用于添加危险等级
-					log.info("已执行修改后把【任务编号"+taskId+"】，【分数"+zfs+"】添加到任务报告表中，请注意查收..."); //实际放这
+//					int zfs = (int)(dafs+gtfs+xwfs+copafs+sclfs); //总分数
+//					addEval(zfs,taskId); //抽出来一个方法，用于添加危险等级
+//					log.info("已执行修改后把【任务编号"+taskId+"】，【分数"+zfs+"】添加到任务报告表中，请注意查收..."); //实际放这
 				}else{
 					 //测试使用，如果有method请提示程序员修改
 					log.info("暂不执行修改"+taskId);
@@ -481,7 +477,7 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 			}
 			TestNote note = testNoteDao.getNote(copapiId);
 			if(null!=note){
-				report = CopaTestHandler.makeWxxpgFs(taskId, GsonUtil.toInstance(note.getResult(), CopaResult.class));
+//				report = CopaTestHandler.makeWxxpgFs(taskId, GsonUtil.toInstance(note.getResult(), CopaResult.class));
 			}
 			
 			tr = new TevalReport();
@@ -566,7 +562,7 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 			
 			List<TevalReport> report = testNoteDao.crimInfoReport(crimNo); //个人评估报告
 			
-			List<ZCYCYQPC> ycyq = ycyqDao.selectYCYQ(crimNo); //个人异常狱情
+//			List<ZCYCYQPC> ycyq = ycyqDao.selectYCYQ(crimNo); //个人异常狱情
 			
 			List<ViewDafxjg> dafxjg = sjxwgcDao.crimInfoDafxjg(crimNo); //个人档案分析
 			
@@ -628,7 +624,7 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 			}//for循环结束开始json赋值
 			
 			cv.setReport(report);
-			cv.setYcyqpc(ycyq);
+//			cv.setYcyqpc(ycyq);
 			cv.setDafxjg(dafxjg);
 			cv.setGrft(grft);
 			cv.setGrgc(grgc);
@@ -662,6 +658,23 @@ public class VPgbgListServiceImpl implements VPgbgListService{
 			log.error("VPgbgListService#listViewPgbgAndTCzsh(java.util.Map);出错"+e);
 		}
 		return listViewPgbgAndTCzsh;
+	}
+	/**
+	 * <p>Title: selectJbxx</p>   
+	 * <p>Description: 查询罪犯基本信息</p>  
+	 */
+	@Override
+	public List<BGjbxx> selectJbxx() {
+		// TODO Auto-generated method stub
+		List<BGjbxx> list = null;
+		try {
+			log.info("开始查询【BGjbxx】时间"+DateUtil.getTime(new Date()));
+			list = vPgbgListMapper.selectJbxx();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("查询【BGjbxx】错误"+e.getMessage());
+		}
+		return list;
 	}
 
 }

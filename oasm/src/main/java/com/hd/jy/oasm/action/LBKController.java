@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.hd.jy.oasm.domain.LBKM;
-import com.hd.jy.oasm.domain.ZCYCYQPC;
 import com.hd.jy.oasm.domain.newDomain.Tscale;
 import com.hd.jy.oasm.services.LBKMService;
 import com.hd.jy.oasm.services.TdminAndtyzService;
@@ -166,19 +165,19 @@ public class LBKController {
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	// *******************************异常狱情部分*************************************************************
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	@ResponseBody
-	@RequestMapping(value = "/ycyqpc", method = { RequestMethod.GET, RequestMethod.POST })
-	public List<ZCYCYQPC> ycyqpc(String qh) {
-	    List<ZCYCYQPC> ycyq = null;
-		try {
-			ycyq = lbkmService.selectYCYQ(qh);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("根据囚号获取异常狱情失败，请重试...");
-		}
-		return ycyq;
-
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/ycyqpc", method = { RequestMethod.GET, RequestMethod.POST })
+//	public List<ZCYCYQPC> ycyqpc(String qh) {
+//	    List<ZCYCYQPC> ycyq = null;
+//		try {
+//			ycyq = lbkmService.selectYCYQ(qh);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			log.error("根据囚号获取异常狱情失败，请重试...");
+//		}
+//		return ycyq;
+//
+//	}
 	
 	@ResponseBody
 	@RequestMapping(value="/lookupScale",method={RequestMethod.GET,RequestMethod.POST})

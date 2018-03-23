@@ -53,7 +53,7 @@
             <col width="20%">
             <col width="80%">
           </colgroup>
-				<tr class="tjfx_tr01">
+				<!-- <tr class="tjfx_tr01">
 					<td class="color01">COPA</td>
 					<td>
 						<ul>
@@ -72,7 +72,7 @@
 	
 						</ul>
 					</td>
-				</tr>
+				</tr> -->
 				<tr class="tjfx_tr01">
 					<td class="color02">
 					社会适应性量表
@@ -83,7 +83,7 @@
 						</ul>
 					</td>
 				</tr>
-				<tr class="tjfx_tr01">
+				<!-- <tr class="tjfx_tr01">
 					<td class="color03">
 					SCL-90
 					</td>
@@ -107,7 +107,7 @@
 
 						</ul>
 					</td>
-				</tr>
+				</tr> -->
 			</table>
 
             </div> 

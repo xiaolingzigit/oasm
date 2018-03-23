@@ -160,4 +160,14 @@ public class VPgbgList {
     public void setXjxm(String xjxm) {
         this.xjxm = xjxm == null ? null : xjxm.trim();
     }
+	@Override
+	public String toString() {
+		return "VPgbgList [taskId=" + taskId + ", crimNo=" + crimNo + ", type="
+				+ type + ", deadline=" + deadline + ", lastModif=" + lastModif
+				+ ", status=" + status + ", score=" + score + ", levl=" + levl
+				+ ", stat=" + stat + ", xm=" + xm + ", gyjqmc=" + gyjqmc
+				+ ", jh=" + jh + ", jhxm=" + jhxm + ", xjbh=" + xjbh
+				+ ", xjxm=" + xjxm + ", tczsh=" + tczsh + "]";
+	}
+    
 }

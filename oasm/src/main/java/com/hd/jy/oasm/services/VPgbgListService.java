@@ -7,7 +7,6 @@ import com.hd.jy.oasm.domain.BGjbxx;
 import com.hd.jy.oasm.domain.BGwxlx;
 import com.hd.jy.oasm.domain.TevalReport;
 import com.hd.jy.oasm.domain.VPgbgList;
-import com.hd.jy.oasm.domain.Viewgrpgbgxx;
 /***
  * 评估报告逻辑接口，PGBGViewController调用
  * @author quite
@@ -15,6 +14,7 @@ import com.hd.jy.oasm.domain.Viewgrpgbgxx;
  */
 public interface VPgbgListService {
 	
+	public List<BGjbxx> selectJbxx(); //20180323 查询罪犯基本信息
 	/**
 	 * <p>Title: getViewPgbg</p>   
 	 * <p>Description: 查询评估报告列表</p>   
@@ -62,6 +62,8 @@ public interface VPgbgListService {
 	
 	public String getCrimInfoRecord(String crimNo); //通过囚号查询个人罪犯信息--矫治项目显示
 	
-	List<VPgbgList> listViewPgbgAndTCzsh(Map<String,Object> map);//显示报告处理跟踪、审核、意见
+	public List<VPgbgList> listViewPgbgAndTCzsh(Map<String,Object> map);//显示报告处理跟踪、审核、意见
+	
+	
 	
 }

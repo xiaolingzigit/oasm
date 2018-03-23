@@ -5,7 +5,7 @@ import java.util.List;
 import com.hd.jy.oasm.domain.LBKM;
 
 import com.hd.jy.oasm.domain.WD;
-import com.hd.jy.oasm.domain.ZCYCYQPC;
+//import com.hd.jy.oasm.domain.ZCYCYQPC;
 /**
  * 
  * @author quite
@@ -25,7 +25,7 @@ public interface LBKMService {
 	    
 	public List<WD> selectAllWd();	//查询所有维度
 	
-	public List<ZCYCYQPC> selectYCYQ(String yqztbh); //根据String类型的囚号查询异常狱情
+//	public List<ZCYCYQPC> selectYCYQ(String yqztbh); //根据String类型的囚号查询异常狱情
 	
 	//********************************************************
 	public String scaleRelatById(int scaleId); //根据量表编号查询因子和维度，在后台量表详情使用

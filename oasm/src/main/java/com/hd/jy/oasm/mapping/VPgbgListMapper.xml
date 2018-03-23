@@ -229,6 +229,13 @@
   	ORDER BY crim_no,task_id
   </select>
   
-  
+ <select id="selectJbxx" resultMap="BaseBGjbxx">
+ select 
+    a.QH, a.JY, a.JQ, a.FJQ, a.XM, a.XB, a.BM, a.CSRQ, a.NL, a.GJ, a.MZ, a.WHCD, a.ZZMM, 
+	b.BQZY, b.ZJLX, b.SG, b.TZ, b.HTZK, b.HJDZ, b.JTZZ, b.HYGX, b.JTZC, b.JTBG, b.WCNFJTZK, b.SFDSZN, b.ZMMC, 
+    b.RJRQ, b.FYLX, b.GTFZLX, b.BDLB, b.XQ, b.AFLB, b.BZNX, b.QZCJ, b.XZJX, b.FZ, b.MSCC, b.FZSS, b.ZKLB, b.ZKXZ1, 
+    b.ZKXZ2, b.RZLB, b.XFCS, b.HFGDJ, b.SFSW, b.SFSJ, b.YNSALB, b.LDNL, b.JBLB, b.TAFQX,b.ZMFL
+    from BG_JBXX a left join BG_XXXX b on a.QH=b.QH
+ </select> 
   
 </mapper>

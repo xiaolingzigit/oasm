@@ -3,7 +3,6 @@ package com.hd.jy.oasm.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.hd.jy.oasm.module.CopaIdxHandler;
 import com.hd.jy.oasm.util.lsc.DataUtil;
 import com.hd.jy.oasm.util.lsc.basicmodel.BasicModel;
 
@@ -115,52 +114,52 @@ public class DimResult extends BasicModel {
 		this.pgVal = pgVal;
 	}
 
-	public double build(CopaIdxHandler idxHandler, double p1Score) {
-
-		if (idxHandler == null) {
-			throw new IllegalArgumentException("CopaIdxHandler cannot be null");
-		}
-
-		dimName = idxHandler.getDimName(dim);
-
-		if (dimName == null) {
-			throw new IllegalArgumentException("dim[" + dim
-					+ "] is not found in CopaIdxHandler");
-		}
-
-		qstSize = scoreMap.size();
-		total = 0;
-		for (Map.Entry<String, Double> qst : scoreMap.entrySet()) {
-			total += qst.getValue();
-		}
-
-		if (CopaIdxHandler.D_P1.equals(dim)) {
-			p1Score = total;
-		}
-
-		gpa = DataUtil.exact(total / qstSize, idxHandler.Z_T_SCALE);
-
-		if (!("L".equals(dim) || "S".equals(dim))) {
-			DimNorm norm = idxHandler.getDimNorm(dim);
-
-			if (norm == null) {
-				throw new IllegalArgumentException("DimNorm of " + dim
-						+ " is null");
-			}
-
-			zVal = DataUtil.exact((p1Score - norm.getGpa()) / norm.getStd(),
-					idxHandler.Z_T_SCALE);
-
-			tVal = DataUtil.exact(idxHandler.T_COEFFICIENT * zVal
-					+ idxHandler.T_CONSTANT, idxHandler.Z_T_SCALE);
-
-			tRange = idxHandler.getDimTRange(dim, tVal);
-
-		}
-
-		levelExpr = idxHandler.getLevelExpr(dim, tVal);
-		return p1Score;
-	}
+//	public double build(CopaIdxHandler idxHandler, double p1Score) {
+//
+//		if (idxHandler == null) {
+//			throw new IllegalArgumentException("CopaIdxHandler cannot be null");
+//		}
+//
+//		dimName = idxHandler.getDimName(dim);
+//
+//		if (dimName == null) {
+//			throw new IllegalArgumentException("dim[" + dim
+//					+ "] is not found in CopaIdxHandler");
+//		}
+//
+//		qstSize = scoreMap.size();
+//		total = 0;
+//		for (Map.Entry<String, Double> qst : scoreMap.entrySet()) {
+//			total += qst.getValue();
+//		}
+//
+//		if (CopaIdxHandler.D_P1.equals(dim)) {
+//			p1Score = total;
+//		}
+//
+//		gpa = DataUtil.exact(total / qstSize, idxHandler.Z_T_SCALE);
+//
+//		if (!("L".equals(dim) || "S".equals(dim))) {
+//			DimNorm norm = idxHandler.getDimNorm(dim);
+//
+//			if (norm == null) {
+//				throw new IllegalArgumentException("DimNorm of " + dim
+//						+ " is null");
+//			}
+//
+//			zVal = DataUtil.exact((p1Score - norm.getGpa()) / norm.getStd(),
+//					idxHandler.Z_T_SCALE);
+//
+//			tVal = DataUtil.exact(idxHandler.T_COEFFICIENT * zVal
+//					+ idxHandler.T_CONSTANT, idxHandler.Z_T_SCALE);
+//
+//			tRange = idxHandler.getDimTRange(dim, tVal);
+//
+//		}
+//
+//		levelExpr = idxHandler.getLevelExpr(dim, tVal);
+//		return p1Score;
+//	}
 
 	public LevelExpr getLevelExpr() {
 		return levelExpr;

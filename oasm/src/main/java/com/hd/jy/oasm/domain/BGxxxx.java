@@ -27,7 +27,7 @@ public class BGxxxx {
 	private String sg; //varchar(5) , --身高cm
 	private String tz; // varchar(5), --体重kg
 	private String htzk; //varchar(20), --婚姻状况zf_hybd.hyzk*代码
-	private String hjdz; //varchar(200), --户籍住址
+	private String hjdz; //varchar(200), --户籍地址
 	private String jtzz; //varchar(200), --家庭住址
 	private String hygx; //varchar(20), --婚姻关系,zf_hybd.hyzk*代码，取最新
 	private String jtzc; //varchar(100),--家庭支持

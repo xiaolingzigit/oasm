@@ -21,15 +21,9 @@ import com.hd.jy.oasm.domain.SearchElement;
 import com.hd.jy.oasm.domain.Task;
 import com.hd.jy.oasm.domain.TaskRelat;
 import com.hd.jy.oasm.domain.TestNote;
-import com.hd.jy.oasm.model.CopaResult;
 import com.hd.jy.oasm.model.Resp;
-import com.hd.jy.oasm.model.SCL90Result;
 import com.hd.jy.oasm.model.ScoreMap;
 import com.hd.jy.oasm.model.TestNoteOut;
-import com.hd.jy.oasm.module.CopaIdxHandler;
-import com.hd.jy.oasm.module.CopaTestHandler;
-import com.hd.jy.oasm.module.PgXlHandler;
-import com.hd.jy.oasm.module.SCL90TestHandler;
 import com.hd.jy.oasm.services.TaskService;
 import com.hd.jy.oasm.util.Page;
 import com.hd.jy.oasm.util.PageHelper;
@@ -127,9 +121,9 @@ public class TaskServiceImpl implements TaskService {
 			String XWGC;// 行为观察
 			String GTFT;// 个体结构性访谈
 			String JTFT;// 集体访谈
-			String XLSCL90;// scl90心理测试
-			String XLCOPAPI;// copapPi心理测试
-			String XLRJ;// 入监心理测试
+//			String XLSCL90;// scl90心理测试
+//			String XLCOPAPI;// copapPi心理测试
+//			String XLRJ;// 入监心理测试
 			String XLCJ;// 社会适应性心理测试，出监评估报告才有
 
 			// 添加子任务
@@ -138,29 +132,29 @@ public class TaskServiceImpl implements TaskService {
 				XWGC = null;
 				GTFT = null;
 				JTFT = null;
-				XLSCL90 = null;
-				XLCOPAPI = null;
-				XLRJ = null;
+//				XLSCL90 = null;
+//				XLCOPAPI = null;
+//				XLRJ = null;
 				XLCJ = null;
 
 				XWGC = putTask(taskList, mkChildTask(task, TaskType.IN_ACTION));
 				GTFT = putTask(taskList, mkChildTask(task, TaskType.IN_TALK));
-				XLSCL90 = putTask(taskList,
-						mkChildTask(task, TaskType.MT_SCL90));
-				XLCOPAPI = putTask(taskList,
-						mkChildTask(task, TaskType.MT_COPA_PI));
-				XLRJ = putTask(taskList,
-						mkChildTask(task, TaskType.IN_MENTAL_TEST));
+//				XLSCL90 = putTask(taskList,
+//						mkChildTask(task, TaskType.MT_SCL90));
+//				XLCOPAPI = putTask(taskList,
+//						mkChildTask(task, TaskType.MT_COPA_PI));
+//				XLRJ = putTask(taskList,
+//						mkChildTask(task, TaskType.IN_MENTAL_TEST));
 
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.DAFX, DAFX);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XWGC, XWGC);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.GTFT, GTFT);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.JTFT, JTFT);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
-						XLSCL90);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
-						XLCOPAPI);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
+//						XLSCL90);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
+//						XLCOPAPI);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
 
 			} else if (TaskType.DAILY_REPORT.equals(task.getType())) {
 
@@ -168,9 +162,9 @@ public class TaskServiceImpl implements TaskService {
 				XWGC = null;
 				GTFT = null;
 				JTFT = null;
-				XLSCL90 = null;
-				XLCOPAPI = null;
-				XLRJ = null;
+//				XLSCL90 = null;
+//				XLCOPAPI = null;
+//				XLRJ = null;
 				XLCJ = null;
 
 				XWGC = putTask(taskList,
@@ -180,11 +174,11 @@ public class TaskServiceImpl implements TaskService {
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XWGC, XWGC);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.GTFT, GTFT);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.JTFT, JTFT);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
-						XLSCL90);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
-						XLCOPAPI);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
+//						XLSCL90);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
+//						XLCOPAPI);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCJ, XLCJ);
 
 			} else if (TaskType.MID_REPORT.equals(task.getType())) {
@@ -193,27 +187,27 @@ public class TaskServiceImpl implements TaskService {
 				XWGC = null;
 				GTFT = null;
 				JTFT = null;
-				XLSCL90 = null;
-				XLCOPAPI = null;
-				XLRJ = null;
+//				XLSCL90 = null;
+//				XLCOPAPI = null;
+//				XLRJ = null;
 				XLCJ = null;
 
 				XWGC = putTask(taskList, mkChildTask(task, TaskType.MID_ACTION));
 				GTFT = putTask(taskList, mkChildTask(task, TaskType.MID_TALK));
-				XLSCL90 = putTask(taskList,
-						mkChildTask(task, TaskType.MT_SCL90));
-				XLCOPAPI = putTask(taskList,
-						mkChildTask(task, TaskType.MT_COPA_PI));
+//				XLSCL90 = putTask(taskList,
+//						mkChildTask(task, TaskType.MT_SCL90));
+//				XLCOPAPI = putTask(taskList,
+//						mkChildTask(task, TaskType.MT_COPA_PI));
 
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.DAFX, DAFX);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XWGC, XWGC);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.GTFT, GTFT);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.JTFT, JTFT);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
-						XLSCL90);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
-						XLCOPAPI);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
+//						XLSCL90);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
+//						XLCOPAPI);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCJ, XLCJ);
 
 			} else if (TaskType.OUT_REPORT.equals(task.getType())) {
@@ -222,18 +216,18 @@ public class TaskServiceImpl implements TaskService {
 				XWGC = null;
 				GTFT = null;
 				JTFT = null;
-				XLSCL90 = null;
-				XLCOPAPI = null;
-				XLRJ = null;
+//				XLSCL90 = null;
+//				XLCOPAPI = null;
+//				XLRJ = null;
 				XLCJ = null;
 
 				XWGC = putTask(taskList, mkChildTask(task, TaskType.OUT_ACTION));
 				GTFT = putTask(taskList, mkChildTask(task, TaskType.OUT_TALK));
 
-				XLSCL90 = putTask(taskList,
-						mkChildTask(task, TaskType.MT_SCL90));
-				XLCOPAPI = putTask(taskList,
-						mkChildTask(task, TaskType.MT_COPA_PI));
+//				XLSCL90 = putTask(taskList,
+//						mkChildTask(task, TaskType.MT_SCL90));
+//				XLCOPAPI = putTask(taskList,
+//						mkChildTask(task, TaskType.MT_COPA_PI));
 				XLCJ = putTask(taskList,
 						mkChildTask(task, TaskType.OUT_MENTAL_TEST));
 
@@ -241,11 +235,11 @@ public class TaskServiceImpl implements TaskService {
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XWGC, XWGC);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.GTFT, GTFT);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.JTFT, JTFT);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
-						XLSCL90);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
-						XLCOPAPI);
-				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLSCL90,
+//						XLSCL90);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCOPAPI,
+//						XLCOPAPI);
+//				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLRJ, XLRJ);
 				putTaskRelat(taskRelatList, task.getTaskId(), PGPart.XLCJ, XLCJ);
 			}
 		}
@@ -516,78 +510,79 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public String saveTestNote(Map<String, String> paramMap) {
+		return null;
+//
+//		TestNote tn = new TestNote();
+//		tn.setTaskId(paramMap.get(CT.P_TASK_ID));
+//		tn.setAnswer(paramMap.get(CT.P_ANSWER));
+//		if (tn.getTaskId() == null) {
+//			return errorMsg("保存失败：任务ID为空");
+//		}
+//
+//		if (tn.getAnswer() == null) {
+//			return errorMsg("保存失败：没有要保存的内容");
+//		}
+//
+//		try {
+//			tn.setAnswer(GsonUtil.toJsonArray(tn.getAnswer()).toString());
+//		} catch (Exception e) {
+//			return errorMsg("保存失败：提交的答案格式有误");
+//		}
+//
+//		if (DataUtil.toInt(paramMap.get(CT.P_STATUS), CT.TS_NULL) == CT.TS_FINISHED) {
+//			ArrayList<Answer> list = GsonUtil.toList(tn.getAnswer(),
+//					Answer.class);
+//			ScoreMap scoreMap = new ScoreMap();
+//			for (Answer as : list) {
+//				scoreMap.addScore(as.getName().replaceAll("sclq|copaq", ""),
+//						DataUtil.toDouble(as.getVal()));
+//			}
+//
+//			if (tn.getTaskId().contains(TaskType.MT_SCL90)) {
+//				SCL90Result rs = SCL90TestHandler.handle(scoreMap);
 
-		TestNote tn = new TestNote();
-		tn.setTaskId(paramMap.get(CT.P_TASK_ID));
-		tn.setAnswer(paramMap.get(CT.P_ANSWER));
-		if (tn.getTaskId() == null) {
-			return errorMsg("保存失败：任务ID为空");
-		}
+//				tn.setScore(rs.getTotal());
+//				tn.setLevl(rs.getTotalYinYang());
+//				tn.setResult(GsonUtil.toJson(rs));
+//				logger.info("批量插入SCL90心理测试评估报告分析结果");
+//				listLineMapper.batchAddPgXlcsJg(SCL90TestHandler.toPgXlcsJg(
+//						tn.getTaskId(), tn.getTaskId().split("_")[0], rs));
 
-		if (tn.getAnswer() == null) {
-			return errorMsg("保存失败：没有要保存的内容");
-		}
-
-		try {
-			tn.setAnswer(GsonUtil.toJsonArray(tn.getAnswer()).toString());
-		} catch (Exception e) {
-			return errorMsg("保存失败：提交的答案格式有误");
-		}
-
-		if (DataUtil.toInt(paramMap.get(CT.P_STATUS), CT.TS_NULL) == CT.TS_FINISHED) {
-			ArrayList<Answer> list = GsonUtil.toList(tn.getAnswer(),
-					Answer.class);
-			ScoreMap scoreMap = new ScoreMap();
-			for (Answer as : list) {
-				scoreMap.addScore(as.getName().replaceAll("sclq|copaq", ""),
-						DataUtil.toDouble(as.getVal()));
-			}
-
-			if (tn.getTaskId().contains(TaskType.MT_SCL90)) {
-				SCL90Result rs = SCL90TestHandler.handle(scoreMap);
-
-				tn.setScore(rs.getTotal());
-				tn.setLevl(rs.getTotalYinYang());
-				tn.setResult(GsonUtil.toJson(rs));
-				logger.info("批量插入SCL90心理测试评估报告分析结果");
-				listLineMapper.batchAddPgXlcsJg(SCL90TestHandler.toPgXlcsJg(
-						tn.getTaskId(), tn.getTaskId().split("_")[0], rs));
-
-			} else if (tn.getTaskId().contains(TaskType.MT_COPA_PI)) {
-				CopaResult rs = CopaTestHandler.handle(scoreMap);
-				tn.setScore(rs.getLczbh());
-				if (rs.getDimResultMap().get(CopaIdxHandler.D_L).getTVal() > 3
-						|| rs.getDimResultMap().get(CopaIdxHandler.D_S)
-								.getTVal() > 2) {
-					tn.setLevl("认真指标或说谎指标不可完全接受");
-					paramMap.put(CT.P_STATUS, CT.TS_SAVED + "");
-				}
-				tn.setResult(GsonUtil.toJson(rs));
-				logger.info("批量插入Copa-PI心理测试评估报告分析结果");
-				listLineMapper.batchAddPgXlcsJg(CopaTestHandler.toPgXlcsJg(
-						tn.getTaskId(), tn.getTaskId().split("_")[0], rs));
+//			} else if (tn.getTaskId().contains(TaskType.MT_COPA_PI)) {
+//				CopaResult rs = CopaTestHandler.handle(scoreMap);
+//				tn.setScore(rs.getLczbh());
+//				if (rs.getDimResultMap().get(CopaIdxHandler.D_L).getTVal() > 3
+//						|| rs.getDimResultMap().get(CopaIdxHandler.D_S)
+//								.getTVal() > 2) {
+//					tn.setLevl("认真指标或说谎指标不可完全接受");
+//					paramMap.put(CT.P_STATUS, CT.TS_SAVED + "");
+//				}
+//				tn.setResult(GsonUtil.toJson(rs));
+//				logger.info("批量插入Copa-PI心理测试评估报告分析结果");
+//				listLineMapper.batchAddPgXlcsJg(CopaTestHandler.toPgXlcsJg(
+//						tn.getTaskId(), tn.getTaskId().split("_")[0], rs));
 
 				//makeWxxpgFs(tn.getTaskId().split("_")[0], rs);
 
-			} else {
-				logger.warn("未知类型的任务：" + tn);
-			}
-		}
+//			} else {
+//				logger.warn("未知类型的任务：" + tn);
+//			}
+//		}
 
-		logger.info("要保存的信息：" + tn);
-		int effect = testMapper.saveNote(tn);
-		if (effect == 0) {
-			return "保存失败";
-		}
-
-		String msg = updateStatus(paramMap);
-		makePgWxLx(tn.getTaskId());
-
-		if (!msg.contains("成功")) {
-			return errorMsg("保存失败:修改任务状态失败——" + msg);
-		} else {
-			return "保存成功";
-		}
+//		logger.info("要保存的信息：" + tn);
+//		int effect = testMapper.saveNote(tn);
+//		if (effect == 0) {
+//			return "保存失败";
+//		}
+//
+//		String msg = updateStatus(paramMap);
+//		makePgWxLx(tn.getTaskId());
+//
+//		if (!msg.contains("成功")) {
+//			return errorMsg("保存失败:修改任务状态失败——" + msg);
+//		} else {
+//			return "保存成功";
+//		}
 	}
 
 	@Override
@@ -696,13 +691,13 @@ public class TaskServiceImpl implements TaskService {
 					continue;
 				}
 
-				List<BGwxlx> riskResultList = PgXlHandler.handle(parentTaskId,
-						copaTestNote.getResult(), scl09TestNote.getResult()); // 危险性倾向评估自杀，行凶，脱逃
-				logger.info("保存 分析评估报告[" + parentTaskId + "]危险倾向分析结果:"
-						+ riskResultList);
-				for (BGwxlx rs : riskResultList) {
-					testMapper.addWxlxReport(rs);
-				}
+//				List<BGwxlx> riskResultList = PgXlHandler.handle(parentTaskId,
+//						copaTestNote.getResult(), scl09TestNote.getResult()); // 危险性倾向评估自杀，行凶，脱逃
+//				logger.info("保存 分析评估报告[" + parentTaskId + "]危险倾向分析结果:"
+//						+ riskResultList);
+//				for (BGwxlx rs : riskResultList) {
+//					testMapper.addWxlxReport(rs);
+//				}
 			} catch (Exception e) {
 				logger.error("分析评估报告[" + parentTaskId + "]危险类型失败", e);
 			}
@@ -714,13 +709,14 @@ public class TaskServiceImpl implements TaskService {
 	// * 获取警察信息列表
 	// * @return
 	// */
-	// public String getCopInfo(Map<String, String> paramMap){
+	 public String getCopInfo(Map<String, String> paramMap){
+		return null;
 	// String json = GsonUtil.toJson(taskMapper.getCrimCopInfo("prison",
 	// "stage"));;
 	// logger.debug("返回前端的数据:" + json);
 	// return json;
 	//
-	// }
+	 }
 
 	// TODO logic method end
 

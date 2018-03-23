@@ -10,7 +10,7 @@ import com.hd.jy.oasm.domain.BGwxlx;
 import com.hd.jy.oasm.domain.SearchElement;
 import com.hd.jy.oasm.domain.TevalReport;
 import com.hd.jy.oasm.domain.ViewDafxjg;
-import com.hd.jy.oasm.domain.ZCYCYQPC;
+//import com.hd.jy.oasm.domain.ZCYCYQPC;
 
 /**
  * TODO 用于封装所有的list集合
@@ -22,7 +22,7 @@ import com.hd.jy.oasm.domain.ZCYCYQPC;
 public class CrimInfoView {
     private List<TevalReport> report; //封装已有分数评估报告
     
-    private List<ZCYCYQPC> ycyqpc; //封装异常狱情排查
+//    private List<ZCYCYQPC> ycyqpc; //封装异常狱情排查
     
     private List<ViewDafxjg> dafxjg; //封装档案分析结果
     
@@ -61,13 +61,13 @@ public class CrimInfoView {
 		this.report = report;
 	}
 
-	public List<ZCYCYQPC> getYcyqpc() {
-		return ycyqpc;
-	}
-
-	public void setYcyqpc(List<ZCYCYQPC> ycyqpc) {
-		this.ycyqpc = ycyqpc;
-	}
+//	public List<ZCYCYQPC> getYcyqpc() {
+//		return ycyqpc;
+//	}
+//
+//	public void setYcyqpc(List<ZCYCYQPC> ycyqpc) {
+//		this.ycyqpc = ycyqpc;
+//	}
 
 	public List<ViewDafxjg> getDafxjg() {
 		return dafxjg;

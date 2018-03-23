@@ -191,7 +191,7 @@ $(".ul02 li").mouseout(function(){
 						//教育改造部分
 			case "zfxx":
 				$("#jygz").addClass('current').siblings().removeClass('current');
-				$("#container").load("/oasm/jygzView/zfxx");
+				$("#container").load("/oasm/jygzView/zfjbxx");
 				break;
 			case "gzfagz":
 				$("#jygz").addClass('current').siblings().removeClass('current');
@@ -226,7 +226,7 @@ $(".ul02 li").mouseout(function(){
 				break;
 			case "jygz"://教育改造
 				$("#zfxx").addClass('selected_li');
-				$("#container").load("/oasm/jygzView/zfxx");
+				$("#container").load("/oasm/jygzView/zfjbxx");
 				break;
 			case "pggj"://评估工具 
 				$("#container").load("/oasm/pggjglView/lbfx");

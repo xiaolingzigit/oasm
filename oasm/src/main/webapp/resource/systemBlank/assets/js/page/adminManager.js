@@ -43,6 +43,7 @@ function add_admin_save(){
 				    alert("添加成功");
 					$("#add_username").val("");
 					$("#add_passowrd").val("");
+//					window.close();
 			  }else{
 				  alert("添加失败");
 			  }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * *********主页控制层 *******
  * TODO
  * @author quite
- * @data 2017年12月29日
+ * @data 2018年03月22日
  * @see  
  *
  */

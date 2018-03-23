@@ -66,36 +66,36 @@ $(function() {
 	});
 });
 //*****************************************************************************
-var jsonArr2;
-function get_Crim_List() {
-			post({op : "crimCopInfo",pageNum : pageNum,pageSize : pageSize},
-					function(data) {
-						if (isEmpty(data)) {
-							return;
-						}
-						jsonArr2 = jQuery.parseJSON(data);
-						$("#criminalList tr").remove();
-						index_num=1;
-						$.each(jsonArr2.info, function(index, content) {
-							   $("#criminalList ").append($('<tr/>')
-									   .append($('<td/>').html(index_num))
-          								.append($('<td/>').html(toShow(content.prison)))
-          								.append($('<td/>').html(toShow(content.crimNo)))
-          								.append($('<td/>').html(toShow(content.crimName)))
-          								.append($('<td/>').html(toShow(content.inTime)))
-           								.append($('<td/>').html(toShow("")))
-          								.append($('<td/>').html(toShow("")))
- 							            .append($('<td/>').html("<a onclick='loadCrimInfo(\""+content.crimNo+"\",\"/oasm/jygzView/zfinfo?qh="+content.crimNo+"&&jcxm="+encodeURI(content.cop1Name)+"\")'>点击进入</a>")));
-							   index_num+=1;
-							});
-						pageSize = jsonArr2.page.pageSize;
-   						pages = jsonArr2.page.pages;
-   						total = jsonArr2.page.total;
-   						$("#pageSize").html(pageSize);
-   						$("#pages").html(pages);
-   						
-			});
-	}
+//var jsonArr2;
+//function get_Crim_List() {
+//			post({op : "crimCopInfo",pageNum : pageNum,pageSize : pageSize},
+//					function(data) {
+//						if (isEmpty(data)) {
+//							return;
+//						}
+//						jsonArr2 = jQuery.parseJSON(data);
+//						$("#criminalList tr").remove();
+//						index_num=1;
+//						$.each(jsonArr2.info, function(index, content) {
+//							   $("#criminalList ").append($('<tr/>')
+//									   .append($('<td/>').html(index_num))
+//          								.append($('<td/>').html(toShow(content.prison)))
+//          								.append($('<td/>').html(toShow(content.crimNo)))
+//          								.append($('<td/>').html(toShow(content.crimName)))
+//          								.append($('<td/>').html(toShow(content.inTime)))
+//           								.append($('<td/>').html(toShow("")))
+//          								.append($('<td/>').html(toShow("")))
+// 							            .append($('<td/>').html("<a onclick='loadCrimInfo(\""+content.crimNo+"\",\"/oasm/jygzView/zfinfo?qh="+content.crimNo+"&&jcxm="+encodeURI(content.cop1Name)+"\")'>点击进入</a>")));
+//							   index_num+=1;
+//							});
+//						pageSize = jsonArr2.page.pageSize;
+//   						pages = jsonArr2.page.pages;
+//   						total = jsonArr2.page.total;
+//   						$("#pageSize").html(pageSize);
+//   						$("#pages").html(pages);
+//   						
+//			});
+//	}
 function goPage(pageNum1, psize1, clazz1) {
 			psize = psize1;
 			pageNum = pageNum1;

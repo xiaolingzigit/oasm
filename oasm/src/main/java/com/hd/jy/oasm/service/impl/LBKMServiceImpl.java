@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.hd.jy.oasm.annotation.DataSource;
 import com.hd.jy.oasm.dao.LBKMMapper;
-import com.hd.jy.oasm.dao.ZCYCYQPCMapper;
+//import com.hd.jy.oasm.dao.ZCYCYQPCMapper;
 import com.hd.jy.oasm.dao.newDao.TdminAndtyzDao;
 import com.hd.jy.oasm.domain.LBKM;
 import com.hd.jy.oasm.domain.WD;
-import com.hd.jy.oasm.domain.ZCYCYQPC;
+//import com.hd.jy.oasm.domain.ZCYCYQPC;
 import com.hd.jy.oasm.domain.newDomain.Tscale;
 import com.hd.jy.oasm.services.LBKMService;
 import com.hd.jy.oasm.util.date.DateUtil;
@@ -25,8 +25,8 @@ public class LBKMServiceImpl implements LBKMService {
 	@Autowired
 	private LBKMMapper lbkmDao; //量表库业务接口，集成入监、日常、中期、出监的业务接口
 
-	@Autowired
-	private ZCYCYQPCMapper zcycyqpcDao; //异常狱情排查业务接口
+//	@Autowired
+//	private ZCYCYQPCMapper zcycyqpcDao; //异常狱情排查业务接口
 	
 	@Autowired
 	private TdminAndtyzDao tdminAndtyzDao; //量表库业务接口
@@ -107,23 +107,23 @@ public class LBKMServiceImpl implements LBKMService {
 	}
 
 	//调用异常狱情业务接口根据囚号查询异常狱情
-	@Override
-	public List<ZCYCYQPC> selectYCYQ(String yqztbh) {
-		// TODO Auto-generated method stub
-		List<ZCYCYQPC> ycyqList = null;
-		try {
-			if(yqztbh!=null&&yqztbh!=""){
-				log.info("开始进行囚号"+yqztbh+"查询主体异常狱情时间"+DateUtil.getTime(new Date()));
-				ycyqList = zcycyqpcDao.selectYCYQ(yqztbh);
-			}else{
-				log.error("根据囚号"+yqztbh+"查询主体异常狱情失败，请确认后重试...");
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("根据囚号查询主体异常狱情异常，请重试..."+e.getMessage());
-		}
-		return ycyqList;
-	}
+//	@Override
+//	public List<ZCYCYQPC> selectYCYQ(String yqztbh) {
+//		// TODO Auto-generated method stub
+//		List<ZCYCYQPC> ycyqList = null;
+//		try {
+//			if(yqztbh!=null&&yqztbh!=""){
+//				log.info("开始进行囚号"+yqztbh+"查询主体异常狱情时间"+DateUtil.getTime(new Date()));
+//				ycyqList = zcycyqpcDao.selectYCYQ(yqztbh);
+//			}else{
+//				log.error("根据囚号"+yqztbh+"查询主体异常狱情失败，请确认后重试...");
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			log.error("根据囚号查询主体异常狱情异常，请重试..."+e.getMessage());
+//		}
+//		return ycyqList;
+//	}
 
 	//根据量表编号查询因子和维度，在后台量表详情使用
 	@Override

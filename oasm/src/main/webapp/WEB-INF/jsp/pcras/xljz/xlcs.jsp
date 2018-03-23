@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>档案分析</title>
+<title>心理测试</title>
 <!-- 分页样式 -->
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/resource/css/page.css'/>">
@@ -20,7 +20,7 @@
 				<i><font color="#ffffff"><strong>您现在的位置</strong></font></i>
 			</div>
 			<div class="location_right">
-				<strong>&nbsp;&nbsp;心理矫治 >><font color="#ff3300">心理测试</font></strong>
+				<strong>&nbsp;&nbsp;心理测试 >><font color="#ff3300">社会适应性量表</font></strong>
 			</div>
 		</div>
 		<!-- 功能子块-->
@@ -28,10 +28,10 @@
 			<!--选项卡 -->
 			<div id="option" class="option_area">
 				<ul>
-					<li id="xlcs_xszf" name="xlcs_xszf" class="option_li_current">新收押罪犯量表</li>
+					<!-- <li id="xlcs_xszf" name="xlcs_xszf" class="option_li_current">新收押罪犯量表</li>
 	                <li id="xlcs_scl90" name="xlcs_scl90">SCL90</li>
-					<li id="xlcs_copa" name="xlcs_copa">COPA-PI</li>
-					<li id="xlcs_shsy" name="xlcs_shsy">社会适应性量表</li>
+					<li id="xlcs_copa" name="xlcs_copa">COPA-PI</li> -->
+					<li id="xlcs_shsy" name="xlcs_shsy" class="option_li_current">社会适应性量表</li>
 				</ul>
 			</div>
 			<!--可选内容 -->
@@ -47,13 +47,13 @@
 	src="<c:url value='/resource/js/page.js'/>"></script>
 	<script type="text/javascript">
 	$(function() {
-		$('#basecontent').load("/oasm/xljzView/xlcs_xszf");		
+		$('#basecontent').load("/oasm/xljzView/xlcs_shsy");		
 	});
 	
 	$('#option li').click(function (event) {
 		$(this).addClass('option_li_current').siblings().removeClass('option_li_current');
 		switch ($(this).attr("id")) {
-			case "xlcs_xszf"://新收押罪犯量表
+		/* 	case "xlcs_xszf"://新收押罪犯量表
 				setRootPage("/oasm/xljzView/xlcs_xszf");
 				break;
 			case "xlcs_copa"://copa 
@@ -61,7 +61,7 @@
 				break;
 			case "xlcs_scl90"://scl90
 				setRootPage("/oasm/xljzView/xlcs_scl90");
-				break;
+				break; */
 			case "xlcs_shsy"://社会适应性量表
 				setRootPage("/oasm/xljzView/xlcs_shsy");
 				break;

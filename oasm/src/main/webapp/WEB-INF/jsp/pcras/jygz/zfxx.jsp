@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,7 +17,7 @@
 				<i><font color="#ffffff"><strong>您现在的位置</strong></font></i>
 			</div>
 			<div class="location_right">
-				<strong>&nbsp;&nbsp;矫正项目 >><font color="#ff3300">罪犯信息查询</font></strong>
+				<strong>&nbsp;&nbsp;罪犯信息 >><font color="#ff3300">罪犯信息查询</font></strong>
 			</div>
 		</div>
 		<!-- 功能子块-->
@@ -105,11 +106,22 @@
 									<th class="base_th" width="10%">囚号</th>
 									<th class="base_th" width="10%">罪犯姓名</th>
 									<th class="base_th" width="10%">入监时间</th>
-									<th class="base_th" width="10%">危险等级</th>
-									<th class="base_th" width="10%">危险评分</th>
+									<!-- <th class="base_th" width="10%">危险等级</th>
+									<th class="base_th" width="10%">危险评分</th> -->
 									<th class="base_th" width="10%">详细个人信息</th>
 								</tr>
 						<tbody id="criminalList">
+						<c:forEach items="${jbxxList}" var="zf" varStatus="status">
+								<tr>
+									<td>${status.count }</td>
+								 	<td>${zf.jq }</td>
+									<td>${zf.qh }</td>
+									<td>${zf.xm }</td>
+									<td><fmt:formatDate type="date" value="${zf.bgxxxx.rjrq }" /></td>
+								
+									<td>点击进入</td>
+								</tr>
+							</c:forEach>
 							<!-- ajax 入监集体结构性访谈数据 -->
 						</tbody>
 						</table>
