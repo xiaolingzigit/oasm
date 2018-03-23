@@ -37,7 +37,7 @@ public class JygzViewController {
 	private VPgbgListService viewPgbgAService; //最新的评估报告个人信息操作接口
 	
 	
-	//罪犯信息列表   这是controller
+	//罪犯信息列表   
 	@SuppressWarnings("rawtypes")
     @RequestMapping("/zfjbxx")
     public String zfjbxx(@RequestParam(required=true,defaultValue="1")int number,Model model){
@@ -48,11 +48,21 @@ public class JygzViewController {
 		model.addAttribute("page",page);
 		model.addAttribute("nums", page.getNavigatepageNums());
 		model.addAttribute("jbxxList",jbxxList);
-		System.out.println("jbxxList"+model);
-		System.out.println("jbxxList"+jbxxList);
+//		System.out.println("jbxxList"+model);
+//		System.out.println("jbxxList"+jbxxList);
     	return "/pcras/jygz/zfxx";
     }
     
+	//罪犯详细信息
+	@RequestMapping("/zfinfo")
+	public String zfinfo(@RequestParam String qh,Model model){
+		System.out.println("1111==========");
+		BGjbxx bgjbxx =  viewPgbgAService.crimInfoBycrimNo(qh);
+		System.out.println(bgjbxx);
+		model.addAttribute("bgjbxx",bgjbxx);
+		return "/pcras/jygz/zfinfo";
+	}
+	
     
 
 //    //改造方案跟踪
@@ -67,41 +77,41 @@ public class JygzViewController {
 //    }    
     
     //罪犯个人详细信息
-    @RequestMapping(value="/zfinfo",method={RequestMethod.GET,RequestMethod.POST})
-    public String zfinfo(String qh,String jcxm,HttpServletRequest request){
-    	try {
-			jcxm=new String(jcxm.getBytes("iso8859-1"),"UTF-8"); //中文乱码问题
-			log.info("查看个人详细信息【囚号"+qh+"】，【警察姓名"+jcxm+"】");
-			BGjbxx xx = viewPgbgAService.crimInfoBycrimNo(qh); //根据囚号查询基础信息
-			if(null!=xx){
-				request.setAttribute("jcxm", jcxm);
-				request.setAttribute("grxx", xx);
-				request.setAttribute("xxxx", xx.getBgxxxx());
-				if(xx.getBgxxxx().getXq().length()>4){
-					String xq = DateUtil.fmtDate(xx.getBgxxxx().getXq());
-					request.setAttribute("xq", xq);
-				}else{
-					request.setAttribute("xq", xx.getBgxxxx().getXq());
-				}
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return "/pcras/jygz/zfinfo";
-    }
+//    @RequestMapping(value="/zfinfo",method={RequestMethod.GET,RequestMethod.POST})
+//    public String zfinfo(String qh,String jcxm,HttpServletRequest request){
+//    	try {
+//			jcxm=new String(jcxm.getBytes("iso8859-1"),"UTF-8"); //中文乱码问题
+//			log.info("查看个人详细信息【囚号"+qh+"】，【警察姓名"+jcxm+"】");
+//			BGjbxx xx = viewPgbgAService.crimInfoBycrimNo(qh); //根据囚号查询基础信息
+//			if(null!=xx){
+//				request.setAttribute("jcxm", jcxm);
+//				request.setAttribute("grxx", xx);
+//				request.setAttribute("xxxx", xx.getBgxxxx());
+//				if(xx.getBgxxxx().getXq().length()>4){
+//					String xq = DateUtil.fmtDate(xx.getBgxxxx().getXq());
+//					request.setAttribute("xq", xq);
+//				}else{
+//					request.setAttribute("xq", xx.getBgxxxx().getXq());
+//				}
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	return "/pcras/jygz/zfinfo";
+//    }
 
-    @ResponseBody
-    @RequestMapping(value="/jz_crimInfo",method={RequestMethod.GET,RequestMethod.POST})
-    public String jz_crimInfo(String crimNo){
-    	 log.info("矫治项目的【囚号"+crimNo+"】");
-    	 String record = null;
-		try {
-			record = viewPgbgAService.getCrimInfoRecord(crimNo);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	 return record;
-    	}
+//    @ResponseBody
+//    @RequestMapping(value="/jz_crimInfo",method={RequestMethod.GET,RequestMethod.POST})
+//    public String jz_crimInfo(String crimNo){
+//    	 log.info("矫治项目的【囚号"+crimNo+"】");
+//    	 String record = null;
+//		try {
+//			record = viewPgbgAService.getCrimInfoRecord(crimNo);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	 return record;
+//    	}
 }

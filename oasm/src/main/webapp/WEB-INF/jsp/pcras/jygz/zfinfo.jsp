@@ -17,51 +17,51 @@
 <table>
 <tr>
 <td class="zfxx_td01">罪犯姓名：</td>
-<td class="zfxx_td02">${grxx.xm }</td>
+<td class="zfxx_td02">${bgjbxx.xm }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">囚号：</td>
-<td class="zfxx_td02 xx_number" onclick="loadnext3('/oasm/dafxView/criminalinfo?qh=${grxx.qh }')">${grxx.qh }</td>
+<td class="zfxx_td02 xx_number">${bgjbxx.qh }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">监区：</td>
-<td class="zfxx_td02">${grxx.jq }</td>
+<td class="zfxx_td02">${bgjbxx.jq }</td>
 </tr>
-<tr>
+<%-- <tr>
 <td class="zfxx_td01">专管警察：</td>
 <td class="zfxx_td02">${jcxm }</td>
-</tr>
+</tr> --%>
 <tr>
 <td class="zfxx_td01">入监时间：</td>
-<td class="zfxx_td02"><fmt:formatDate type="date" value="${xxxx.rjrq }" /></td>
+<td class="zfxx_td02"><fmt:formatDate type="date" value="${bgjbxx.bgxxxx.rjrq }" /></td>
 </tr>
 <tr>
 <td class="zfxx_td01">年龄：</td>
-<td class="zfxx_td02">${grxx.nl }</td>
+<td class="zfxx_td02">${bgjbxx.nl }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">文化程度：</td>
-<td class="zfxx_td02">${grxx.whcd }</td>
+<td class="zfxx_td02">${bgjbxx.whcd }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">捕前职业：</td>
-<td class="zfxx_td02">${xxxx.bqzy }</td>
+<td class="zfxx_td02">${bgjbxx.bgxxxx.bqzy }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">罪名：</td>
-<td class="zfxx_td02">${xxxx.zmmc }</td>
+<td class="zfxx_td02">${bgjbxx.bgxxxx.zmmc }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">刑期：</td>
-<td class="zfxx_td02">${xq }</td>
+<td class="zfxx_td02">${bgjbxx.bgxxxx.xq }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">户籍地：</td>
-<td class="zfxx_td02">${xxxx.hjdz }</td>
+<td class="zfxx_td02">${bgjbxx.bgxxxx.hjdz }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">同案犯去向：</td>
-<td class="zfxx_td02">${xxxx.tafqx }</td>
+<td class="zfxx_td02">${bgjbxx.bgxxxx.tafqx }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">主要亲属：</td>
@@ -77,7 +77,7 @@
 </tr>
 <tr>
 <td class="zfxx_td01">主要犯罪情节手段：</td>
-<td class="zfxx_td02">${xxxx.zmfl }</td>
+<td class="zfxx_td02">${bgjbxx.bgxxxx.zmfl }</td>
 </tr>
 <tr>
 <td class="zfxx_td01">有无前科：</td>

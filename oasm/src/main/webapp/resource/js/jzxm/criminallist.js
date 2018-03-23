@@ -96,16 +96,16 @@ $(function() {
 //   						
 //			});
 //	}
-function goPage(pageNum1, psize1, clazz1) {
-			psize = psize1;
-			pageNum = pageNum1;
-			clazz = clazz1;
-			$("#pageNum").html(pageNum);	
-			
-			if(clazz=="criminalList"){
-				get_Crim_List();
-			}
-			
+//function goPage(pageNum1, psize1, clazz1) {
+//			psize = psize1;
+//			pageNum = pageNum1;
+//			clazz = clazz1;
+//			$("#pageNum").html(pageNum);	
+//			
+//			if(clazz=="criminalList"){
+//				get_Crim_List();
+//			}
+//			
 	// 记录数据
 	var tempStr = "共" + total + "条记录 当前" + pageNum + "/" + pages + "页";
 	document.getElementById("barcon1").innerHTML = tempStr;

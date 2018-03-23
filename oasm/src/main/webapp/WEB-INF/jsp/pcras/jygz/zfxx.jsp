@@ -42,7 +42,7 @@
 				<col width="10%">
 				</colgroup>
 					<tr>
-						<th>监&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区</th>
+						<th>监&nbsp;区</th>
 						<td><select id="criminal_jq" class="search_tb_select">
 					<option value="">全监</option>
 					<option value="一监区">一监区</option>
@@ -61,18 +61,19 @@
 					<option value="出监管区">出监管区</option>
 					<option value="狱政科">狱政科</option>
 				</select></td>
-						<th>囚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</th>
+						<th>囚&nbsp;号</th>
 						<td><input type="text" id="criminal_qh" class="search_tb_input" /></td>
-						<th>罪&nbsp;&nbsp;犯&nbsp;&nbsp;姓&nbsp;&nbsp;名</th>
+						<th>罪&nbsp;犯&nbsp;姓&nbsp;名</th>
 						<td><input type="text" id="criminal_xm" class="search_tb_input" /></td>
-						<th>入&nbsp;&nbsp;监&nbsp;&nbsp;时&nbsp;&nbsp;间</th>
+						<th>入&nbsp;监&nbsp;时&nbsp;间</th>
 						<td><input type="text" class="select_time search_tb_input"
 							id="criminal_enterTime" maxLength="10"
 							onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
-						<th>警&nbsp;&nbsp;察&nbsp;&nbsp;姓&nbsp;&nbsp;名</th>
+						<th>警&nbsp;察&nbsp;姓&nbsp;名</th>
 						<td><input type="text" id="police_xm" class="search_tb_input" /></td>
+						<td><button class="button_submit2" id="criminal_ss_btn">搜&nbsp;索</button></td>
 					</tr>
-					<tr>
+					<!-- <tr>
 				    	<th>危&nbsp;&nbsp;险&nbsp;&nbsp;等&nbsp;&nbsp;级</th>
 						<td colspan="4" id="criminal_wxdj">
 					<input type="radio" name="wxdj" value="" id="wxdj_all" checked/> <label for="wxdj_all">全部 </label>
@@ -90,7 +91,7 @@
 				    <input type="radio" name="wxlx" value="10" id="wxlx_zf" /><label for="wxlx_zf">再犯罪</label></td>
 				    
 						<td><button class="button_submit2" id="criminal_ss_btn">&nbsp;搜&nbsp;&nbsp;索&nbsp;</button></td>
-					</tr>
+					</tr> -->
 					</table>
 			</fieldset>
 
@@ -119,12 +120,14 @@
 									<td>${zf.xm }</td>
 									<td><fmt:formatDate type="date" value="${zf.bgxxxx.rjrq }" /></td>
 								
-									<td>点击进入</td>
+									<td><a href ="#"  onclick="showZfxxxx('/oasm/jygzView/zfinfo?qh=${zf.qh }')">点击进入</a></td>
 								</tr>
 							</c:forEach>
 							<!-- ajax 入监集体结构性访谈数据 -->
+							
 						</tbody>
 						</table>
+						<!-- TODO -->
 			<div id="barcon" class="barcon">
 				<span id="barcon1" class="barcon1"></span>
 					<span id="barcon2" class="barcon2">
@@ -147,13 +150,23 @@
 				</div>
 <!-- 页面内容的js -->
 <script type="text/javascript"
+		src="<c:url value='/resource/js/jquery-1.7.2.min.js'/>"></script>
+<script type="text/javascript"
 	src="<c:url value='/resource/js/jzxm/crimInfo.js'/>"></script>
 	<script type="text/javascript"
 		src="<c:url value='/resource/js/jzxm/criminallist.js'/>"></script>
 	<script type="text/javascript">
-       $(function(){
-	      goPage(1,10,'criminalList');
-      });
+	$(function(){
+			$("#sele").change(function(){
+				showPage($(this).val());
+			});
+			 goPage(1,10,'criminalList');
+	});
+      
+      function showZfxxxx(url){
+      	alert("hhhh"+url);
+      	$("#basecontent").load(url);
+      }
 </script>
 
 </body>
