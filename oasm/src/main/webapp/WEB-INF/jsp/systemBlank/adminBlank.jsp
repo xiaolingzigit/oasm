@@ -56,7 +56,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">帮助中心</a></li>
+						<!-- <li><a href="#">帮助中心</a></li> -->
 						<li class="dropdown">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                                               个人中心
@@ -170,6 +170,7 @@
 							<li><a href="#">首页</a></li>
 							<!-- <li class="active">系统日志</li> -->
 						</ol>
+						
 						<!-- 系统日志 -->
 						<!-- <form class="form-horizontal-left" role="form">
 						    <div class="form-group-left">
@@ -222,7 +223,7 @@
 						</div>
 					</div> -->
 					<nav class="navbar-fixed text-center">
-						<p>&copy;版权所有&nbsp;&nbsp;广东省监狱管理局&nbsp;&nbsp;技术支持&nbsp;&nbsp;北明软件科技有限公司</p>
+						<p>&copy;版权所有&nbsp;&nbsp;吴晓玲&nbsp;&nbsp;技术支持&nbsp;&nbsp;吴晓玲</p>
 					</nav>
 				</div>
 				<!-- /. ROW  -->

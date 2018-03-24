@@ -31,7 +31,7 @@ import com.hd.jy.oasm.domain.ViewDasjfx;
 import com.hd.jy.oasm.domain.newDomain.Scale;
 import com.hd.jy.oasm.domain.newDomain.TCrimScaleRelat;
 import com.hd.jy.oasm.domain.newDomain.Tscale;
-import com.hd.jy.oasm.guize.AutoStartWithDa;
+//import com.hd.jy.oasm.guize.AutoStartWithDa;
 import com.hd.jy.oasm.services.ZuoTiSerivce;
 import com.hd.jy.oasm.util.date.DateUtil;
 import com.hd.jy.oasm.util.lsc.GsonUtil;
@@ -61,8 +61,8 @@ public class ZuoTiSerivceImpl implements ZuoTiSerivce {
 	@Autowired
 	private ViewftjgAndxwgcDao viewftjgAndxwgcDao; // 调用档案分析视图全查询方法
 
-	@Autowired
-	private AutoStartWithDa autoStarWithDa; // 使用注入的规则
+//	@Autowired
+//	private AutoStartWithDa autoStarWithDa; // 使用注入的规则
 
 	@Autowired
 	private TdminAndtyzDao tdminAndtyzDao; // 调用维度和因子业务接口里面的评估部分
@@ -80,60 +80,61 @@ public class ZuoTiSerivceImpl implements ZuoTiSerivce {
 	 */
 	@Override
 	public int autoGuize() {
+		return 0;
 		// TODO Auto-generated method stub
-		int i = 0;
-		TestNote note = null;
-		String nowDate = sdft.format(new Date()); // 共用的当前时间
-		try {
-			log.info("开始进行查询档案分析数据时间" + DateUtil.getTime(new Date()));
-			List<ViewDasjfx> seachDasjfx = viewftjgAndxwgcDao.seachDasjfxByBh(); // 得到档案数据列表，列出所有罪犯的基础档案
-			if (seachDasjfx.size() != 0) {
-				Set<String> qhSet = new TreeSet<>();
-				Map<String, String> map = new HashMap<>();
-				for (ViewDasjfx vd : seachDasjfx) {
-					qhSet.add(vd.getBh());
-					map.put(vd.getBh(), vd.getXm());
-
-				}
-
-				String bigsj = sdf.format(new Date()); // 大数据时间
-				for (String qh : qhSet) {
-
-					String jcdaid = qh + "_" + TaskType.FILE_ANLYSIS + "_" + bigsj.trim(); // 基础档案事件编号,*_inDa_*的事件编号
-					String[] jsonJG = autoStarWithDa.autoStartWith(qh, seachDasjfx); // 匹配到的结果
-					if (null != jsonJG) {
-						String jg = jsonJG[0]; // 结果jg
-						int zfs = 0;
-						if (RegexUtil.isNum(jsonJG[1])) {
-							zfs = Integer.parseInt(jsonJG[1]); // 总分数 zfs
-						}
-						log.info("【总分数" + zfs + "】");
-						note = new TestNote();
-						// 插入到TestNote
-						note.setTaskId(jcdaid);
-						note.setAnswer(jg);
-						note.setScore(zfs);
-						note.setLevl(null);
-						note.setResult(null);
-						saveDafxs(jcdaid, jg, qh);// 保存新的档案分析数据
-						// 执行插入操作
-						i = scaleTestDao.saveNote(note); // 插入档案分析结果
-
-						log.info("成功插入或更改【档案分析结果】数据" + i + "条，时间为：" + DateUtil.getTime(new Date()));
-						if (1 == i) {
-							saveDafxTask(nowDate, qh, jcdaid); // 执行添加档案分析到任务里面
-						}
-					} else {
-						continue;
-					}
-				}
-
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("添加档案分析结果失败,插入的条数为" + i + "，请重试..." + e.getMessage(), e);
-		}
-		return i;
+//		int i = 0;
+//		TestNote note = null;
+//		String nowDate = sdft.format(new Date()); // 共用的当前时间
+//		try {
+//			log.info("开始进行查询档案分析数据时间" + DateUtil.getTime(new Date()));
+//			List<ViewDasjfx> seachDasjfx = viewftjgAndxwgcDao.seachDasjfxByBh(); // 得到档案数据列表，列出所有罪犯的基础档案
+//			if (seachDasjfx.size() != 0) {
+//				Set<String> qhSet = new TreeSet<>();
+//				Map<String, String> map = new HashMap<>();
+//				for (ViewDasjfx vd : seachDasjfx) {
+//					qhSet.add(vd.getBh());
+//					map.put(vd.getBh(), vd.getXm());
+//
+//				}
+//
+//				String bigsj = sdf.format(new Date()); // 大数据时间
+//				for (String qh : qhSet) {
+//
+//					String jcdaid = qh + "_" + TaskType.FILE_ANLYSIS + "_" + bigsj.trim(); // 基础档案事件编号,*_inDa_*的事件编号
+//					String[] jsonJG = autoStarWithDa.autoStartWith(qh, seachDasjfx); // 匹配到的结果
+//					if (null != jsonJG) {
+//						String jg = jsonJG[0]; // 结果jg
+//						int zfs = 0;
+//						if (RegexUtil.isNum(jsonJG[1])) {
+//							zfs = Integer.parseInt(jsonJG[1]); // 总分数 zfs
+//						}
+//						log.info("【总分数" + zfs + "】");
+//						note = new TestNote();
+//						// 插入到TestNote
+//						note.setTaskId(jcdaid);
+//						note.setAnswer(jg);
+//						note.setScore(zfs);
+//						note.setLevl(null);
+//						note.setResult(null);
+//						saveDafxs(jcdaid, jg, qh);// 保存新的档案分析数据
+//						// 执行插入操作
+//						i = scaleTestDao.saveNote(note); // 插入档案分析结果
+//
+//						log.info("成功插入或更改【档案分析结果】数据" + i + "条，时间为：" + DateUtil.getTime(new Date()));
+//						if (1 == i) {
+//							saveDafxTask(nowDate, qh, jcdaid); // 执行添加档案分析到任务里面
+//						}
+//					} else {
+//						continue;
+//					}
+//				}
+//
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			log.error("添加档案分析结果失败,插入的条数为" + i + "，请重试..." + e.getMessage(), e);
+//		}
+//		return i;
 	}
 
 	/**

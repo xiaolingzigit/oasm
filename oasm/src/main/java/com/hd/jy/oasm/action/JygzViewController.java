@@ -2,19 +2,16 @@ package com.hd.jy.oasm.action;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hd.jy.oasm.domain.BGjbxx;
-import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.services.VPgbgListService;
 import com.hd.jy.oasm.util.Page;
 import com.hd.jy.oasm.util.PageHelper;
@@ -56,25 +53,33 @@ public class JygzViewController {
 	//罪犯详细信息
 	@RequestMapping("/zfinfo")
 	public String zfinfo(@RequestParam String qh,Model model){
-		System.out.println("1111==========");
-		BGjbxx bgjbxx =  viewPgbgAService.crimInfoBycrimNo(qh);
-		System.out.println(bgjbxx);
-		model.addAttribute("bgjbxx",bgjbxx);
+		log.info("【罪犯囚号"+qh+"】");
+		try {
+			BGjbxx crimInfo = viewPgbgAService.crimInfoBycrimNo(qh.trim()); //查找罪犯的基础信息
+			if(null!=crimInfo){
+				model.addAttribute("jbxx", crimInfo); //罪犯基础的几项数据
+				model.addAttribute("xxxx", crimInfo.getBgxxxx()); //罪犯重要的数据
+				if(crimInfo.getBgxxxx().getXq().length()>4){
+					String xq = DateUtil.fmtDate(crimInfo.getBgxxxx().getXq());
+					model.addAttribute("xq", xq);
+				}else{
+					model.addAttribute("xq", crimInfo.getBgxxxx().getXq());
+				}
+				//格式化剥夺政治权利年限
+				if(crimInfo.getBgxxxx().getBznx().length()>4){
+					String bznx = DateUtil.fmtDate(crimInfo.getBgxxxx().getBznx());
+					model.addAttribute("bznx", bznx);
+				}else{
+					model.addAttribute("bznx", crimInfo.getBgxxxx().getBznx());
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("罪犯信息显示失败，请稍后重试...");
+		}
 		return "/pcras/jygz/zfinfo";
 	}
-	
-    
-
-//    //改造方案跟踪
-//    @RequestMapping("/gzfagz")
-//    public String gzfagz(){
-//    	return "/pcras/jygz/gzfagz";
-//    }
-//    //改造方案实施情况跟踪
-//    @RequestMapping("/gzssqk")
-//    public String gzssqk(){
-//    	return "/pcras/jygz/gzssqk";
-//    }    
+	   
     
     //罪犯个人详细信息
 //    @RequestMapping(value="/zfinfo",method={RequestMethod.GET,RequestMethod.POST})

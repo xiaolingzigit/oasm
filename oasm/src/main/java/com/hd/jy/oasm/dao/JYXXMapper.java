@@ -27,5 +27,7 @@ public interface JYXXMapper {
     
     JYXX infoSetting(String jh); //根据警号查询管理犯人的数量，以及人物信息显示
     
+    JYXX otherInfoSetting(String jh);//
+    
     GroupMan checkZW(String zwName); //根据职务名称查询是否有该职务
 }

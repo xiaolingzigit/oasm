@@ -73,7 +73,10 @@
                 where xx.jh=#{jh} or jc.xjbh=#{jh}
                      group by xx.jh,xx.xm,xx.jq,gm.gmname
   </select>
-  
+   <!-- 根据警号进入设置页面显示信息 -->
+  <select id="otherInfoSetting" resultType="com.hd.jy.oasm.domain.JYXX" parameterType="java.lang.String">
+	select sr,dh,dzyj,dz,scdlsj,ma from jyxx where jh=#{jh}
+  </select>
   <!-- 后台列出所有警员信息 -->
   <select id="selectJyxx" resultMap="BaseResultMap">
     select jh,xm,cjsj,jq,xjq,gm.gmname from groupMan gm inner join jyxx jy on jy.zw=gm.id where jy.status=1 order by jh

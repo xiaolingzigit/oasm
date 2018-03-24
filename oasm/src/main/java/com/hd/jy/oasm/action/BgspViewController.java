@@ -2,7 +2,13 @@ package com.hd.jy.oasm.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+/***
+ * *********出监报告审批控制层 *******
+ * @author quite
+ * @data 2018年03月22日
+ * @see  
+ *
+ */
 @Controller
 @RequestMapping("bgspView")
 public class BgspViewController {

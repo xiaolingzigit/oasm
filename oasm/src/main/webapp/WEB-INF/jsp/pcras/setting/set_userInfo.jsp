@@ -56,17 +56,21 @@
 				<col width="32%">
 				<tr>
 				<td class="title_td">出生年月：</td>
-				<td><span id="user_birth"></span><input type="text" id="modify_birth" class="edit_model" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
+				<td>
+					<span id="user_birth"></span>
+					<input type="text" id="modify_birth" class="edit_model" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+					<fmt:formatDate type="date" value="${jyxx.sr }" />
+				</td>
 				<td class="title_td">联系电话：</td>
-				<td><span id="user_mobile"></span><input type="text" id="modify_mobile" class="edit_model"/></td>
+				<td><span id="user_mobile"></span><input type="text" id="modify_mobile" class="edit_model"/>${jyxx.dh }</td>
 				</tr>
 				<tr>
 				<td class="title_td">电子邮箱：</td>
-				<td colspan="3"><span id="user_email"></span><input type="text" id="modify_email" class="edit_model"/></td>
+				<td colspan="3"><span id="user_email"></span><input type="text" id="modify_email" class="edit_model"/>${jyxx.dzyj }</td>
 				</tr>
 				<tr>
 				<td class="title_td">通讯地址：</td>
-				<td colspan="3"><span id="user_addr"></span><input type="text" id="modify_email" class="edit_model"/></td>
+				<td colspan="3"><span id="user_addr"></span><input type="text" id="modify_email" class="edit_model"/>${jyxx.dz }</td>
 				</tr>
 				</table>
 				<button id="modify_info">编辑</button><button id="modify_cancel"  class="edit_model">取消</button><button id="modify_save" class="edit_model">保存</button>
@@ -84,7 +88,7 @@
 				</colgroup>
 				<tr>
 				<td class="title_td">上次登录时间：</td>
-				<td><span id="user_lastlogin"></span></td>
+				<td><span id="user_lastlogin"></span><fmt:formatDate type="date" value="${jyxx.scdlsj }" /></td>
 				</tr>
 				<tr>
 				<td class="title_td">密码：</td>

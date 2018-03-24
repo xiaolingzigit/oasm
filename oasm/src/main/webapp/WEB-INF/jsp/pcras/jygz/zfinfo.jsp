@@ -9,188 +9,227 @@
 <title>罪犯个人面板</title>
 </head>
 <body>
-<div class="zfxx_left">
-<div class="zfxx_title">罪犯基础信息</div>
-<hr class="divider">
-<div class="avatar" ></div>
-<div class="zfxx_tb">
-<table>
-<tr>
-<td class="zfxx_td01">罪犯姓名：</td>
-<td class="zfxx_td02">${bgjbxx.xm }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">囚号：</td>
-<td class="zfxx_td02 xx_number">${bgjbxx.qh }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">监区：</td>
-<td class="zfxx_td02">${bgjbxx.jq }</td>
-</tr>
-<%-- <tr>
-<td class="zfxx_td01">专管警察：</td>
-<td class="zfxx_td02">${jcxm }</td>
-</tr> --%>
-<tr>
-<td class="zfxx_td01">入监时间：</td>
-<td class="zfxx_td02"><fmt:formatDate type="date" value="${bgjbxx.bgxxxx.rjrq }" /></td>
-</tr>
-<tr>
-<td class="zfxx_td01">年龄：</td>
-<td class="zfxx_td02">${bgjbxx.nl }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">文化程度：</td>
-<td class="zfxx_td02">${bgjbxx.whcd }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">捕前职业：</td>
-<td class="zfxx_td02">${bgjbxx.bgxxxx.bqzy }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">罪名：</td>
-<td class="zfxx_td02">${bgjbxx.bgxxxx.zmmc }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">刑期：</td>
-<td class="zfxx_td02">${bgjbxx.bgxxxx.xq }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">户籍地：</td>
-<td class="zfxx_td02">${bgjbxx.bgxxxx.hjdz }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">同案犯去向：</td>
-<td class="zfxx_td02">${bgjbxx.bgxxxx.tafqx }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">主要亲属：</td>
-<td class="zfxx_td02">--</td>
-</tr>
-<tr>
-<td class="zfxx_td01">体貌突出特征：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">心理特征：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">主要犯罪情节手段：</td>
-<td class="zfxx_td02">${bgjbxx.bgxxxx.zmfl }</td>
-</tr>
-<tr>
-<td class="zfxx_td01">有无前科：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">是否团伙犯罪：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">现处遇等级：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">近二年内奖励情况：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">近二年内处罚情况：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-<tr>
-<td class="zfxx_td01">是否重点犯（A\B\C类）：</td>
-<td class="zfxx_td02">/</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="zfxx_center">
-<div class="zfxx_title">罪犯个人危险性因子</div>
-<hr class="divider">
-<div id="" style="top:30px;width: 99%; height: 600px;">
-<div id="wordcloud11" style="width: 100%; height: 100%;"></div>
-</div>
-<div class="zfxx_title">罪犯个人危险类型程度</div>
-<hr class="divider">
-		<div class="zfxx_wxlx" id="zf_grwxlx">
-		   <!-- 暂时拼接 -->
+<div class="cs-im-nogg">
+
+		<div class="cs-item">
+			<div class="return_btn">
+			</div>
+			<div class="cs-item-title">罪犯详细信息</div>
+			<ul class="cs-ul">
+				<li class="cs-li"><span class="cs-item-1">囚号</span><span
+					class="cs-item-2">${jbxx.qh}</span></li>
+				<li class="cs-li"><span class="cs-item-1">姓名</span><span
+					class="cs-item-2">${jbxx.xm }</span></li>
+				<li class="cs-li"><span class="cs-item-1">性别</span><span
+					class="cs-item-2">${jbxx.xb }</span></li>
+				<li class="cs-li"><span class="cs-item-1">民族</span><span
+					class="cs-item-2">${jbxx.mz }</span></li>
+				<li class="cs-li"><span class="cs-item-1">捕前面貌</span><span
+					class="cs-item-2">${jbxx.zzmm }</span></li>
+				<li class="cs-li"><span class="cs-item-1">入监年龄</span><span
+					class="cs-item-2">${jbxx.nl }</span></li>
+				<li class="cs-li"><span class="cs-item-1">家庭住址</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">身份证号</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">户籍住址</span><span
+					class="cs-item-2">${xxxx.hjdz }</span></li>
+				<li class="cs-li"><span class="cs-item-1">户口分类</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">入监前派出所</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">籍贯</span><span
+					class="cs-item-2">${jbxx.gj}</span></li>
+				<li class="cs-li"><span class="cs-item-1">身份明否</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">婚姻状况</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">真实姓名</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">出生地</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">家庭状况</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">捕前单位</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">原学校</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">犯罪事实</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">捕前职务</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">团伙人数</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">犯罪日期</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">犯罪时成年否</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">团伙犯罪</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">同案犯现状</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">同案犯姓名</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">前科劣迹情况</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">劣迹记录次数</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">前科次数</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">前科劣迹记录次数</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">判决机关</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">判决机关</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">判决字号</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">原判罪名</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">录政年限</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">止日</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">起日</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">刑期</span><span
+					class="cs-item-2">${xq}</span></li>
+				<li class="cs-li"><span class="cs-item-1">剩余刑期</span><span
+					class="cs-item-2">${xq}</span></li>
+				<li class="cs-li"><span class="cs-item-1">原案犯类别</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">已服刑期</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">现案犯类别</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">已服刑期比例</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">已服刑期比例(比原判)</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">原判剥政</span><span
+					class="cs-item-2">${bznx }</span></li>
+				<li class="cs-li"><span class="cs-item-1">原判刑期止日</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">原判刑期起日</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">原判刑期</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">起诉机关</span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">逮捕日期 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">终审机关 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">罚金 </span><span
+					class="cs-item-2">${xxxx.fz }</span></li>
+				<li class="cs-li"><span class="cs-item-1">起诉字号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">逮捕机关 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">终审字号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">没收财产 </span><span
+					class="cs-item-2">${xxxx.mscc }</span></li>
+				<li class="cs-li"><span class="cs-item-1">罚金交纳 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">终审情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">一审机关 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">有无上诉 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">羁押日期 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">一审字号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">执行书下达日期 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">罚金交纳金额 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">收押类别 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">调入日期 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">何处调来 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">入监日期 </span><span
+					class="cs-item-2"><fmt:formatDate type="date" value="${xxxx.rjrq }" /></span></li>
+				<li class="cs-li"><span class="cs-item-1">队别 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">分管等级 </span><span
+					class="cs-item-2">${xxxx.hfgdj }</span></li>
+				<li class="cs-li"><span class="cs-item-1">勤杂分工 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">分押类型 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">常留/暂押 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">考核分 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">减刑尺度 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">监管干警 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">床位号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">监舍号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">互监组号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">婚姻状况（现） </span><span
+					class="cs-item-2">${xxxx.htzk }</span></li>
+				<li class="cs-li"><span class="cs-item-1">在押现状 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">亲情电话 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">在押档案号 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">主联系人电话 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">调入年龄 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">前科情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">特殊收押信息 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">住址所在地 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">邮政编码 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">减刑间隔(天) </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">劳动岗位 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">户籍所在地 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">特殊离监信息 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">劣迹情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">减刑情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">最后减刑日期 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">刑罚变动情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">前科劣迹情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">特殊收押离监信息 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">卡片录入时间 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">重控类别 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">有无未领物品 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">奖惩情况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">刑罚变动简况 </span><span
+					class="cs-item-2"></span></li>
+				<li class="cs-li"><span class="cs-item-1">看守所 </span><span
+					class="cs-item-2"></span></li>
+			</ul>
 		</div>
-		<div class="zfxx_title">罪犯个人危险等级变化</div>
-<hr class="divider">
-<div id="" style="top:30px;width: 99%; height: 300px;margin-top:15px;margin-bottom:20px;background:#578ebe;border-radius:8px;float:left;border:1px solid #c00;">
-<div id="line1" style="width: 100%; height: 100%;"></div>
-</div>
-
-</div>
-<div class="zfxx_right">
-<div class="zfsj_tb1">
-<span>罪犯个人评估报告</span>
-<table style="table-layout: fixed;">
-<thead><tr class="zfsj_tr01"><th>报告编号</th><th>得分</th><th>评估时间</th><th>操作</th></tr></thead>
-<tbody id="zf_grpgbg">
-   <!-- 拼接的个人评估报告 -->
-</tbody>
-</table>
-</div>
-<div class="zfsj_tb2">
-<span>罪犯个人异常狱情</span>
-<table>
-<thead><tr class="zfsj_tr01"><th>发生时间</th><th>排查类别</th><th>狱情变化</th><th>操作</th></tr></thead>
-<tbody id="zf_grycyq">
-      <!-- 拼接回来的异常狱情数据 -->
-</tbody>
-</table>
-</div>
-<div class="zfsj_tb3">
-<span>罪犯个人预警情况</span>
-<table>
-<thead><tr class="zfsj_tr01"><th>预警时间</th><th>预警类别</th><th>预警原因</th><th>操作</th></tr></thead>
-<tbody id="zf_gryjqk">
-    <!-- 拼接个人预警情况 -->
-</tbody>
-</table>
-</div>
-<div class="zfsj_tb4">
-<span>罪犯个人基础信息评估</span>
-<table style="table-layout: fixed;">
-<thead><tr class="zfsj_tr01"><th>分析编号</th><th>得分</th><th>分析时间</th><th>操作</th></tr></thead>
-<tbody id="zf_grjcxxpg">
-  <!-- 拼接回来的基础信息评估 -->
-</tbody>
-</table>
-</div>
-<div class="zfsj_tb5">
-<span>罪犯个人结构访谈</span>
-<table style="table-layout: fixed;">
-<thead><tr class="zfsj_tr01"><th>访谈编号</th><th>得分</th><th>访谈时间</th><th>操作</th></tr></thead>
-<tbody id="zf_grjgft">
-  <!-- 拼接个人结构访谈 -->
-</tbody>
-</table>
-</div>
-<div class="zfsj_tb6">
-<span>罪犯个人行为观察</span>
-<table style="table-layout: fixed;">
-<thead><tr class="zfsj_tr01"><th>观察编号</th><th>得分</th><th>观察时间</th><th>操作</th></tr></thead>
-<tbody id="zf_grxwgc">
-  <!-- 拼接个人行为观察 -->
-</tbody>
-</table>
-</div>
-<div class="zfsj_tb7">
-<span>罪犯个人心理测试</span>
-<table style="table-layout: fixed;">
-<thead><tr class="zfsj_tr01"><th>测试报告编号</th><th>得分</th><th>出具时间</th><th>操作</th></tr></thead>
-<tbody id="zf_grxlce">
-   <!-- 拼接个人心理测试 -->
-</tbody>
-</table>
-</div>
-</div>
-
-<script type="text/javascript" src="<c:url value='/resource/echarts/echarts.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/resource/echarts/echarts-wordcloud.js'/>"></script>
+	</div>
 </body>
 </html>

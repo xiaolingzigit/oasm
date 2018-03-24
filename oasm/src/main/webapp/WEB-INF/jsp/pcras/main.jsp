@@ -69,76 +69,12 @@
 			<div id="" class="sub_menu_line">
 				<div id="pggl2" class="sub_menu_area ulm01 ">
 					<ul class="sub_menu_ul">
-						<!-- <li id="lr_da" class="sub_menu_li">基础信息评估</li>
-						<li class="sub_menu_divider">|</li>					
-						<li id="lr_rj" class="sub_menu_li">入监评估</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="bg_rj" class="sub_menu_li">入监评估报告</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="lr_rc" class="sub_menu_li">日常评估</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="bg_rc" class="sub_menu_li">日常评估报告</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="lr_zq" class="sub_menu_li">中期评估</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="bg_zq" class="sub_menu_li">中期评估报告</li> 
-						<li class="sub_menu_divider">|</li>-->
 						<li id="lr_cj" class="sub_menu_li">出监评估</li>
 						<li class="sub_menu_divider">|</li>
 						<li id="bg_cj" class="sub_menu_li">出监评估报告</li>
 					</ul>
 				<!-- 	<span class="import_btn" >PAD端数据导入</span> -->
 				</div>
-				<!-- <div id="tjfx2" class="sub_menu_area ulm02">
-					<ul class="sub_menu_ul">
-						<li id="wxqkbh" class="sub_menu_li">危评情况变化</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="wxcdtj" class="sub_menu_li">危险等级统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="wxlbtj" class="sub_menu_li">危险类别统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="zxttj" class="sub_menu_li">罪犯自杀、行凶、脱逃倾向统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="cjzftj" class="sub_menu_li">罪犯出监再犯罪倾向统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="czqktj" class="sub_menu_li">处置情况统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="pgqktj" class="sub_menu_li">评估情况统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="glzftj" class="sub_menu_li">各类罪犯统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="yjtj" class="sub_menu_li">预警统计</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="wxyzfx" class="sub_menu_li">极高危险罪犯因子分析</li>
-
-					</ul>
-				</div> -->
-				<!-- <div id="zxgl2" class="sub_menu_area ulm03">
-					<ul class="sub_menu_ul">
-						<li id="jgfgl" class="sub_menu_li">极高危罪犯管理</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="gwfgl" class="sub_menu_li">高危罪犯管理</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="zdfgl" class="sub_menu_li">重点罪犯管理</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="tsfgl" class="sub_menu_li">特殊罪犯管理</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="wwfgl" class="sub_menu_li">顽危犯管理</li>
-					</ul>
-				</div> -->
-				<!-- <div id="jygz2" class="sub_menu_area ulm04">
-					<ul class="sub_menu_ul">
-						<li id="zfxx" class="sub_menu_li">罪犯信息查询</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="" class="sub_menu_li">团体矫正</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="" class="sub_menu_li">个别矫正</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="gzfagz" class="sub_menu_li">矫正项目实施情况</li>
-						<li class="sub_menu_divider">|</li>
-						<li id="" class="sub_menu_li">典型案例</li>
-					</ul>
-				</div> -->
 			</div>
 		<!-- 内容 -->
 		<div class="content" id="container"></div>
@@ -153,7 +89,6 @@
 <script type="text/javascript" src="<c:url value='/resource/echarts/echarts.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resource/echarts/echarts-wordcloud.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resource/js/index.js'/>"></script>
-
 <script type="text/javascript" src="<c:url value='/resource/js/home.js'/>"></script>
 		
 <script type="text/javascript">
@@ -165,52 +100,8 @@
 	function loadnext3(parm) {
 		$('#basecontent').load(parm);
 	}
-
-	function loadnext5() {
-		$("#xljz").addClass('current').siblings().removeClass('current');
-		$("#container").load("/oasm/xljzView/xlcs");
-		 var ej1=document.getElementById("pggl2");
-         var menuarea=document.getElementById("line");
-	        ej1.style.display="none";menuarea.style.height="0px";
-	}
-	function loadnext6(b1,b2,b3,parm) {
-		$("#"+b1).addClass('current').siblings().removeClass('current');
-		$("#container").load(parm+b2);
-		window.setTimeout(function() {
-			 /*$("#"+b3).addClass('option_li_current').siblings().removeClass('option_li_current');
-			    $('#basecontent').load(parm+b3);*/
-			    $('#'+b3).click()
-		}, 100)
-	}
- 
-/* 	function loadnext7(qh,taskID, rwlx) {
-		switch (rwlx) {
-		case "rj_jgft":
-			$("#pggl").click();
-			$("#" + rwlx).click();
-			$('#basecontent').load("/oasm/dafxView/rj_jgftlb");
-			break;
-		case "rj_rcgc":
-			$("#pggl").click();
-			window.setTimeout(function(){
-				$("#rj_rcgc").addClass('option_li_current').siblings().removeClass('option_li_current');
-				$("#basecontent").load("/oasm/dafxView/criminalinfo");
-			},50)
-			break;
-		}
-	} */
 </script>
-<!-- <script type="text/javascript">
-	//加载因子分析面板
-	function loadyzPage(url) {
-		$('#container').load(url);
-	}
-	//重新跳转为分析面板
-	function loadfxmb(url) {
-		$('#container').load(url);
-	}
 
-</script> -->
 </body>
 <script type="text/javascript"
 	src="<c:url value='/resource/js/common.js'/>"></script>

@@ -20,7 +20,13 @@ import com.hd.jy.oasm.domain.GroupMan;
 import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.domain.ZRole;
 import com.hd.jy.oasm.services.JyxxService;
-
+/***
+ * *********警员控制层 *******
+ * @author quite
+ * @data 2018年03月22日
+ * @see  
+ *
+ */
 @Controller
 @RequestMapping("jyxx")
 public class JyxxController {

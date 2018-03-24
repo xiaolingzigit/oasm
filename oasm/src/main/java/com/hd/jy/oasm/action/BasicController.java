@@ -15,7 +15,13 @@ import org.apache.shiro.subject.Subject;
 
 import com.hd.jy.oasm.util.lsc.DataUtil;
 import com.hd.jy.oasm.util.lsc.IOCloseUtil;
-
+/***
+ * *********基础控制层 *******
+ * @author quite
+ * @data 2018年03月22日
+ * @see  
+ *
+ */
 public class BasicController {
 	private Logger logger;
 

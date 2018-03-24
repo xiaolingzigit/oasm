@@ -279,7 +279,7 @@ public class DafxViewController {
 		return "/pcras/pggl/cj_shsylb";
 	}
 
-	// 出监scl90
+/*	// 出监scl90
 	@RequestMapping("/cj_scl90")
 	public String cj_scl90() {
 		return "/pcras/pggl/cj_scl90";
@@ -313,7 +313,7 @@ public class DafxViewController {
 	@RequestMapping("/cj_copalb")
 	public String cj_copalb() {
 		return "/pcras/pggl/cj_copalb";
-	}
+	}*/
 
 	// 出监心理测试
 	@RequestMapping("/cj_xlcs")
@@ -327,8 +327,13 @@ public class DafxViewController {
 		return "/pcras/pggl/cj_xlcsrs";
 	}
 
+	// 出监评估录入
+	@RequestMapping("/lr_cj")
+	public String lr_cj() {
+		return "/pcras/pggl/lr_cj";
+	}
 	// 罪犯基本信息
-	@RequestMapping("/criminalinfo")
+	/*@RequestMapping("/criminalinfo")
 	public String criminalinfo(String qh,Model model) {
 		log.info("【罪犯囚号"+qh+"】");
 		try {
@@ -355,14 +360,10 @@ public class DafxViewController {
 			log.error("罪犯信息显示失败，请稍后重试...");
 		}
 		return "/pcras/pggl/criminalinfo";
-	}
+	}*/
 
 
-	// 出监评估录入
-	@RequestMapping("/lr_cj")
-	public String lr_cj() {
-		return "/pcras/pggl/lr_cj";
-	}
+
 	//*********************************************************************************
 	//*********************************************************************************
 }

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="login">
-<h1>危险评估系统后台管理</h1>	
+<h1>出监评估系统后台管理</h1>	
 	<form  method="post" id="adminBlankForm">
 		<p id="errorInfo"></p>
 		<p><input type="text" name="username" id="user" placeholder="用户名" title="4-11个字符、不包含中文"></p>

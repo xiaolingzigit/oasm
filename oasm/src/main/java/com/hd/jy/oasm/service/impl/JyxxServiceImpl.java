@@ -15,12 +15,9 @@ import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.domain.ZRole;
 import com.hd.jy.oasm.services.JyxxService;
 import com.hd.jy.oasm.util.date.DateUtil;
-import com.hd.jy.oasm.util.lsc.GsonUtil;
 @Service("jyxxServiceImpl")
-//指向dbcp数据源的数据库
-@DataSource("userDataSource") 
 //指向jdbc数据源的数据库
-//@DataSource("userDataSource") 
+@DataSource("userDataSource") 
 public class JyxxServiceImpl implements JyxxService {
    private Logger log = Logger.getLogger(JyxxServiceImpl.class);
 	@Autowired
@@ -169,6 +166,22 @@ public class JyxxServiceImpl implements JyxxService {
 				jyxx = jyxxDao.infoSetting(jh);
 //				jyInfo = GsonUtil.toJson(jyxx);
 //				log.info("返回前端数据【"+jyInfo+"】");
+			}else{
+				log.error("警号为【"+jh+"】,显示信息异常");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("警察进入个人设置异常，请重试"+e.getMessage(),e);
+		}
+		return jyxx;
+	}
+	
+	@Override
+	public JYXX otherInfoSetting(String jh){
+		JYXX jyxx = null;
+		try {
+			if(null!=jh&&""!=jh){
+				jyxx = jyxxDao.otherInfoSetting(jh);
 			}else{
 				log.error("警号为【"+jh+"】,显示信息异常");
 			}

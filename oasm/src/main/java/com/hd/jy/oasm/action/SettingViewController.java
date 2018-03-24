@@ -11,7 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.services.JyxxService;
-
+/***
+ * *********警员前台设置控制层 *******
+ * @author quite
+ * @data 2018年03月22日
+ * @see  
+ *
+ */
 @Controller
 @RequestMapping("settingView")
 public class SettingViewController {
@@ -38,13 +44,16 @@ public class SettingViewController {
   @RequestMapping("/set_userInfo")
   public String set_userInfo(HttpServletRequest request){
 	  JYXX jyxx = null;
+	  JYXX otherJyxx = null;
 		try {
 			String jh = getJhinfo();
 			if(null!=jh&&""!=jh){
 				jyxx = jyxxService.infoSetting(jh);
+				otherJyxx = jyxxService.otherInfoSetting(jh);
 				request.setAttribute("jh", jh);
 				request.setAttribute("xm", jyxx.getXm());
 				request.setAttribute("jq", jyxx.getJq());
+				request.setAttribute("jyxx", otherJyxx);
 				if(jyxx.getCnum()==0){
 					request.setAttribute("cnum",0);
 				}else{
@@ -62,7 +71,7 @@ public class SettingViewController {
 			// TODO Auto-generated catch block
 			log.error("获取警察的个人信息失败，请重试...");
 		}
-	  
+
 	  return "/pcras/setting/set_userInfo";
   }
   

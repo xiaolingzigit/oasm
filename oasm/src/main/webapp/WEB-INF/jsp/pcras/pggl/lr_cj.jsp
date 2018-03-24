@@ -28,10 +28,11 @@
 			<!--选项卡 -->
 			<div id="option" class="option_area">
 				<ul>
-<!-- 					<li id="cj_dafx" name="cj_dafx" class="option_li_current">档案分析</li>
- -->					<li id="cj_jgft" name="cj_jgft" class="option_li_current">结构性访谈</li>
+					<li id="cj_dafx" name="cj_dafx" class="option_li_current">档案分析</li>
+					<li id="cj_jgft" name="cj_jgft" >结构性访谈</li>
 					<li id="cj_rcgc" name="cj_rcgc">行为观察</li>
-                   <li id="cj_xlcs" name="cj_xlcs">心理测试数据导入</li>
+                   <!-- <li id="cj_xlcs" name="cj_xlcs">心理测试数据导入</li> -->
+                   <li id="cj_shsy" name="cj_shsy">心理测试</li>
 				</ul>
 			</div>
 			<!--可选内容 -->
@@ -63,13 +64,13 @@
 			case "cj_rcgc"://出监日常观察
 				$("#basecontent").load("/oasm/dafxView/cj_rcgc");
 				break;
-			case "cj_xlcs"://出监心理测试
+			/* case "cj_xlcs"://出监心理测试
 				$("#basecontent").load("/oasm/dafxView/cj_xlcs");
-				break;
-/*			case "cj_shsy"://出监社会适应性量表
+				break; */
+			case "cj_shsy"://出监社会适应性量表
 				$("#basecontent").load("/oasm/dafxView/cj_shsy");
 				break;
-			case "cj_copa"://出监copa 
+		/*	case "cj_copa"://出监copa 
 				$("#basecontent").load("/oasm/dafxView/cj_copa");
 				break;
 			case "cj_scl90"://出监scl90

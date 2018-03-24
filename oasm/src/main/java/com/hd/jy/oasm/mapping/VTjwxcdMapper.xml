@@ -2,57 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hd.jy.oasm.dao.VTjwxcdMapper" >
 
-	<!-- 统计危险程度视图 -->
-  <resultMap id="BaseResultMap" type="com.hd.jy.oasm.domain.VTjwxcd" >
-    <result column="gyjqmc" property="gyjqmc" jdbcType="VARCHAR" />
-    <result column="jgdwx" property="jgdwx" jdbcType="INTEGER" />
-    <result column="gdwx" property="gdwx" jdbcType="INTEGER" />
-    <result column="zdwx" property="zdwx" jdbcType="INTEGER" />
-    <result column="ddwx" property="ddwx" jdbcType="INTEGER" />
-    <result column="sl" property="sl" jdbcType="INTEGER" />
-  </resultMap>
-	<!-- 评估报告危险类型视图 -->
-  <resultMap id="WxlxResultMap" type="com.hd.jy.oasm.domain.VPgbgWxlx" >
-    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
-    <result column="gyjq" property="gyjq" jdbcType="VARCHAR" />
-    <result column="crim_no" property="crimNo" jdbcType="VARCHAR" />
-    <result column="xm" property="xm" jdbcType="VARCHAR" />
-    <result column="cr_time" property="crTime" jdbcType="TIMESTAMP" />
-    <result column="score" property="score" jdbcType="DOUBLE" />
-    <result column="levl" property="levl" jdbcType="VARCHAR" />
-    <result column="tt" property="tt" jdbcType="NUMERIC" />
-    <result column="xx" property="xx" jdbcType="NUMERIC" />
-    <result column="zfz" property="zfz" jdbcType="NUMERIC" />
-    <result column="zs" property="zs" jdbcType="NUMERIC" />
-  </resultMap>
-  
-  <!-- 统计高危险倾向  -->
-  <resultMap id="VTjwxlxResultMap" type="com.hd.jy.oasm.domain.VTjwxlx" >
-  	<result column="gyjq" property="gyjq" jdbcType="VARCHAR" />
-  	<result column="zsl" property="zsl" jdbcType="INTEGER" />
-  	<result column="zssl" property="zssl" jdbcType="INTEGER" />
-  	<result column="xxsl" property="xxsl" jdbcType="INTEGER" />
-  	<result column="ttsl" property="ttsl" jdbcType="INTEGER" />
-  	<result column="zfzsl" property="zfzsl" jdbcType="INTEGER" />
-  </resultMap>
-
-<!-- 统计所有危险倾向  -->
-  <resultMap id="ListWxlx" type="com.hd.jy.oasm.domain.Vwxlx" >
-    <result column="jq" property="jq" jdbcType="VARCHAR" />
-    <result column="zsjg" property="zsjg" jdbcType="INTEGER" />
-    <result column="zsgd" property="zsgd" jdbcType="INTEGER" />
-    <result column="zszd" property="zszd" jdbcType="INTEGER" />
-    <result column="zsdd" property="zsdd" jdbcType="INTEGER" />
-    <result column="xxjg" property="xxjg" jdbcType="INTEGER" />
-    <result column="xxgd" property="xxgd" jdbcType="INTEGER" />
-    <result column="xxzd" property="xxzd" jdbcType="INTEGER" />
-    <result column="xxdd" property="xxdd" jdbcType="INTEGER" />
-    <result column="ttjg" property="ttjg" jdbcType="INTEGER" />
-    <result column="ttgd" property="ttgd" jdbcType="INTEGER" />
-    <result column="ttzd" property="ttzd" jdbcType="INTEGER" />
-    <result column="ttdd" property="ttdd" jdbcType="INTEGER" />
-  </resultMap>
-  
   <!--  统计再犯罪倾向 -->
   <resultMap id="ZfzResultMap" type="com.hd.jy.oasm.domain.Vtjzfz" >
     <result column="jq" property="jq" jdbcType="VARCHAR" />
@@ -62,47 +11,9 @@
     <result column="dd" property="dd" jdbcType="INTEGER" />
   </resultMap>
   
-  
-   <!-- 统计各个监区高危险倾向数量  -->
-  <select id="getVTjwxlx"  resultMap="VTjwxlxResultMap" statementType="CALLABLE">
-  	{call p_tjwxlx}
-  </select>
-  
-  <!-- 统计各个监区各种危险等级人数 -->
-  <select id="listVTjwxcd" resultMap="BaseResultMap">
-  	select * from v_tjwxcd a 
-  	LEFT JOIN 
-		(
-		select gyjqmc,count(gyjqmc) sl  from t_task 
-		inner join zf_jbxx on  bh=t_task.crim_no 
-		where type='inRep' and status &lt; 4 
-		GROUP BY gyjqmc 
-		) vt ON a.gyjqmc=vt.gyjqmc
-  	order by CHARINDEX (a.gyjqmc,'一监区,二监区,三监区,四监区,五监区,六监区,七监区,八监区,九监区,十监区,十一监区,十二监区,十三监区,十四监区,十五监区')
-  </select>
-  
-  <select id="getVjy" resultMap="BaseResultMap">
-  	select sum(jgdwx) jgdwx,sum(gdwx) gdwx,sum(zdwx) zdwx,sum(ddwx) ddwx from v_tjwxcd
-  </select>
-  
-  <!--极高度危险类型列表 -->
-  <select id="getVPgbgWxlx" resultMap="WxlxResultMap">
-	select task_id,gyjq,crim_no,xm,convert(varchar,cr_time,111) cr_time,score,levl,tt,xx,zfz,zs from v_pgbg_wxlx 
-	where levl='极高危险'
-	ORDER BY cr_time desc
-  </select>
-  
-  <!-- 统计非出监阶段的各个监区危险类型 -->
-  <select id="listTjWxlx" resultMap="ListWxlx">
-  	select jq,zsjg,zsgd,zszd,zsdd,xxjg,xxgd,xxzd,xxdd,ttjg,ttgd,ttzd,ttdd from v_tjwxlx order by CHARINDEX (jq,'一监区,二监区,三监区,四监区,五监区,六监区,七监区,八监区,九监区,十监区,十一监区,十二监区,十三监区,十四监区,十五监区')
-  </select>
-  
-  
   <!--  统计再犯罪倾向 -->
    <select id="listTjZfz" resultMap="ZfzResultMap">
-  	select jq, jg, gd, zd, dd from v_tjzfz order by CHARINDEX (jq,'一监区,二监区,三监区,四监区,五监区,六监区,七监区,八监区,九监区,十监区,十一监区,十二监区,十三监区,十四监区,十五监区')
+  	select jq, jg, gd, zd, dd from t_tjzfz order by id;
   </select>
-  
-  
   
 </mapper>
