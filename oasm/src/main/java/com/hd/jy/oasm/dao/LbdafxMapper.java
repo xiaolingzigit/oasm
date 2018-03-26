@@ -15,5 +15,5 @@ public interface LbdafxMapper {
 
     int updateByPrimaryKey(Lbdafx record);
     
-    Lbdafx selectYz(String sjxbm);
+//    Lbdafx selectYz(String sjxbm);
 }

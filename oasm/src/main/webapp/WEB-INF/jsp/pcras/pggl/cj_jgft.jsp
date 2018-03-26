@@ -75,6 +75,18 @@
 						</thead>
 						<tbody id="cj_jgft_tableData">
 						  <!-- 在page.js拼接出监结构访谈表格数据 -->
+						  <c:forEach items="${viewcjjgftList}" var="cjjg" varStatus="status">
+							<tr>
+								<td>${status.count }</td>
+								<td>${cjjg.crimNo }</td>
+								<td>${cjjg.xm }</td>
+								<td>${cjjg.gyjq }</td>
+								<td><fmt:formatDate type="date" value="${cjjg.lastModif }" /></td>
+								<td>${cjjg.score }</td>
+								<td>${cjjg.jhxm }</td>
+								<td>${cjjg.status }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 						</table>
 					<!-- 分页 -->

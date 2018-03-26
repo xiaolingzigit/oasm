@@ -89,7 +89,7 @@
 <script type="text/javascript" src="<c:url value='/resource/echarts/echarts.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resource/echarts/echarts-wordcloud.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resource/js/index.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/resource/js/home.js'/>"></script>
+<%-- <script type="text/javascript" src="<c:url value='/resource/js/home.js'/>"></script> --%>
 		
 <script type="text/javascript">
 	//二级菜单下加载

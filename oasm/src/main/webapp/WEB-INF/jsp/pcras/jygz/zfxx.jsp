@@ -24,10 +24,10 @@
 		<div class="main_content">
 			<div id="basecontent" class="main_content_base">
 				<!--罪犯信息查询-->
-		<div class="layer02">
-		<div class="search_title">筛选条件：</div>
+			<div class="layer02">
+				<div class="search_title">筛选条件：</div>
 		 		<div class="search_area">
-			<fieldset class="instruct">
+				<fieldset class="instruct">
 				<table class="search_tb">
 				<colgroup>
 				<col width="10%">
@@ -120,7 +120,7 @@
 									<td>${zf.xm }</td>
 									<td><fmt:formatDate type="date" value="${zf.bgxxxx.rjrq }" /></td>
 								
-									<td><a href ="#"  onclick="showZfxxxx('/oasm/jygzView/zfinfo?qh=${zf.qh }')">点击进入</a></td>
+									<td><a href ="#"  onclick="loadnext3('/oasm/jygzView/zfinfo?qh=${zf.qh }')">点击进入</a></td>
 								</tr>
 							</c:forEach>
 							<!-- ajax 入监集体结构性访谈数据 -->
@@ -163,9 +163,9 @@
 			 goPage(1,10,'criminalList');
 	});
       
-      function showZfxxxx(url){
+   /*    function showZfxxxx(url){
       	$("#basecontent").load(url);
-      }
+      } */
 </script>
 
 </body>

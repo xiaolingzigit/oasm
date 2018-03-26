@@ -12,9 +12,9 @@
     xh, sjxmc, yz, yzfz, sjxbm
   </sql>
   
-  <select id="selectYz" resultType="com.hd.jy.oasm.domain.Lbdafx" parameterType="java.lang.String">
+ <!--  <select id="selectYz" resultType="com.hd.jy.oasm.domain.Lbdafx" parameterType="java.lang.String">
        select yz,yzfz from LB_dafx where sjxbm = #{sjxbm,jdbcType=VARCHAR}
-  </select>
+  </select> -->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

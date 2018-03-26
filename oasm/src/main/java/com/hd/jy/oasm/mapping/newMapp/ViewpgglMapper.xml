@@ -9,7 +9,7 @@
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="xm" property="xm" jdbcType="VARCHAR" />
-    <result column="gyjq" property="gyjq" jdbcType="VARCHAR" />
+    <result column="jq" property="gyjq" jdbcType="VARCHAR" />
     <result column="jh" property="jh" jdbcType="VARCHAR" />
     <result column="jhxm" property="jhxm" jdbcType="VARCHAR" />
     <result column="xjbh" property="xjbh" jdbcType="VARCHAR" />
@@ -17,6 +17,8 @@
     <result column="score" property="score" jdbcType="DOUBLE" />
     <result column="levl" property="levl" jdbcType="VARCHAR" />
   </resultMap>
+  
+  
   <!-- 业务操作部分 -->
   <!-- 通用搜索器 -->
   <sql id="Query">
@@ -34,7 +36,7 @@
            and jhxm LIKE concat(concat('%',#{jhxm}),'%')
         </if>
         <if test="gyjq!=null and gyjq!=''">
-           and gyjq LIKE concat(concat('%',#{gyjq}),'%')
+           and jq LIKE concat(concat('%',#{gyjq}),'%')
         </if>
         <if test="status!=null and status!=''">
            and status = #{status,jdbcType=DECIMAL}
@@ -44,16 +46,18 @@
 
   <!-- 出监访谈动态视图数据显示 -->
   <select id="cjjgftViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
-   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
-      FROM v_pggl where type='otTk'
+   SELECT k.task_id,k.crim_no,k.type,k.last_modif,k.status,k.name,x.xm ,x.jq,x.jh ,x.jhxm,x.xjbh,x.xjxm,k.score,k.levl 
+      FROM t_task k left join t_jczjdx x on k.crim_no=x.qh  
+      where type='otTk'
         <include refid="Query"></include>
         order by score,task_id
   </select>
   
   <!-- 出监行为观察动态视图数据显示 -->
   <select id="cjxwgcViewpggl" resultMap="BaseViewpggl" parameterType="java.lang.String">
-   SELECT task_id,crim_no,type,last_modif,status,name,xm ,gyjq,jh ,jhxm,xjbh,xjxm,score,levl 
-      FROM v_pggl where type='otAct'
+   SELECT k.task_id,k.crim_no,k.type,k.last_modif,k.status,k.name,x.xm ,x.jq,x.jh ,x.jhxm,x.xjbh,x.xjxm,k.score,k.levl 
+      FROM t_task k left join t_jczjdx x on k.crim_no=x.qh
+      where type='otAct'
         <include refid="Query"></include>
         order by score,task_id
   </select>
@@ -171,4 +175,5 @@
   <select id="crimInfoGrgc" resultMap="BaseViewpggl" parameterType="java.lang.String">
     <![CDATA[select task_id,crim_no,score,last_modif from v_pggl where crim_no=#{crimNo} and type like '%Act%' and score is not null]]>
   </select>
+ 
 </mapper>

@@ -28,7 +28,7 @@
 			<!--选项卡 -->
 			<div id="option" class="option_area">
 				<ul>
-					<li id="cj_dafx" name="cj_dafx" class="option_li_current">档案分析</li>
+					<!-- <li id="cj_dafx" name="cj_dafx" class="option_li_current">档案分析</li> -->
 					<li id="cj_jgft" name="cj_jgft" >结构性访谈</li>
 					<li id="cj_rcgc" name="cj_rcgc">行为观察</li>
                    <!-- <li id="cj_xlcs" name="cj_xlcs">心理测试数据导入</li> -->
@@ -55,9 +55,9 @@
 		$(this).addClass('option_li_current').siblings().removeClass('option_li_current');
 		switch ($(this).attr("id")) {
 
-			case 'cj_dafx': //出监档案分析
+		/* 	case 'cj_dafx': //出监档案分析
 				$("#basecontent").load("/oasm/dafxView/cj_dafx");
-				break;
+				break; */
 			case "cj_jgft"://出监结构性访谈
 				$("#basecontent").load("/oasm/dafxView/cj_jgft");
 				break;
