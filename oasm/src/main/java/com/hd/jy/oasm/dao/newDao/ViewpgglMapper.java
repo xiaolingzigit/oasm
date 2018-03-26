@@ -15,16 +15,6 @@ public interface ViewpgglMapper {
 
     int insertSelective(Viewpggl record);
     
-    List<Viewpggl> rjjgftViewpggl(Map<String,Object> map); //根据入监结构访谈登录的关联警号动态查询视图
-    
-    List<Viewpggl> rjxwgcViewpggl(Map<String,Object> map); //根据入监行为观察警号动态查询视图
-    
-    List<Viewpggl> rcxwgcViewpggl(Map<String,Object> map); //日常行为观察动态视图
-    
-    List<Viewpggl> zqjgftViewpggl(Map<String,Object> map);//中期访谈动态数据视图
-    
-    List<Viewpggl> zqxwgcViewpggl(Map<String,Object> map); //中期观察动态数据视图
-    
     List<Viewpggl> cjjgftViewpggl(Map<String,Object> map);//出监访谈动态数据视图
     
     List<Viewpggl> cjxwgcViewpggl(Map<String,Object> map);//出监观察动态数据视图

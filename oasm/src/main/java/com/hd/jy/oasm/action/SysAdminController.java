@@ -30,8 +30,8 @@ import com.hd.jy.oasm.util.Page;
 import com.hd.jy.oasm.util.PageHelper;
 
 /***
- * 
- * @author quite 后台controller
+ * **** 后台controller****
+ * @author quite 
  */
 @Controller
 @RequestMapping("systemAdmin")

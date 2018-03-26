@@ -9,7 +9,9 @@
 <title>罪犯个人面板</title>
 </head>
 <body>
-
+<div class="return_btn" >
+       <a href="#" onclick="loadnext2('/oasm/jygzView/zfxx')"> <<< 返回 </a>	
+    </div>
 <div class="cs-im-nogg">
 
 		<div class="cs-item">

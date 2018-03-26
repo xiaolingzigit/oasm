@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="return_btn" >
-       <a href="#" onclick="loadnext3('/oasm/dafxView/cj_shsy')">《 返回</a>	
+       <a href="#" onclick="loadnext3('/oasm/xljzView/xlcs_shsy')"><<< 返回</a>	
     </div>
      <div class="rs_table">
         <div class="rs_table_title"><h1>社会适应性结果表</h1></div>

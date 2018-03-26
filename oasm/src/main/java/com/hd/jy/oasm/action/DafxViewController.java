@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hd.jy.oasm.domain.BGjbxx;
 import com.hd.jy.oasm.domain.Tzyrymd;
 import com.hd.jy.oasm.domain.newDomain.Viewpggl;
 import com.hd.jy.oasm.services.SjjgftAndxwgcService;
@@ -27,6 +28,7 @@ import com.hd.jy.oasm.services.VPgbgListService;
 import com.hd.jy.oasm.services.ViewftjgAndxwgcService;
 import com.hd.jy.oasm.util.Page;
 import com.hd.jy.oasm.util.PageHelper;
+import com.hd.jy.oasm.util.date.DateUtil;
 
 /***
  * *********出监评估控制层 ******* TODO
@@ -86,20 +88,7 @@ public class DafxViewController {
 	 */
 
 	@RequestMapping("/cj_jgft")
-	public String cj_jgft(Model model) {
-		String jh = getJhforView();
-		List<Viewpggl> viewcjjgft = null;
-		Map<String, Object> map = new HashMap<>();
-		map.put("jh", jh);
-		try {
-			// viewcjjgft = viewftAndgcService.showViewcjjgft(jh);
-			viewcjjgft = viewftAndgcService.cjjgftViewpggl(map);
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("根据警号动态获取出监结构访谈数据失败，请重试...");
-		}
-		model.addAttribute("viewcjjgftList", viewcjjgft);
+	public String cj_jgft() {
 		return "/pcras/pggl/cj_jgft";
 	}
 
@@ -113,8 +102,7 @@ public class DafxViewController {
 	 */
 	@SuppressWarnings("rawtypes")
 	@ResponseBody
-	@RequestMapping(value = "/cjftView_json", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "/cjftView_json", method = { RequestMethod.GET,RequestMethod.POST })
 	public Map<Object, Object> cjftView_json(int num, int size, String gyjq,
 			String qh, String xm, String jhxm, String ftzt) {
 		log.info("【关押监区" + gyjq + "】，【囚号" + qh + "】，【姓名" + xm + "】，【警察姓名"
@@ -152,7 +140,7 @@ public class DafxViewController {
 		try {
 			long cjftqh = Long.parseLong(qh.trim());
 			Tzyrymd cjftzyry = tzyreService.selectBDJCbyqh(cjftqh); // 根据出监结构访谈的囚号获取罪犯数据
-			Date datesj = new Date(Long.parseLong(ftsj.trim()));
+			Date datesj = new Date(Long.parseLong(ftsj.trim()));//访谈时间
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String cjftsj = sdf.format(datesj); // 格式化的时间
 			String cjftfs = String.valueOf(ftfs); // 格式化的分数
@@ -177,9 +165,20 @@ public class DafxViewController {
 		request.setAttribute("cjftlbjyxx", cjzyftlb.getTjczjdx()); // 传送量表警员到页面
 		return "/pcras/pggl/cj_jgftlb";
 	}
-
 	/***
-	 * 出监观察分页数据视图显示
+	 * 获取出监观察分页数据的视图，显示列表
+	 * 
+	 * @auto quite
+	 * @param num
+	 * @param size
+	 * @returna 下午6:57:33 Map<Object,Object>
+	 */
+	@RequestMapping("/cj_rcgc")
+	public String cj_rcgc() {
+		return "/pcras/pggl/cj_rcgc";
+	}
+	/***
+	 * 出监观察分页数据视图显示  搜索框
 	 * 
 	 * @auto quite
 	 * @param num
@@ -217,23 +216,7 @@ public class DafxViewController {
 		return cjgcMap;
 	}
 
-	// 出监行为观察
-	@RequestMapping("/cj_rcgc")
-	public String cj_rcgc(Model model) {
-		String jh = getJhforView();
-		List<Viewpggl> viewcjxwgc = null;
-		Map<String, Object> map = new HashMap<>();
-		map.put("jh", jh);
-		try {
-			// viewcjxwgc = viewftAndgcService.findViewcjxwgc(jh);
-			viewcjxwgc = viewftAndgcService.cjxwgcViewpggl(map);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("根据警号动态获取出监行为观察数据失败，请重试...");
-		}
-		model.addAttribute("viewcjxwgcList", viewcjxwgc);
-		return "/pcras/pggl/cj_rcgc";
-	}
+
 
 	// 出监行为观察结果表
 	@RequestMapping("/cj_rcgcrs")
@@ -348,35 +331,35 @@ public class DafxViewController {
 		 */
 	// 罪犯基本信息
 	
-//	@RequestMapping("/criminalinfo")
-//	public String criminalinfo(String qh, Model model) {
-//		log.info("【罪犯囚号" + qh + "】");
-//		try {
-//			BGjbxx crimInfo = vpgbgListService.crimInfoBycrimNo(qh.trim()); // 查找罪犯的基础信息
-//			if (null != crimInfo) {
-//				model.addAttribute("jbxx", crimInfo); // 罪犯基础的几项数据
-//				model.addAttribute("xxxx", crimInfo.getBgxxxx()); // 罪犯重要的数据
-//				if (crimInfo.getBgxxxx().getXq().length() > 4) {
-//					String xq = DateUtil.fmtDate(crimInfo.getBgxxxx().getXq());
-//					model.addAttribute("xq", xq);
-//				} else {
-//					model.addAttribute("xq", crimInfo.getBgxxxx().getXq());
-//				}
-//				// 格式化剥夺政治权利年限
-//				if (crimInfo.getBgxxxx().getBznx().length() > 4) {
-//					String bznx = DateUtil.fmtDate(crimInfo.getBgxxxx()
-//							.getBznx());
-//					model.addAttribute("bznx", bznx);
-//				} else {
-//					model.addAttribute("bznx", crimInfo.getBgxxxx().getBznx());
-//				}
-//			}
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			log.error("罪犯信息显示失败，请稍后重试...");
-//		}
-//		return "/pcras/pggl/criminalinfo";
-//	}
+	@RequestMapping("/criminalinfo")
+	public String criminalinfo(String qh, Model model) {
+		log.info("【罪犯囚号" + qh + "】");
+		try {
+			BGjbxx crimInfo = vpgbgListService.crimInfoBycrimNo(qh.trim()); // 查找罪犯的基础信息
+			if (null != crimInfo) {
+				model.addAttribute("jbxx", crimInfo); // 罪犯基础的几项数据
+				model.addAttribute("xxxx", crimInfo.getBgxxxx()); // 罪犯重要的数据
+				if (crimInfo.getBgxxxx().getXq().length() > 4) {
+					String xq = DateUtil.fmtDate(crimInfo.getBgxxxx().getXq());
+					model.addAttribute("xq", xq);
+				} else {
+					model.addAttribute("xq", crimInfo.getBgxxxx().getXq());
+				}
+				// 格式化剥夺政治权利年限
+				if (crimInfo.getBgxxxx().getBznx().length() > 4) {
+					String bznx = DateUtil.fmtDate(crimInfo.getBgxxxx()
+							.getBznx());
+					model.addAttribute("bznx", bznx);
+				} else {
+					model.addAttribute("bznx", crimInfo.getBgxxxx().getBznx());
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("罪犯信息显示失败，请稍后重试...");
+		}
+		return "/pcras/pggl/criminalinfo";
+	}
 	 
 
 	// *********************************************************************************

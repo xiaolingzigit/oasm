@@ -30,7 +30,7 @@
 				<ul>
 					<!-- <li id="cj_dafx" name="cj_dafx" class="option_li_current">档案分析</li> -->
 					<li id="cj_jgft" name="cj_jgft" >结构性访谈</li>
-					<li id="cj_rcgc" name="cj_rcgc">行为观察</li>
+					<!-- <li id="cj_rcgc" name="cj_rcgc">行为观察</li> -->
                    <!-- <li id="cj_xlcs" name="cj_xlcs">心理测试数据导入</li> -->
                    <li id="cj_shsy" name="cj_shsy">心理测试</li>
 				</ul>

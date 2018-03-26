@@ -16,7 +16,13 @@ import com.hd.jy.oasm.domain.JYXX;
 import com.hd.jy.oasm.services.JyxxService;
 import com.hd.jy.oasm.util.CustomizedToken;
 import com.hd.jy.oasm.util.LoginType;
-
+/***
+ * *********前台登录控制层 *******
+ * @author quite
+ * @data 2018年03月22日
+ * @see  
+ *
+ */
 @Controller
 @RequestMapping("login")
 public class LoginController {

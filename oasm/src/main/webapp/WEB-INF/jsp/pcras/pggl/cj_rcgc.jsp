@@ -101,18 +101,7 @@
 				</thead>
 				<tbody id="cj_rcgc_tableData">
 				  <!-- page.js拼接的出监行为观察数据 -->
-				   <c:forEach items="${viewcjxwgcList}" var="cjxw" varStatus="status">
-							<tr>
-								<td>${status.count }</td>
-								<td>${cjxw.crimNo }</td>
-								<td>${cjxw.xm }</td>
-								<td>${cjxw.gyjq }</td>
-								<td><fmt:formatDate type="date" value="${cjxw.lastModif }" /></td>
-								<td>${cjxw.score }</td>
-								<td>${cjxw.jhxm }</td>
-								<td>${cjxw.status }</td>
-								</tr>
-							</c:forEach>
+				 
 				</tbody>
 			</table>
 			<!-- 分页 -->

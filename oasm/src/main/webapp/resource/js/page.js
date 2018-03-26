@@ -122,7 +122,7 @@ function cj_jgft_DataList(gyjq,qh,xm,jhxm,ftzt){
 					cz="<a href='#' onclick='loadCjftrs(\""+v.taskId+"\","+clikrs+")'>查看详情</a>"; //操作
 				}else if(v.status==1){
 					zt="未完成";
-					cz="<div class='addbutton2' onclick='loadCjftlb("+cliklb+")'>行为观察</div>";
+					cz="<div class='addbutton2' onclick='loadCjftlb("+cliklb+")'>结构访谈</div>";
 				}
 				if(v.score==null){
 					scores=0;

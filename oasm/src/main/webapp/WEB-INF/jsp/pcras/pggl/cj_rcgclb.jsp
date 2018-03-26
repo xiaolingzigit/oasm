@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="return_btn" >
-       <a href="#" onclick="loadnext3('/oasm/dafxView/rj_rcgc')">《 返回</a>	
+       <a href="#" onclick="loadnext3('/oasm/dafxView/rj_rcgc')"><<< 返回 </a>	
     </div>
      <div class="rs_table">
         <div class="rs_table_title">
@@ -22,7 +22,7 @@
 		   <li class="xx_li01">姓<span>名</span>：</li>
 		   <li class="xx_li02">${cjzylbgc.xm }</li>
 		   <li class="xx_li01">囚<span>号</span>：</li>
-		   <li id="cjxwgcqh" class="xx_number xx_li02" onclick="loadnext3('/oasm/dafxView/criminalinfo?qh=${cjzylbgc.qh }')">${cjzylbgc.qh }</li>
+		   <li id="cjxwgcqh" class="xx_li02" >${cjzylbgc.qh }</li>
 		   <li class="xx_li01">录入时间：</li>
 		   <li class="xx_li02"><fmt:formatDate type="date" value="${cjzylbgc.sj}" /></li>
 		   <li class="xx_li01">监<span>区</span>：</li>

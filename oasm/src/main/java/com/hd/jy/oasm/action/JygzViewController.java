@@ -36,7 +36,7 @@ public class JygzViewController {
 	
 	//罪犯信息列表   
 	@SuppressWarnings("rawtypes")
-    @RequestMapping("/zfjbxx")
+    @RequestMapping("/zfxx")
     public String zfjbxx(@RequestParam(required=true,defaultValue="1")int number,Model model){
 		PageHelper.startPage(number, 30);
 		List<BGjbxx> jbxxList = viewPgbgAService.selectJbxx();
@@ -45,8 +45,6 @@ public class JygzViewController {
 		model.addAttribute("page",page);
 		model.addAttribute("nums", page.getNavigatepageNums());
 		model.addAttribute("jbxxList",jbxxList);
-//		System.out.println("jbxxList"+model);
-//		System.out.println("jbxxList"+jbxxList);
     	return "/pcras/jygz/zfxx";
     }
     

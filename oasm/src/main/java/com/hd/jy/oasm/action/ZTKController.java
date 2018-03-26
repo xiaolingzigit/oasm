@@ -27,7 +27,7 @@ import com.hd.jy.oasm.util.priv.CT;
  * 
  * @author quite
  * 做题库Controller
- *出现做完题目之后的所有已选择的因子和分数，包括入监访谈，入监观察，日常观察，中期访谈，中期观察，出监访谈，出监观察
+ *出现做完题目之后的所有已选择的因子和分数，包括出监访谈，出监观察
  */
 @Controller
 @RequestMapping("ztk")
