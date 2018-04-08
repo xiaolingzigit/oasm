@@ -41,6 +41,7 @@ import com.hd.jy.oasm.util.date.DateUtil;
 @Controller
 @RequestMapping("dafxView")
 public class DafxViewController {
+
 	private Logger log = Logger.getLogger(DafxViewController.class);
 
 	@Autowired
@@ -360,6 +361,7 @@ public class DafxViewController {
 		}
 		return "/pcras/pggl/criminalinfo";
 	}
+
 	 
 
 	// *********************************************************************************

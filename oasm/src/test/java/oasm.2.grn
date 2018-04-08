@@ -1,0 +1,32 @@
+<uml>
+   <greenVersion="30500"/>
+   <type>
+      <name="=./src\/main\/java<com.hd.jy.oasm.action{BgspViewController.java[BgspViewController"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="125"/>
+      <y="193"/>
+   </type>
+   <type>
+      <name="=./src\/main\/java<com.hd.jy.oasm.action{CzgzViewController.java[CzgzViewController"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="128"/>
+      <y="57"/>
+   </type>
+   <type>
+      <name="=./src\/main\/java<com.hd.jy.oasm.action{FyhyViewController.java[FyhyViewController"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="317"/>
+      <y="56"/>
+   </type>
+   <type>
+      <name="=./src\/main\/java<com.hd.jy.oasm.action{PgbgsccxViewController.java[PgbgsccxViewController"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="507"/>
+      <y="58"/>
+   </type>
+</uml>
+

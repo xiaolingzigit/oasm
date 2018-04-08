@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>欢迎登陆危险评估系统</title>
+<title>欢迎登陆出监评估管理系统</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resource/css/login.css'/>" />
 </head>
 <body>
 
 <div id="login_title">
-<div class="ghlogo"></div><h1>出监评估系统</h1>
+<div class="ghlogo"></div><h1>出监评估管理系统</h1>
 </div>
 <div id="login">
 <form id="loginForm" method="post">
